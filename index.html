@@ -200,8 +200,11 @@ footer{color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding:
   .chips .lbl{width:100%}
 }
 /* public read-only mode (GitHub Pages) */
-body.ro [data-tab="add"],body.ro #tab-add,body.ro #wForm,body.ro #exportbar,body.ro [data-toggle-sealed],body.ro [data-remove],body.ro [data-wdel],body.ro [data-bought]{display:none!important}
-body.ro .wgrid{grid-template-columns:1fr!important}
+body.ro [data-tab="add"],body.ro #tab-add,body.ro #exportbar,body.ro [data-toggle-sealed],body.ro [data-remove],body.ro:not(.owner) #wForm,body.ro:not(.owner) [data-wdel],body.ro:not(.owner) [data-bought]{display:none!important}
+body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
+.ownerbtn{background:none;border:0;color:inherit;opacity:.55;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
+.ownerbtn:hover{opacity:1}
+#wForm.busy{opacity:.6;pointer-events:none}
 </style>
 </head>
 <body>
@@ -366,6 +369,52 @@ const store = (() => {
   };
 })();
 
+/* ---------- owner mode: wishlist saved straight to GitHub ---------- */
+const GH = { owner:'kulinichvladyslav', repo:'vinyl', branch:'main' };
+const RO = document.body.classList.contains('ro');
+const tokGet = () => { try { return localStorage.getItem('vinyl:ghtoken') || ''; } catch { return ''; } };
+const tokSet = v => { try { v ? localStorage.setItem('vinyl:ghtoken', v) : localStorage.removeItem('vinyl:ghtoken'); } catch {} };
+let OWNER = RO && !!tokGet();
+document.body.classList.toggle('owner', OWNER);
+async function gh(path, opt = {}){
+  const r = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}${path}`, { ...opt, cache:'no-store',
+    headers: { 'Authorization': 'Bearer ' + tokGet(), 'Accept': opt.raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json', ...(opt.body ? {'Content-Type':'application/json'} : {}) } });
+  if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0,200));
+  return opt.raw ? r.json() : r.status === 204 ? null : r.json();
+}
+const ghFresh = () => gh(`/contents/collection.json?ref=${GH.branch}&t=${Date.now()}`, { raw:true });
+async function ghSaveWishlist(change, message){
+  const data = await ghFresh();                       // latest file, so nothing else gets overwritten
+  data.wishlist = change(data.wishlist || []);
+  data.updated = new Date().toISOString().slice(0,10);
+  const json = JSON.stringify(data, null, 2) + '\n';
+  const js = '// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = ' + JSON.stringify(data, null, 2) + ';\n';
+  const ref = await gh(`/git/ref/heads/${GH.branch}`);
+  const head = await gh(`/git/commits/${ref.object.sha}`);
+  const tree = await gh('/git/trees', { method:'POST', body: JSON.stringify({ base_tree: head.tree.sha, tree: [
+    { path:'collection.json', mode:'100644', type:'blob', content: json },
+    { path:'collection.js', mode:'100644', type:'blob', content: js } ] }) });
+  const commit = await gh('/git/commits', { method:'POST', body: JSON.stringify({ message, tree: tree.sha, parents: [ref.object.sha] }) });
+  await gh(`/git/refs/heads/${GH.branch}`, { method:'PATCH', body: JSON.stringify({ sha: commit.sha }) });
+  base = { records: data.records || base.records, wishlist: data.wishlist, updated: data.updated };
+  local.wishlist = null; await store.set('local', local); merge(); renderAll();
+}
+async function ownerLogin(){
+  const t = (window.prompt('Вставте GitHub-токен (fine-grained, доступ лише до репозиторію vinyl, Contents: Read and write). Він збережеться тільки в цьому браузері.') || '').trim();
+  if (!t) return;
+  tokSet(t);
+  try {
+    const repo = await gh('');
+    if (!repo.permissions || !repo.permissions.push) throw new Error('no push');
+    OWNER = true; document.body.classList.add('owner'); await load(); toast('Режим власника увімкнено');
+  } catch (e) { tokSet(''); toast('Токен не підійшов: потрібен доступ на запис до репозиторію vinyl'); }
+}
+function ownerLogout(){ tokSet(''); OWNER = false; document.body.classList.remove('owner'); renderAll(); toast('Вийшли з режиму власника'); }
+document.addEventListener('click', e => {
+  if (e.target.closest('#ownerIn')) ownerLogin();
+  if (e.target.closest('#ownerOut')) ownerLogout();
+});
+
 /* ---------- state ---------- */
 let base = { records: [], wishlist: [] };
 let local = { records: [], wishlist: null, overrides: {}, removed: [] };
@@ -388,7 +437,8 @@ async function save(){ await store.set('local', local); merge(); renderAll(); }
 /* ---------- load ---------- */
 async function load(){
   let data = null;
-  if (location.protocol !== 'file:') try { const r = await fetch('collection.json', {cache:'no-store'}); if (r.ok) data = await r.json(); } catch {}
+  if (OWNER) try { data = await ghFresh(); } catch {}
+  if (!data && location.protocol !== 'file:') try { const r = await fetch('collection.json', {cache:'no-store'}); if (r.ok) data = await r.json(); } catch {}
   if (!data && window.COLLECTION) data = window.COLLECTION;
   if (!data) data = { records: [], wishlist: [] };
   base = { records: data.records || [], wishlist: data.wishlist || [], updated: data.updated };
@@ -512,7 +562,7 @@ function renderExport(){
 
 function renderAll(){
   renderStats(); renderFilters(); renderGrid(); renderWish(); renderExport();
-  $('#foot').innerHTML = `Дані: collection.json${base.updated?` · оновлено ${esc(base.updated)}`:''} · Фото обкладинок: папка processed/`;
+  $('#foot').innerHTML = `Дані: collection.json${base.updated?` · оновлено ${esc(base.updated)}`:''} · Фото обкладинок: папка processed/` + (RO ? (OWNER ? ` · <button class="ownerbtn" id="ownerOut">Вийти з режиму власника</button>` : ` · <button class="ownerbtn" id="ownerIn">Вхід власника</button>`) : '');
 }
 
 /* ---------- modal ---------- */
@@ -597,11 +647,28 @@ if (['wish','add'].includes(location.hash.slice(1))) showTab(location.hash.slice
 $('#wForm').addEventListener('submit', async e => {
   e.preventDefault();
   const title = $('#wTitle').value.trim(); if (!title) return;
-  local.wishlist = [...wishlist, { title, link: $('#wLink').value.trim(), note: $('#wNote').value.trim(), added: new Date().toISOString().slice(0,10) }];
+  const item = { title, link: $('#wLink').value.trim(), note: $('#wNote').value.trim(), added: new Date().toISOString().slice(0,10) };
+  if (OWNER){
+    const f = e.target; f.classList.add('busy'); toast('Зберігаю на сайті…');
+    try { await ghSaveWishlist(w => [...w, item], `Wishlist: + ${title}`); f.reset(); toast('Додано. На сайті для всіх з\'явиться за ~1 хв'); }
+    catch (err) { console.error(err); toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+    f.classList.remove('busy'); return;
+  }
+  local.wishlist = [...wishlist, item];
   e.target.reset(); await save(); toast('Додано до списку бажань');
 });
 $('#wList').addEventListener('click', async e => {
   const d = e.target.closest('[data-wdel]'), b = e.target.closest('[data-bought]');
+  if (OWNER && (d || b)){
+    const w = wishlist[(d || b).dataset[d ? 'wdel' : 'bought']]; if (!w) return;
+    const same = x => x.title === w.title && (x.added||'') === (w.added||'') && (x.link||'') === (w.link||'');
+    (d||b).disabled = true; toast('Зберігаю на сайті…');
+    try {
+      await ghSaveWishlist(list => { const i = list.findIndex(same); return i < 0 ? list : list.filter((_,k)=>k!==i); }, `Wishlist: ${b ? 'куплено' : '−'} ${w.title}`);
+      toast(b ? 'Вітаю з покупкою! Скинь фото в чат, і я додам платівку в колекцію' : 'Прибрано зі списку бажань');
+    } catch (err) { console.error(err); (d||b).disabled = false; toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+    return;
+  }
   if (d){ local.wishlist = wishlist.filter((_,i)=>i!=d.dataset.wdel); await save(); }
   if (b){
     const w = wishlist[b.dataset.bought];
