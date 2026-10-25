@@ -1,0 +1,1014 @@
+// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
+window.COLLECTION = {
+  "updated": "2026-10-25",
+  "records": [
+    {
+      "id": "kino-gruppa-krovi",
+      "artist": "Кино",
+      "album": "Группа крови",
+      "year": 1988,
+      "editionYear": 1991,
+      "genre": "Рок",
+      "sealed": false,
+      "tags": [
+        "Радянський рок",
+        "Ретро-видання"
+      ],
+      "description": "Шостий альбом гурту «Кино», що зробив Цоя культовим. Видання американського лейбла Red Wave Джоанни Стінгрей.",
+      "cover": "processed/kino-gruppa-krovi.jpg",
+      "back": "processed/kino-gruppa-krovi_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_2_2026-10-25_14-18-09.jpg",
+        "Photo/photo_1_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 2200,
+      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
+      "format": "LP",
+      "label": "Red Wave / Русский диск",
+      "country": "СРСР / США",
+      "about": "«Группа крови» (1988) — альбом, після якого «Кино» стало найпопулярнішим рок-гуртом Радянського Союзу. Заголовна пісня і «Закрой за мной дверь, я ухожу» стали гімнами покоління. Це видання випустив лейбл Red Wave американки Джоанни Стінгрей, яка першою познайомила Захід з ленінградським роком. На звороті англійські назви пісень і текст Стінгрей.",
+      "tracks": [
+        "Группа крови",
+        "Закрой за мной дверь, я ухожу",
+        "Война",
+        "Спокойная ночь",
+        "Мама, мы все тяжело больны",
+        "Бошетунмай",
+        "В наших глазах",
+        "Попробуй спеть вместе со мной",
+        "Следи за собой",
+        "Песня без слов",
+        "Легенда"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "kino-noch",
+      "artist": "Кино",
+      "album": "Ночь",
+      "year": 1986,
+      "editionYear": 1988,
+      "genre": "Рок",
+      "sealed": false,
+      "tags": [
+        "Радянський рок",
+        "Мелодія"
+      ],
+      "description": "Альбом «Кино» з хітами «Видели ночь» і «Мы хотим танцевать». Видання «Мелодії».",
+      "cover": "processed/kino-noch.jpg",
+      "back": "processed/kino-noch_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_4_2026-10-25_14-18-09.jpg",
+        "Photo/photo_3_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 2000,
+      "priceBasis": "vinyl.com.ua",
+      "format": "LP",
+      "label": "Мелодия",
+      "country": "СРСР",
+      "about": "«Ночь» записали в 1985–1986 роках, а «Мелодія» видала платівку у 1988-му. Це перший альбом «Кино», що вийшов на державному лейблі. Платівка розійшлася мільйонними тиражами. Саме тут «Мы хотим танцевать» і «Видели ночь».",
+      "tracks": [
+        "Видели ночь",
+        "Фильмы",
+        "Твой номер",
+        "Танцы",
+        "Ночь",
+        "Последний герой",
+        "Жизнь в стёклах",
+        "Анархия",
+        "Звёзды останутся здесь",
+        "Игра",
+        "Мы хотим танцевать"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "rusya-popelyushka",
+      "artist": "Руся",
+      "album": "Попелюшка. Найкращі хіти",
+      "year": 1992,
+      "editionYear": null,
+      "genre": "Поп",
+      "sealed": false,
+      "tags": [
+        "Українське",
+        "Ретро-видання"
+      ],
+      "description": "Збірка найкращих пісень співачки Русі (Russya — Cinderella). Видання «Аудіо Україна».",
+      "cover": "processed/rusya-popelyushka.jpg",
+      "back": "processed/rusya-popelyushka_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_6_2026-10-25_14-18-09.jpg",
+        "Photo/photo_5_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 3250,
+      "priceBasis": "vinyl.com.ua (середнє за оголошеннями)",
+      "format": "LP",
+      "label": "Аудіо Україна",
+      "country": "Україна",
+      "about": "Руся (Ірина Зільник) — одна з найпопулярніших українських естрадних співачок кінця 80-х. Її пісні писав Костянтин Осауленко. Ця збірка 1992 року виходила з двомовним оформленням «Попелюшка / Russya — Cinderella». Сьогодні ця платівка доволі рідкісна, тому її ціна на вторинному ринку висока.",
+      "tracks": [
+        "Попелюшка",
+        "А я не вірю",
+        "Не стій під вікном",
+        "Чули-перечули",
+        "Даруй мені, мамо",
+        "Ворожка",
+        "Будь що буде",
+        "Зачароване коло",
+        "Русалонька",
+        "Дівчина русява"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "modern-talking-pogovorim-o-lyubvi",
+      "artist": "Modern Talking",
+      "album": "Поговорим о любви (Let's Talk About Love)",
+      "year": 1985,
+      "editionYear": 1987,
+      "genre": "Євродиско",
+      "sealed": false,
+      "tags": [
+        "Мелодія",
+        "Ретро-видання"
+      ],
+      "description": "Другий альбом Modern Talking у радянському ліцензійному виданні «Мелодії».",
+      "cover": "processed/modern-talking-pogovorim-o-lyubvi.jpg",
+      "back": "processed/modern-talking-pogovorim-o-lyubvi_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_8_2026-10-25_14-18-09.jpg",
+        "Photo/photo_7_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 250,
+      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
+      "format": "LP",
+      "label": "Мелодия",
+      "country": "СРСР",
+      "about": "Радянське ліцензійне видання 1987 року на основі альбому «Let's Talk About Love» (1985). У СРСР Modern Talking були надзвичайно популярні, а «Мелодія» друкувала їх величезними тиражами. Тому платівка поширена і коштує недорого. Назви пісень на звороті перекладені російською: «Любимая» (Cheri Cheri Lady), «Немного любви» (With a Little Love). Усі пісні написав Дітер Болен.",
+      "tracks": [
+        "Cheri Cheri Lady",
+        "With a Little Love",
+        "Wild Wild Water",
+        "You're My Heart, You're My Soul",
+        "Just Like an Angel",
+        "Heaven Will Know",
+        "Love Don't Live Here Anymore",
+        "Why Did You Do It Just Tonight",
+        "Don't Give Up",
+        "You Can Win If You Want"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "nautilus-rodivshiysya",
+      "artist": "Nautilus Pompilius",
+      "album": "Родившийся в эту ночь",
+      "year": 1991,
+      "editionYear": null,
+      "genre": "Рок",
+      "sealed": false,
+      "tags": [
+        "Радянський рок",
+        "Ретро-видання"
+      ],
+      "description": "Альбом свердловського гурту Nautilus Pompilius. Видання «Русский диск».",
+      "cover": "processed/nautilus-rodivshiysya.jpg",
+      "back": "processed/nautilus-rodivshiysya_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_10_2026-10-25_14-18-09.jpg",
+        "Photo/photo_9_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 450,
+      "priceBasis": "Discogs (медіана)",
+      "format": "LP",
+      "label": "Русский диск",
+      "country": "СРСР",
+      "about": "Альбом записали в 1990 році в Західному Берліні, а «Русский диск» видав його в 1991-му. Тексти написав Ілля Кормільцев, музику — переважно В'ячеслав Бутусов. Звучання тут похмуріше й «західніше», ніж на ранніх роботах гурту. На обкладинці Бутусов, а на звороті фото складу гурту.",
+      "tracks": [
+        "Родившийся в эту ночь",
+        "Тихие игры",
+        "Люди",
+        "Последний человек на земле",
+        "Бриллиантовые дороги",
+        "Она ждёт",
+        "Музыка на песке",
+        "Чёрные птицы",
+        "Джульетта",
+        "Как падший ангел"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "robin-beck-first-time",
+      "artist": "Robin Beck",
+      "album": "First Time",
+      "year": 1988,
+      "editionYear": null,
+      "genre": "Поп-рок",
+      "sealed": false,
+      "tags": [
+        "Сингли",
+        "Ретро-видання"
+      ],
+      "description": "Maxi-single з хітом, що прославився завдяки рекламі Coca-Cola.",
+      "cover": "processed/robin-beck-first-time.jpg",
+      "back": "processed/robin-beck-first-time_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_12_2026-10-25_14-18-09.jpg",
+        "Photo/photo_11_2026-10-25_14-18-09.jpg"
+      ],
+      "price": 150,
+      "priceBasis": "Discogs (медіана)",
+      "format": "12\" maxi-single",
+      "label": "Mercury",
+      "country": "Німеччина",
+      "about": "«First Time» спершу написали для реклами Coca-Cola, а в 1988 році пісня очолила британський чарт. На платівці три версії пісні, на обох сторонах конверта логотип Coca-Cola. Це типовий європейський maxi-single кінця 80-х.",
+      "tracks": [
+        "First Time (Remix)",
+        "First Time (7\" Version)",
+        "First Time (Instrumental)"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "marybell-katastrophy-amygdala",
+      "artist": "Marybell Katastrophy",
+      "album": "Amygdala",
+      "year": 2011,
+      "editionYear": null,
+      "genre": "Альтернатива",
+      "sealed": false,
+      "tags": [
+        "Українське",
+        "Кольоровий вініл"
+      ],
+      "description": "Альбом українського гурту Marybell Katastrophy на кольоровому бордовому вінілі.",
+      "cover": "processed/marybell-katastrophy-amygdala.jpg",
+      "back": "processed/marybell-katastrophy-amygdala_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_14_2026-10-25_14-18-10.jpg",
+        "Photo/photo_13_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1200,
+      "priceBasis": "оцінка (тираж розпродано)",
+      "format": "LP, кольоровий вініл",
+      "label": "—",
+      "country": "—",
+      "about": "Альбом гурту Marybell Katastrophy на бордовому вінілі з чорними й білими бризками. Тираж вінілу розпродано, тому ціна орієнтовна.",
+      "tracks": [],
+      "currency": "UAH"
+    },
+    {
+      "id": "epolets-dogma",
+      "artist": "Epolets",
+      "album": "Dogma (10th Anniversary Edition)",
+      "year": 2014,
+      "editionYear": 2024,
+      "genre": "Інді-рок",
+      "sealed": false,
+      "tags": [
+        "Українське",
+        "Ювілейні видання"
+      ],
+      "description": "Дебютний альбом закарпатського гурту Epolets у ювілейному виданні до 10-річчя.",
+      "cover": "processed/epolets-dogma.jpg",
+      "back": "processed/epolets-dogma_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_16_2026-10-25_14-18-10.jpg",
+        "Photo/photo_15_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1900,
+      "priceBasis": "vinyla.com",
+      "format": "LP, ювілейне видання",
+      "label": "HVG & Abyss Music",
+      "country": "Україна",
+      "about": "Дебютний альбом ужгородського гурту Epolets вийшов у 2014 році і приніс гурту відомість. До 10-річчя у 2024 році вийшло ювілейне вінілове видання. Конверт чорний, з подряпинами, кругла червона наліпка «10th anniversary edition».",
+      "tracks": [],
+      "currency": "UAH"
+    },
+    {
+      "id": "morricone-le-professionnel",
+      "artist": "Ennio Morricone",
+      "album": "Le Professionnel (OST)",
+      "year": 1981,
+      "editionYear": null,
+      "genre": "Саундтрек",
+      "sealed": false,
+      "tags": [
+        "Саундтреки",
+        "Ретро-видання"
+      ],
+      "description": "Музика Енніо Морріконе до фільму «Професіонал» з Жан-Полем Бельмондо, включно з «Chi Mai».",
+      "cover": "processed/morricone-le-professionnel.jpg",
+      "back": "processed/morricone-le-professionnel_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_18_2026-10-25_14-18-10.jpg",
+        "Photo/photo_17_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 400,
+      "priceBasis": "Discogs (медіана)",
+      "format": "LP",
+      "label": "General Music",
+      "country": "Франція",
+      "about": "Французьке видання 1981 року саундтреку до фільму Жоржа Лотнера «Професіонал» з Жан-Полем Бельмондо. Головна тема «Chi Mai» спершу прозвучала в іншому фільмі, але стала всесвітньо відомою саме завдяки «Професіоналу». В СРСР фільм був культовим, тож ця платівка має особливу ностальгічну цінність.",
+      "tracks": [
+        "Le Vent, le cri",
+        "Bach",
+        "V.C.",
+        "Décision finale",
+        "Le Retour",
+        "Fée Morgane",
+        "Chi Mai"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "queen-greatest-hits",
+      "artist": "Queen",
+      "album": "Greatest Hits",
+      "year": 1981,
+      "editionYear": null,
+      "genre": "Рок",
+      "sealed": false,
+      "tags": [
+        "Класика року",
+        "Збірки"
+      ],
+      "description": "Легендарна збірка хітів Queen: «Bohemian Rhapsody», «We Will Rock You», «We Are the Champions».",
+      "cover": "processed/queen-greatest-hits.jpg",
+      "back": "processed/queen-greatest-hits_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_20_2026-10-25_14-18-10.jpg",
+        "Photo/photo_19_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 950,
+      "priceBasis": "Discogs (медіана)",
+      "format": "LP",
+      "label": "EMI / Pathé Marconi",
+      "country": "Франція",
+      "about": "Перша збірка хітів Queen (1981) — один з найпродаваніших альбомів в історії Великої Британії. Це оригінальне французьке видання від Pathé Marconi. На лицьовому боці фото гурту, на звороті портрети Фредді Мерк'юрі, Браяна Мея, Роджера Тейлора і Джона Дікона.",
+      "tracks": [
+        "Bohemian Rhapsody",
+        "Another One Bites the Dust",
+        "Killer Queen",
+        "Fat Bottomed Girls",
+        "Bicycle Race",
+        "You're My Best Friend",
+        "Don't Stop Me Now",
+        "Save Me",
+        "Under Pressure",
+        "Crazy Little Thing Called Love",
+        "Somebody to Love",
+        "Now I'm Here",
+        "Good Old-Fashioned Lover Boy",
+        "Play the Game",
+        "Flash",
+        "Seven Seas of Rhye",
+        "We Will Rock You",
+        "We Are the Champions"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "kurgan-agregat-pole-kanifoli",
+      "artist": "Курган & Agregat",
+      "album": "Поле каніфолі",
+      "year": 2025,
+      "editionYear": null,
+      "genre": "Хіп-хоп",
+      "sealed": false,
+      "tags": [
+        "Українське"
+      ],
+      "description": "Перший альбом харківського гурту після початку повномасштабного вторгнення.",
+      "cover": "processed/kurgan-agregat-pole-kanifoli.jpg",
+      "back": "processed/kurgan-agregat-pole-kanifoli_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_22_2026-10-25_14-18-10.jpg",
+        "Photo/photo_21_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 2450,
+      "priceBasis": "vinyla.com",
+      "format": "LP",
+      "label": "Shamych / Abyss Music",
+      "country": "Україна",
+      "about": "«Поле каніфолі» (2025) — перший альбом харківського гурту після початку повномасштабного вторгнення. Він похмуріший і рефлексивніший за попередні роботи, хоча слобожанський суржик і гумор нікуди не зникли. На обкладинці учасники гурту в нічному лісі в яскравих костюмах. Серед гостей — Дарія Астаф'єва.",
+      "tracks": [
+        "Заговор предметів",
+        "Світлячки",
+        "Оркестр Абізян",
+        "Палеозой",
+        "Краще жить",
+        "Крім Майка",
+        "Інстинкт",
+        "Тиха революція (feat. Дарія Астаф'єва)"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "imagine-dragons-mercury-act-2",
+      "artist": "Imagine Dragons",
+      "album": "Mercury – Act 2",
+      "year": 2022,
+      "editionYear": null,
+      "genre": "Поп-рок",
+      "sealed": false,
+      "tags": [
+        "Сучасне"
+      ],
+      "description": "Друга частина подвійного альбому Mercury, з хітами «Bones» і «Enemy».",
+      "cover": "processed/imagine-dragons-mercury-act-2.jpg",
+      "back": "processed/imagine-dragons-mercury-act-2_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_24_2026-10-25_14-18-10.jpg",
+        "Photo/photo_23_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 2500,
+      "priceBasis": "vinyl.com.ua",
+      "format": "2LP",
+      "label": "Kidinakorner / Interscope",
+      "country": "США",
+      "about": "Друга частина подвійного альбому «Mercury» (2022), спродюсованого Ріком Рубіном. Містить хіти «Bones» і «Enemy» (з JID) — останній став саундтреком до серіалу «Arcane». Оформлення з червоною «шкіряною» текстурою продовжує першу частину.",
+      "tracks": [
+        "Bones",
+        "Symphony",
+        "Sharks",
+        "I Don't Like Myself",
+        "Blur",
+        "Higher Ground",
+        "Crushed",
+        "Take It Easy",
+        "Waves",
+        "I'm Happy",
+        "Ferris Wheel",
+        "Peace of Mind",
+        "Sirens",
+        "Tied",
+        "Younger",
+        "I Wish",
+        "Continual",
+        "They Don't Know You Like I Do",
+        "Enemy (with JID)"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "kurgan-agregat-zembondzhu-autograph",
+      "artist": "Курган & Agregat",
+      "album": "Зембонджу (з автографами)",
+      "year": 2021,
+      "editionYear": 2023,
+      "genre": "Хіп-хоп",
+      "sealed": false,
+      "tags": [
+        "Українське",
+        "Автограф"
+      ],
+      "description": "Альбом «Зембонджу» з автографами учасників гурту на обкладинці.",
+      "cover": "processed/kurgan-agregat-zembondzhu-autograph.jpg",
+      "back": "processed/kurgan-agregat-zembondzhu-autograph_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_26_2026-10-25_14-18-10.jpg",
+        "Photo/photo_25_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 4000,
+      "priceBasis": "оцінка: звичайне видання ≈2450 (vinyla.com) + автографи",
+      "format": "LP",
+      "label": "Shamych / Abyss Music",
+      "country": "Україна",
+      "about": "«Зембонджу» (2021) — альбом харківського гурту Курган & Agregat, що поєднує реп, слобожанський суржик і самоіронію. На вінілі він вийшов у 2023 році. Обкладинка стилізована під класичний «гангстерський» портрет у бібліотеці, а на звороті учасники сидять спиною. Цей примірник підписали учасники гурту, тому він цінніший за звичайне видання.",
+      "tracks": [
+        "Валентина",
+        "90 днів",
+        "Параноя",
+        "Ретузіки",
+        "Комплекси",
+        "Серйозний Сем",
+        "Таксофон",
+        "Габелі"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "james-bond-greatest-hits",
+      "artist": "Various Artists",
+      "album": "James Bond Greatest Hits",
+      "year": 1982,
+      "editionYear": null,
+      "genre": "Саундтрек",
+      "sealed": false,
+      "tags": [
+        "Саундтреки",
+        "Збірки",
+        "Ретро-видання"
+      ],
+      "description": "Тринадцять пісень з фільмів про Джеймса Бонда: Shirley Bassey, Tom Jones, Paul McCartney & Wings, Nancy Sinatra та інші.",
+      "cover": "processed/james-bond-greatest-hits.jpg",
+      "back": "processed/james-bond-greatest-hits_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_28_2026-10-25_14-18-10.jpg",
+        "Photo/photo_27_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 400,
+      "priceBasis": "Discogs (медіана)",
+      "format": "LP",
+      "label": "Liberty / EMI Electrola",
+      "country": "Німеччина",
+      "about": "Збірка 1982 року з тринадцятьма піснями з фільмів про Джеймса Бонда, від теми Джона Баррі до «For Your Eyes Only». Серед виконавців Ширлі Бессі, Том Джонс, Ненсі Сінатра, Луї Армстронг, Пол Маккартні з Wings і Шина Істон. Наліпка на конверті: «Aus der Radio- und TV-Werbung».",
+      "tracks": [
+        "The James Bond Theme",
+        "From Russia with Love",
+        "Goldfinger",
+        "Thunderball",
+        "You Only Live Twice",
+        "We Have All the Time in the World",
+        "Diamonds Are Forever",
+        "Live and Let Die",
+        "The Man with the Golden Gun",
+        "Nobody Does It Better",
+        "Bond '77",
+        "Moonraker",
+        "For Your Eyes Only"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "skryabin-the-best-vol-1",
+      "artist": "Скрябін",
+      "album": "The Best, Volume 1",
+      "year": 2019,
+      "editionYear": null,
+      "genre": "Поп-рок",
+      "sealed": false,
+      "tags": [
+        "Українське",
+        "Збірки"
+      ],
+      "description": "Найкращі пісні Кузьми Скрябіна: «Танець пінгвіна», «Мумітроль», «Шмата», «Добряк».",
+      "cover": "processed/skryabin-the-best-vol-1.jpg",
+      "back": "processed/skryabin-the-best-vol-1_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_30_2026-10-25_14-18-10.jpg",
+        "Photo/photo_29_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1050,
+      "priceBasis": "prom.ua / vinyla.com",
+      "format": "LP",
+      "label": "Moon Records",
+      "country": "Україна",
+      "about": "Перша вінілова збірка найкращих пісень гурту «Скрябін», видана Moon Records у 2019 році. Тут хіти різних років Андрія Кузьменка (Кузьми Скрябіна): від ранньої електроніки «Танець пінгвіна» до «Шмати» й «Добряка». Мінімалістичне чорне оформлення з логотипом гурту.",
+      "tracks": [
+        "Море (Най цілий світ пропаде)",
+        "Танець пінгвіна",
+        "Годинник",
+        "Нікому то не треба",
+        "Train",
+        "Соло",
+        "Маршрутка",
+        "Не даєш",
+        "Мумітроль",
+        "Гламур",
+        "Шмата",
+        "Кольорова",
+        "Добряк"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "michael-jackson-number-ones",
+      "artist": "Michael Jackson",
+      "album": "Number Ones",
+      "year": 2003,
+      "editionYear": null,
+      "genre": "Поп",
+      "sealed": false,
+      "tags": [
+        "Збірки"
+      ],
+      "description": "Збірка хітів Майкла Джексона, що очолювали чарти: від «Billie Jean» до «Earth Song».",
+      "cover": "processed/michael-jackson-number-ones.jpg",
+      "back": "processed/michael-jackson-number-ones_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_32_2026-10-25_14-18-10.jpg",
+        "Photo/photo_31_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1850,
+      "priceBasis": "vinyla.com",
+      "format": "2LP",
+      "label": "Epic / Sony Music",
+      "country": "ЄС",
+      "about": "Збірка 2003 року з піснями Майкла Джексона, що посідали перші місця в чартах різних країн: від «Don't Stop 'Til You Get Enough» до «Earth Song». Вінілове видання — подвійна платівка в білому конверті з класичним силуетом Джексона в стрибку.",
+      "tracks": [
+        "Don't Stop 'Til You Get Enough",
+        "Rock with You",
+        "Billie Jean",
+        "Beat It",
+        "Thriller",
+        "Human Nature",
+        "I Just Can't Stop Loving You",
+        "Bad",
+        "The Way You Make Me Feel",
+        "Dirty Diana",
+        "Smooth Criminal",
+        "Black or White",
+        "You Are Not Alone",
+        "Earth Song",
+        "Blood on the Dance Floor",
+        "You Rock My World",
+        "Break of Dawn",
+        "One More Chance"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "prodigy-their-law",
+      "artist": "The Prodigy",
+      "album": "Their Law: The Singles 1990–2005",
+      "year": 2005,
+      "editionYear": null,
+      "genre": "Електроніка",
+      "sealed": false,
+      "tags": [
+        "Збірки"
+      ],
+      "description": "Повна збірка синглів The Prodigy: «Firestarter», «Breathe», «Smack My Bitch Up».",
+      "cover": "processed/prodigy-their-law.jpg",
+      "back": "processed/prodigy-their-law_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_34_2026-10-25_14-18-10.jpg",
+        "Photo/photo_33_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 2450,
+      "priceBasis": "prom.ua",
+      "format": "2LP",
+      "label": "XL Recordings",
+      "country": "Велика Британія",
+      "about": "Повна збірка синглів The Prodigy за 15 років — від рейвових «Charly» і «Everybody in the Place» до «Firestarter», «Breathe» та «Smack My Bitch Up». На звороті назви пісень написані від руки на корінцях записників. Обов'язкова платівка для фанатів біг-біту.",
+      "tracks": [
+        "Firestarter",
+        "Their Law",
+        "Breathe",
+        "Out of Space",
+        "Smack My Bitch Up",
+        "Poison",
+        "Girls",
+        "Voodoo People",
+        "Charly",
+        "No Good (Start the Dance)",
+        "Spitfire",
+        "Jericho",
+        "Everybody in the Place",
+        "One Love",
+        "Hotride"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "bloodhound-gang-hooray-for-boobies",
+      "artist": "Bloodhound Gang",
+      "album": "Hooray for Boobies (25th Anniversary)",
+      "year": 1999,
+      "editionYear": 2024,
+      "genre": "Альтернатива",
+      "sealed": true,
+      "tags": [
+        "Ювілейні видання",
+        "Кольоровий вініл"
+      ],
+      "description": "Ювілейне видання до 25-річчя альбому на жовто-синьому splatter-вінілі. Містить «The Bad Touch».",
+      "cover": "processed/bloodhound-gang-hooray-for-boobies.jpg",
+      "back": "processed/bloodhound-gang-hooray-for-boobies_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_36_2026-10-25_14-18-10.jpg",
+        "Photo/photo_35_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 2950,
+      "priceBasis": "цінник магазину на платівці",
+      "format": "2LP, splatter-вініл",
+      "label": "Geffen / Universal",
+      "country": "ЄС",
+      "about": "Ювілейне видання до 25-річчя найуспішнішого альбому Bloodhound Gang (1999). Лімітований тираж на жовто-синьому splatter-вінілі. Тут «The Bad Touch», «The Ballad of Chasey Lain» і «Along Comes Mary». Окремий бонус — ремікси, зокрема від Pet Shop Boys.",
+      "tracks": [
+        "I Hope You Die",
+        "The Inevitable Return of the Great White Dope",
+        "Mama's Boy",
+        "Three Point One Four",
+        "Mope",
+        "Yummy Down on This",
+        "The Ballad of Chasey Lain",
+        "R.S.V.P.",
+        "Magna Cum Nada",
+        "The Bad Touch",
+        "That Cough Came with a Prize",
+        "Take the Long Way Home",
+        "Hell Yeah",
+        "Right Turn Clyde",
+        "Along Comes Mary",
+        "A Lap Dance Is So Much Better When the Stripper Is Crying",
+        "This Is Stupid",
+        "The Ten Coolest Things About New Jersey"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "kurgan-agregat-zembondzhu",
+      "artist": "Курган & Agregat",
+      "album": "Зембонджу",
+      "year": 2021,
+      "editionYear": 2023,
+      "genre": "Хіп-хоп",
+      "sealed": true,
+      "tags": [
+        "Українське"
+      ],
+      "description": "Альбом харківського гурту з треками «Валентина», «Таксофон», «Габелі».",
+      "cover": "processed/kurgan-agregat-zembondzhu.jpg",
+      "back": "processed/kurgan-agregat-zembondzhu_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_38_2026-10-25_14-18-10.jpg",
+        "Photo/photo_37_2026-10-25_14-18-10.jpg"
+      ],
+      "about": "«Зембонджу» (2021) — альбом харківського гурту Курган & Agregat, що поєднує реп, слобожанський суржик і самоіронію. На вінілі він вийшов у 2023 році. Обкладинка стилізована під класичний «гангстерський» портрет у бібліотеці, а на звороті учасники сидять спиною.",
+      "tracks": [
+        "Валентина",
+        "90 днів",
+        "Параноя",
+        "Ретузіки",
+        "Комплекси",
+        "Серйозний Сем",
+        "Таксофон",
+        "Габелі"
+      ],
+      "format": "LP",
+      "label": "Shamych / Abyss Music",
+      "country": "Україна",
+      "priceBasis": "vinyla.com",
+      "currency": "UAH",
+      "price": 2450
+    },
+    {
+      "id": "music-tribute-tarantino",
+      "artist": "Various Artists",
+      "album": "Music Tribute Tarantino",
+      "year": 2020,
+      "editionYear": null,
+      "genre": "Саундтрек",
+      "sealed": true,
+      "tags": [
+        "Саундтреки",
+        "Збірки"
+      ],
+      "description": "Подвійна платівка з найкращими піснями з фільмів Квентіна Тарантіно (Collection Cinezik, 2LP).",
+      "cover": "processed/music-tribute-tarantino.jpg",
+      "back": "processed/music-tribute-tarantino_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_40_2026-10-25_14-18-10.jpg",
+        "Photo/photo_39_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1950,
+      "priceBasis": "vinyla.com",
+      "format": "2LP",
+      "label": "Wagram / Collection Cinezik",
+      "country": "Франція",
+      "about": "Подвійна збірка французької серії Collection Cinezik з піснями, які Квентін Тарантіно зробив культовими: з «Кримінального чтива», «Убити Білла», «Джанго», «Безславних виродків» і «Одного разу в Голлівуді». На ілюстрації обкладинки впізнавані образи з його фільмів.",
+      "tracks": [],
+      "currency": "UAH"
+    },
+    {
+      "id": "requiem-for-a-dream",
+      "artist": "Clint Mansell feat. Kronos Quartet",
+      "album": "Requiem for a Dream (OST)",
+      "year": 2000,
+      "editionYear": null,
+      "genre": "Саундтрек",
+      "sealed": false,
+      "tags": [
+        "Саундтреки"
+      ],
+      "description": "Саундтрек до фільму Даррена Аронофскі «Реквієм за мрією» з культовою темою «Lux Aeterna».",
+      "cover": "processed/requiem-for-a-dream.jpg",
+      "back": "processed/requiem-for-a-dream_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_42_2026-10-25_14-18-10.jpg",
+        "Photo/photo_41_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 2800,
+      "priceBasis": "vinyla.com",
+      "format": "LP",
+      "label": "Nonesuch",
+      "country": "США",
+      "about": "Саундтрек Клінта Менселла у виконанні Kronos Quartet до фільму Даррена Аронофскі «Реквієм за мрією» (2000). Тему «Lux Aeterna» потім використовували в безлічі трейлерів, і вона стала однією з найвідоміших кіномелодій XXI століття. Музика поділена на «сезони» фільму: Summer, Fall, Winter.",
+      "tracks": [],
+      "currency": "UAH"
+    },
+    {
+      "id": "michael-jackson-number-ones-sealed",
+      "artist": "Michael Jackson",
+      "album": "Number Ones",
+      "year": 2003,
+      "editionYear": null,
+      "genre": "Поп",
+      "sealed": true,
+      "tags": [
+        "Збірки"
+      ],
+      "description": "Збірка хітів Майкла Джексона, що очолювали чарти: від «Billie Jean» до «Earth Song».",
+      "cover": "processed/michael-jackson-number-ones-sealed.jpg",
+      "back": "processed/michael-jackson-number-ones-sealed_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_44_2026-10-25_14-18-10.jpg",
+        "Photo/photo_43_2026-10-25_14-18-10.jpg"
+      ],
+      "about": "Збірка 2003 року з піснями Майкла Джексона, що посідали перші місця в чартах різних країн: від «Don't Stop 'Til You Get Enough» до «Earth Song». Вінілове видання — подвійна платівка в білому конверті з класичним силуетом Джексона в стрибку.",
+      "tracks": [
+        "Don't Stop 'Til You Get Enough",
+        "Rock with You",
+        "Billie Jean",
+        "Beat It",
+        "Thriller",
+        "Human Nature",
+        "I Just Can't Stop Loving You",
+        "Bad",
+        "The Way You Make Me Feel",
+        "Dirty Diana",
+        "Smooth Criminal",
+        "Black or White",
+        "You Are Not Alone",
+        "Earth Song",
+        "Blood on the Dance Floor",
+        "You Rock My World",
+        "Break of Dawn",
+        "One More Chance"
+      ],
+      "format": "2LP",
+      "label": "Epic / Sony Music",
+      "country": "ЄС",
+      "priceBasis": "vinyla.com",
+      "currency": "UAH",
+      "price": 1850
+    },
+    {
+      "id": "linkin-park-hybrid-theory",
+      "artist": "Linkin Park",
+      "album": "Hybrid Theory",
+      "year": 2000,
+      "editionYear": null,
+      "genre": "Ню-метал",
+      "sealed": true,
+      "tags": [
+        "Класика року"
+      ],
+      "description": "Дебютний альбом Linkin Park з хітами «In the End», «Crawling», «One Step Closer».",
+      "cover": "processed/linkin-park-hybrid-theory.jpg",
+      "back": "processed/linkin-park-hybrid-theory_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_46_2026-10-25_14-18-10.jpg",
+        "Photo/photo_45_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 1450,
+      "priceBasis": "vinyl.com.ua",
+      "format": "LP",
+      "label": "Warner Records",
+      "country": "США",
+      "about": "Дебютний альбом Linkin Park (2000) — найпродаваніший дебют XXI століття і головна платівка ню-метал епохи. Тут «In the End», «Crawling», «One Step Closer» і «Papercut». На обкладинці знаменитий солдат з крилами бабки, якого намалював Майк Шинода.",
+      "tracks": [
+        "Papercut",
+        "One Step Closer",
+        "With You",
+        "Points of Authority",
+        "Crawling",
+        "Runaway",
+        "By Myself",
+        "In the End",
+        "A Place for My Head",
+        "Forgotten",
+        "Cure for the Itch",
+        "Pushing Me Away"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "rammstein-mutter",
+      "artist": "Rammstein",
+      "album": "Mutter",
+      "year": 2001,
+      "editionYear": null,
+      "genre": "Індастріал-метал",
+      "sealed": false,
+      "tags": [
+        "Класика року"
+      ],
+      "description": "Третій альбом Rammstein: «Sonne», «Ich will», «Mein Herz brennt».",
+      "cover": "processed/rammstein-mutter.jpg",
+      "back": "processed/rammstein-mutter_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_48_2026-10-25_14-18-10.jpg",
+        "Photo/photo_47_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 3350,
+      "priceBasis": "vinyla.com / vinylclub.com.ua",
+      "format": "2LP",
+      "label": "Universal",
+      "country": "Німеччина",
+      "about": "Третій альбом Rammstein (2001) з хітами «Sonne», «Ich will», «Mein Herz brennt» і «Mutter». Обкладинка з моторошним фото немовляти (автор Даніель Россі) — одна з найвідоміших у металі. Багато фанатів вважають цей альбом найкращим у дискографії гурту.",
+      "tracks": [
+        "Mein Herz brennt",
+        "Links 2-3-4",
+        "Sonne",
+        "Ich will",
+        "Feuer frei!",
+        "Mutter",
+        "Spieluhr",
+        "Zwitter",
+        "Rein raus",
+        "Adios",
+        "Nebel"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "daft-punk-random-access-memories",
+      "artist": "Daft Punk",
+      "album": "Random Access Memories (10th Anniversary)",
+      "year": 2013,
+      "editionYear": 2023,
+      "genre": "Електроніка",
+      "sealed": false,
+      "tags": [
+        "Ювілейні видання",
+        "Сучасне"
+      ],
+      "description": "Ювілейне видання останнього альбому Daft Punk з бонусними демо та невиданими треками. Містить «Get Lucky».",
+      "cover": "processed/daft-punk-random-access-memories.jpg",
+      "back": "processed/daft-punk-random-access-memories_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_50_2026-10-25_14-18-10.jpg",
+        "Photo/photo_49_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 4250,
+      "priceBasis": "vinyla.com",
+      "format": "3LP, ювілейне видання",
+      "label": "Columbia / Sony Music",
+      "country": "ЄС",
+      "about": "Ювілейне видання до 10-річчя останнього альбому Daft Punk (2013), що отримав «Греммі» як альбом року. Тут «Get Lucky» з Фарреллом Вільямсом і Найлом Роджерсом, «Giorgio by Moroder» і «Instant Crush». Третій диск містить невидані демо й чернетки, зокрема «Horizon Ouverture» і «GL (Early Take)».",
+      "tracks": [
+        "Give Life Back to Music",
+        "The Game of Love",
+        "Giorgio by Moroder",
+        "Within",
+        "Instant Crush",
+        "Lose Yourself to Dance",
+        "Touch",
+        "Get Lucky",
+        "Beyond",
+        "Motherboard",
+        "Fragments of Time",
+        "Doin' It Right",
+        "Contact",
+        "Horizon Ouverture",
+        "Horizon (Japan CD)",
+        "GLBTM (Studio Outtakes)",
+        "Infinity Repeating (2013 Demo)",
+        "GL (Early Take)",
+        "Prime (2012 Unfinished)",
+        "LYTD (Vocoder Tests)",
+        "The Writing of Fragments of Time",
+        "Touch (2021 Epilogue)"
+      ],
+      "currency": "UAH"
+    },
+    {
+      "id": "desireless-voyage-voyage",
+      "artist": "Desireless",
+      "album": "Voyage Voyage",
+      "year": 1986,
+      "editionYear": null,
+      "genre": "Синті-поп",
+      "sealed": false,
+      "tags": [
+        "Сингли",
+        "Ретро-видання"
+      ],
+      "description": "Сингл з головним французьким синті-поп хітом 80-х. Видання CBS.",
+      "cover": "processed/desireless-voyage-voyage.jpg",
+      "back": "processed/desireless-voyage-voyage_back.jpg",
+      "sourcePhotos": [
+        "Photo/photo_52_2026-10-25_14-18-10.jpg",
+        "Photo/photo_51_2026-10-25_14-18-10.jpg"
+      ],
+      "price": 200,
+      "priceBasis": "Discogs (медіана)",
+      "format": "7\" single",
+      "label": "CBS",
+      "country": "Франція",
+      "about": "Оригінальний французький сингл 1986 року з головним синті-поп хітом співачки Desireless (Клодії Фрітш-Мантро). «Voyage, voyage» очолювала чарти по всій Європі, а її відеокліп став іконою 80-х. На обкладинці — знаменита стрижка-їжак.",
+      "tracks": [
+        "Voyage, voyage",
+        "Voyage, voyage (Instrumental)"
+      ],
+      "currency": "UAH"
+    }
+  ],
+  "wishlist": []
+};

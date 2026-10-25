@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вінілова полиця</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#0d0c0b; --bg2:#161412; --card:#1c1916; --line:#2c2722; --line2:#3a332c;
+  --text:#f1ebe2; --muted:#9d9387; --dim:#6d655c;
+  --accent:#e8a33d; --accent2:#d9482b; --ok:#7fb069;
+  --r:14px; --shadow:0 18px 40px -18px rgba(0,0,0,.8);
+  --head:'Unbounded',system-ui,sans-serif; --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 var(--body);min-height:100vh;
+  background-image:radial-gradient(1200px 600px at 85% -10%,rgba(232,163,61,.10),transparent 60%),radial-gradient(900px 500px at -10% 10%,rgba(217,72,43,.07),transparent 60%)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:100;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{padding:36px 0 18px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.logo{width:74px;height:74px;flex:none;border-radius:50%;position:relative;
+  background:repeating-radial-gradient(circle at 50% 50%,#111 0 2px,#1d1b19 2px 3px);box-shadow:0 0 0 1px #2a2622,0 10px 30px rgba(0,0,0,.6);animation:spin 9s linear infinite}
+.logo::after{content:"";position:absolute;inset:27px;border-radius:50%;background:radial-gradient(circle,#0d0c0b 0 3px,var(--accent) 3.5px)}
+.logo::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.08) 60deg,transparent 80deg 220deg,rgba(255,255,255,.06) 240deg,transparent 260deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.logo{animation:none}}
+h1{font:800 clamp(26px,4vw,42px)/1.05 var(--head);margin:0;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);margin-top:6px}
+.stats{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 16px;min-width:96px}
+.stat b{display:block;font:600 22px/1.1 var(--head)}
+.stat small{color:var(--muted);font-size:12px}
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:rgba(13,12,11,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-bottom:22px}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto}
+nav.tabs button{background:none;border:0;padding:16px 18px;color:var(--muted);cursor:pointer;font-weight:700;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs button.on{color:var(--text);border-color:var(--accent)}
+nav.tabs button .cnt{display:inline-block;margin-left:6px;font-size:11px;background:var(--line);border-radius:20px;padding:1px 7px;color:var(--text)}
+.tab{display:none}.tab.on{display:block}
+
+/* toolbar */
+.toolbar{display:grid;grid-template-columns:1fr auto auto auto auto;gap:10px;align-items:center;margin-bottom:12px}
+.search{position:relative}
+.search input{width:100%;padding:12px 14px 12px 40px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;outline:none}
+.search input:focus,.field input:focus,.field select:focus,.field textarea:focus,select.sel:focus{border-color:var(--accent)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.5}
+select.sel{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:11px 12px;outline:none;cursor:pointer;max-width:220px}
+.seg{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{background:none;border:0;padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--muted);font-weight:600;white-space:nowrap}
+.seg button.on{background:var(--line2);color:var(--text)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.chips .lbl{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.08em;align-self:center;margin-right:4px;min-width:70px}
+.chip{border:1px solid var(--line2);background:transparent;border-radius:30px;padding:5px 12px;cursor:pointer;color:var(--muted);font-size:13px;font-weight:600}
+.chip:hover{color:var(--text)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#1a1209}
+.resinfo{color:var(--muted);font-size:13px;margin:14px 0 16px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.linkbtn{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font-weight:600}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px 22px;padding-bottom:60px}
+.rec{cursor:pointer;outline:none}
+.sleeve{position:relative;aspect-ratio:1;margin-right:14%}
+.disc{position:absolute;inset:3%;border-radius:50%;transition:transform .45s cubic-bezier(.2,.8,.2,1);
+  background:radial-gradient(circle,var(--lab,#d9482b) 0 15%,#0a0a0a 15.5% 17%,transparent 17.5%),repeating-radial-gradient(circle,#0b0b0b 0 1.5px,#1a1a1a 1.5px 3px);
+  box-shadow:0 6px 20px rgba(0,0,0,.6)}
+.disc::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 30deg,rgba(255,255,255,.09) 50deg,transparent 70deg 200deg,rgba(255,255,255,.07) 225deg,transparent 245deg)}
+.rec:hover .disc,.rec:focus-visible .disc{transform:translateX(16%) rotate(40deg)}
+.cover{position:absolute;inset:0;border-radius:4px;overflow:hidden;background:#222;box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.04);transition:transform .3s}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 40%)}
+.rec:hover .cover{transform:translateY(-3px)}
+.badge{position:absolute;top:10px;left:-6px;z-index:2;background:var(--accent);color:#1a1209;font:700 10px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:3px;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.badge.local{background:#5f8fc2;color:#fff;top:auto;bottom:10px}
+.meta{margin-top:14px;margin-right:14%}
+.meta .al{font-weight:700;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta .ar{color:var(--muted);font-size:14px;margin-top:2px}
+.meta .yr{color:var(--dim);font-size:12px;margin-top:6px;display:flex;gap:8px;align-items:center}
+.meta .yr i{font-style:normal;border:1px solid var(--line2);border-radius:20px;padding:1px 8px;color:var(--muted)}
+.ftoggle{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;font-weight:700;white-space:nowrap}
+.ftoggle:hover{border-color:var(--line2)}
+.ftoggle svg{transition:transform .25s}
+.ftoggle[aria-expanded=false] svg{transform:rotate(-90deg)}
+.ftoggle .fcnt{background:var(--accent);color:#1a1209;border-radius:20px;font-size:11px;padding:1px 7px}
+.ftoggle .fcnt:empty{display:none}
+#filters{display:grid;grid-template-rows:1fr;transition:grid-template-rows .3s}
+#filters>div{overflow:hidden}
+#filters.closed{grid-template-rows:0fr}
+.meta .pr{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--dim)}
+.meta .pr b{font:600 15px var(--head);color:var(--accent)}
+.about{color:#d6cec3;line-height:1.7;margin:0 0 6px}
+.pricebox{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:rgba(232,163,61,.08);border:1px solid rgba(232,163,61,.25);border-radius:12px;padding:12px 16px;margin:18px 0}
+.pricebox b{font:700 24px var(--head);color:var(--accent)}
+.pricebox small{color:var(--muted);font-size:12px;flex-basis:100%}
+details.tl{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+details.tl summary{cursor:pointer;padding:12px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details.tl summary::-webkit-details-marker{display:none}
+details.tl summary::after{content:'+';color:var(--accent);font-size:18px;line-height:1}
+details.tl[open] summary::after{content:'–'}
+details.tl ol{margin:0;padding:0 16px 14px 40px;columns:2;column-gap:28px;font-size:14px;color:#d6cec3}
+details.tl li{break-inside:avoid;padding:2px 0}
+details.tl li::marker{color:var(--dim)}
+@media (max-width:520px){details.tl ol{columns:1}}
+.empty{text-align:center;color:var(--muted);padding:60px 20px;border:1px dashed var(--line2);border-radius:var(--r)}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(5,4,3,.82);backdrop-filter:blur(6px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.on{display:flex}
+.mbox{background:var(--bg2);border:1px solid var(--line);border-radius:20px;max-width:980px;width:100%;max-height:calc(100vh - 40px);overflow:auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);box-shadow:0 40px 80px rgba(0,0,0,.7)}
+.mimg{position:sticky;top:0;align-self:start;background:#0a0908;padding:24px;display:flex;flex-direction:column;gap:12px}
+.mimg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)}
+.flip{display:flex;gap:6px;justify-content:center}
+.mtext{padding:30px 30px 26px;position:relative}
+.mtext h2{font:700 26px/1.15 var(--head);margin:0 0 6px}
+.mtext .ar{font-size:18px;color:var(--accent);font-weight:700}
+.close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--bg);cursor:pointer;font-size:20px;line-height:1}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:22px 0;font-size:14px}
+dl.facts dt{color:var(--dim)}dl.facts dd{margin:0}
+.desc{color:#d6cec3;line-height:1.65}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.tag{font-size:12px;border:1px solid var(--line2);border-radius:20px;padding:3px 10px;color:var(--muted)}
+.mactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+
+/* buttons, forms */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:var(--card);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700;font-size:14px;text-decoration:none;color:var(--text)}
+.btn:hover{border-color:var(--muted)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#1a1209}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn.danger{color:#ff8a73}
+.btn.sm{padding:6px 10px;font-size:13px}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none;width:100%}
+.field textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.check{display:flex;gap:10px;align-items:center;cursor:pointer;user-select:none;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+.hint{color:var(--dim);font-size:13px}
+
+/* add form */
+.addgrid{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:24px;align-items:start;padding-bottom:60px}
+.drop{border:2px dashed var(--line2);border-radius:var(--r);aspect-ratio:1;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);cursor:pointer;position:relative;overflow:hidden;background:var(--bg)}
+.drop.over{border-color:var(--accent);color:var(--text)}
+.drop canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:none}
+.drop canvas:active{cursor:grabbing}
+.drop .ph b{display:block;font:600 18px var(--head);color:var(--text);margin:10px 0 4px}
+.tools{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;margin-top:14px;font-size:13px;color:var(--muted)}
+.tools input[type=range]{width:100%;accent-color:var(--accent)}
+.tools output{min-width:42px;text-align:right;color:var(--text)}
+.formcol{display:flex;flex-direction:column;gap:14px}
+.backrow{display:flex;gap:12px;align-items:center}
+.backrow img{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid var(--line2)}
+
+/* wishlist */
+.wgrid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:24px;align-items:start;padding-bottom:60px}
+.witem{display:flex;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.witem .wdisc{width:44px;height:44px;flex:none;border-radius:50%;background:radial-gradient(circle,var(--accent) 0 18%,#0a0a0a 19% 22%,transparent 23%),repeating-radial-gradient(circle,#0b0b0b 0 1.5px,#1d1d1d 1.5px 3px)}
+.witem .wt{flex:1;min-width:0}
+.witem .wt b{display:block;overflow:hidden;text-overflow:ellipsis}
+.witem .wt small{color:var(--muted);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.witem .wa{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;background:var(--text);color:#111;padding:12px 18px;border-radius:10px;font-weight:700;transition:.3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.exportbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:linear-gradient(90deg,rgba(232,163,61,.14),rgba(232,163,61,.04));border:1px solid rgba(232,163,61,.35);border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:14px}
+.exportbar[hidden]{display:none}
+.exportbar span{flex:1;min-width:220px}
+footer{color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding:22px 0 40px}
+
+@media (max-width:900px){
+  .toolbar{grid-template-columns:1fr 1fr}
+  .ftoggle{justify-content:center}
+  .search{grid-column:1/-1}
+  .seg{grid-column:1/-1;overflow-x:auto}
+  .mbox{grid-template-columns:1fr}
+  .addgrid,.wgrid{grid-template-columns:1fr}
+  .stats{margin-left:0;width:100%}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .row{grid-template-columns:1fr}
+  header{gap:16px;padding-top:24px}
+  .logo{width:52px;height:52px}.logo::after{inset:19px}
+  h1{font-size:24px}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .stat{min-width:0;padding:8px 12px}
+  .stat b{font-size:18px}
+  .mtext{padding:22px 18px}
+  .chips .lbl{width:100%}
+}
+/* public read-only mode (GitHub Pages) */
+body.ro [data-tab="add"],body.ro #tab-add,body.ro #wForm,body.ro #exportbar,body.ro [data-toggle-sealed],body.ro [data-remove],body.ro [data-wdel],body.ro [data-bought]{display:none!important}
+body.ro .wgrid{grid-template-columns:1fr!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true"></div>
+    <div>
+      <h1>Моя <span>вінілова</span> полиця</h1>
+      <div class="sub">Особиста колекція платівок</div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+</div>
+
+<nav class="tabs"><div class="wrap">
+  <button data-tab="catalog" class="on">Колекція <span class="cnt" id="cntCat">0</span></button>
+  <button data-tab="wish">Список бажань <span class="cnt" id="cntWish">0</span></button>
+  <button data-tab="add">+ Додати платівку</button>
+</div></nav>
+
+<main class="wrap">
+  <div class="exportbar" id="exportbar" hidden>
+    <span id="exportText"></span>
+    <button class="btn sm pri" id="exportBtn">Завантажити collection.json</button>
+  </div>
+
+  <!-- CATALOG -->
+  <section class="tab on" id="tab-catalog">
+    <div class="toolbar">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Пошук: виконавець, альбом, опис…" aria-label="Пошук">
+      </label>
+      <select class="sel" id="fArtist" aria-label="Виконавець"></select>
+      <select class="sel" id="fYear" aria-label="Рік"></select>
+      <select class="sel" id="fSort" aria-label="Сортування">
+        <option value="artist">За виконавцем А–Я</option>
+        <option value="year-asc">Спочатку старіші</option>
+        <option value="year-desc">Спочатку новіші</option>
+        <option value="added">Нещодавно додані</option>
+        <option value="price-asc">Ціна: дешевші спочатку</option>
+        <option value="price-desc">Ціна: дорожчі спочатку</option>
+      </select>
+      <button type="button" class="ftoggle" id="fToggle" aria-expanded="true" aria-controls="filters">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+        <span id="fToggleTxt">Сховати фільтри</span><span class="fcnt" id="fCnt"></span>
+      </button>
+    </div>
+    <div id="filters"><div>
+      <div class="chips" id="fStatus"></div>
+      <div class="chips" id="fGenre"></div>
+      <div class="chips" id="fTag"></div>
+      <div class="chips" id="fPrice"></div>
+    </div></div>
+    <div class="resinfo"><span id="resCount"></span><button class="linkbtn" id="reset">Скинути фільтри</button></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- WISHLIST -->
+  <section class="tab" id="tab-wish">
+    <div class="wgrid">
+      <form class="panel formcol" id="wForm">
+        <h3 style="margin:0;font:600 18px var(--head)">Хочу купити</h3>
+        <div class="field"><label for="wTitle">Назва платівки *</label><input id="wTitle" required placeholder="напр. Pink Floyd — The Wall"></div>
+        <div class="field"><label for="wLink">Посилання (необов'язково)</label><input id="wLink" type="url" placeholder="https://…"></div>
+        <div class="field"><label for="wNote">Нотатка</label><input id="wNote" placeholder="бюджет, видання, де бачив…"></div>
+        <button class="btn pri" type="submit">Додати до списку</button>
+      </form>
+      <div id="wList"></div>
+    </div>
+  </section>
+
+  <!-- ADD -->
+  <section class="tab" id="tab-add">
+    <form class="addgrid" id="aForm">
+      <div>
+        <div class="drop" id="drop" tabindex="0">
+          <div class="ph">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg>
+            <b>Фото обкладинки</b>
+            Перетягніть файл сюди або натисніть
+          </div>
+          <canvas id="cv" width="1200" height="1200" hidden></canvas>
+        </div>
+        <input type="file" id="file" accept="image/*" hidden>
+        <div class="tools" id="tools" hidden>
+          <span>Масштаб</span><input type="range" id="tZoom" min="1" max="3" step="0.01" value="1"><output id="oZoom">100%</output>
+          <span>Поворот</span><input type="range" id="tRot" min="-15" max="15" step="0.1" value="0"><output id="oRot">0°</output>
+          <span>Яскравість</span><input type="range" id="tBri" min="-40" max="40" step="1" value="0"><output id="oBri">0</output>
+          <span></span><label class="check" style="padding:6px 10px"><input type="checkbox" id="tAuto" checked> Автопокращення</label><span></span>
+        </div>
+        <p class="hint" id="toolsHint" hidden>Перетягніть фото, щоб вирівняти обкладинку в квадраті. Результат зберігається як 1200×1200.</p>
+      </div>
+      <div class="panel formcol">
+        <h3 style="margin:0;font:600 18px var(--head)" id="aHead">Нова платівка</h3>
+        <div class="row">
+          <div class="field"><label for="aArtist">Виконавець *</label><input id="aArtist" required list="dlArtists"></div>
+          <div class="field"><label for="aAlbum">Альбом *</label><input id="aAlbum" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="aYear">Рік виходу</label><input id="aYear" type="number" min="1900" max="2100" placeholder="напр. 1979"></div>
+          <div class="field"><label for="aGenre">Жанр</label><input id="aGenre" list="dlGenres" placeholder="Рок, Поп, Саундтрек…"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="aPrice">Орієнтовна вартість, ₴</label><input id="aPrice" type="number" min="0" step="50" placeholder="напр. 1500"></div>
+          <div class="field"><label for="aFormat">Формат</label><input id="aFormat" placeholder="LP, 2LP, 7&quot; single…"></div>
+        </div>
+        <div class="field"><label for="aTags">Добірки (через кому)</label><input id="aTags" placeholder="Українське, Ювілейні видання…"></div>
+        <div class="field"><label for="aDesc">Короткий опис</label><textarea id="aDesc"></textarea></div>
+        <label class="check"><input type="checkbox" id="aSealed"> <span><b>Нерозпакована</b> (sealed)</span></label>
+        <div class="field"><label>Фото звороту (необов'язково)</label>
+          <div class="backrow"><img id="aBackPrev" alt="" hidden><button type="button" class="btn sm" id="aBackBtn">Обрати файл</button><input type="file" id="aBack" accept="image/*" hidden></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn pri" type="submit">Додати в колекцію</button>
+          <button class="btn" type="button" id="aClear">Очистити</button>
+        </div>
+        <p class="hint" style="margin:0">Нові платівки одразу з'являються в каталозі й зберігаються в цьому браузері. Щоб зберегти їх назавжди, завантажте оновлений <b>collection.json</b> і замініть ним файл у папці сайту.</p>
+      </div>
+      <datalist id="dlArtists"></datalist><datalist id="dlGenres"></datalist>
+    </form>
+  </section>
+</main>
+
+<div class="wrap"><footer id="foot"></footer></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="mbox" id="mbox"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){var h=location.hostname,q=new URLSearchParams(location.search);
+if(location.protocol!=='file:'&&h!=='localhost'&&h!=='127.0.0.1'&&!q.has('edit'))document.body.classList.add('ro');})();
+</script>
+<script src="collection.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LBL = ['#d9482b','#e8a33d','#3d7fe8','#7fb069','#c94f9b','#2bb3a6','#e8e3d6','#8a5cf6'];
+const hash = s => [...s].reduce((a,c)=>(a*31+c.charCodeAt(0))|0,0);
+
+/* ---------- storage: IndexedDB with localStorage fallback ---------- */
+const store = (() => {
+  let dbp = null;
+  try {
+    dbp = new Promise((res, rej) => {
+      const r = indexedDB.open('vinyl-shelf', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('kv');
+      r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+    });
+  } catch (e) { dbp = Promise.reject(e); }
+  const ls = {
+    get: k => { try { return JSON.parse(localStorage.getItem('vinyl:'+k)); } catch { return null; } },
+    set: (k,v) => { try { localStorage.setItem('vinyl:'+k, JSON.stringify(v)); } catch {} }
+  };
+  return {
+    async get(k){ try { const db = await dbp; return await new Promise((res,rej)=>{const r=db.transaction('kv').objectStore('kv').get(k);r.onsuccess=()=>res(r.result??null);r.onerror=()=>rej(r.error);}); } catch { return ls.get(k); } },
+    async set(k,v){ try { const db = await dbp; await new Promise((res,rej)=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error);}); } catch { ls.set(k,v); } }
+  };
+})();
+
+/* ---------- state ---------- */
+let base = { records: [], wishlist: [] };
+let local = { records: [], wishlist: null, overrides: {}, removed: [] };
+const F = { q:'', artist:'', year:'', sort:'artist', status:'all', genre:'', tag:'', price:'' };
+const PR = [['0-500','до 500 ₴',0,500],['500-1500','500–1 500 ₴',500,1500],['1500-3000','1 500–3 000 ₴',1500,3000],['3000+','від 3 000 ₴',3000,Infinity]];
+const money = n => n==null||n==='' ? '—' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
+let records = [], wishlist = [];
+
+function merge(){
+  const byId = new Map();
+  base.records.forEach((r,i) => byId.set(r.id, {...r, _order:i}));
+  local.records.forEach((r,i) => byId.set(r.id, {...r, _local:true, _order:10000+i}));
+  local.removed.forEach(id => byId.delete(id));
+  records = [...byId.values()].map(r => local.overrides[r.id] ? {...r, ...local.overrides[r.id]} : r);
+  wishlist = local.wishlist ?? (base.wishlist || []);
+}
+const dirty = () => local.records.length || Object.keys(local.overrides).length || local.removed.length || local.wishlist !== null;
+async function save(){ await store.set('local', local); merge(); renderAll(); }
+
+/* ---------- load ---------- */
+async function load(){
+  let data = null;
+  if (location.protocol !== 'file:') try { const r = await fetch('collection.json', {cache:'no-store'}); if (r.ok) data = await r.json(); } catch {}
+  if (!data && window.COLLECTION) data = window.COLLECTION;
+  if (!data) data = { records: [], wishlist: [] };
+  base = { records: data.records || [], wishlist: data.wishlist || [], updated: data.updated };
+  const l = await store.get('local');
+  if (l) local = { records: l.records||[], wishlist: l.wishlist ?? null, overrides: l.overrides||{}, removed: l.removed||[] };
+  // drop local records that are now part of base file (after export/replace)
+  const baseIds = new Set(base.records.map(r=>r.id));
+  const before = local.records.length;
+  local.records = local.records.filter(r => !baseIds.has(r.id));
+  // drop edits already reflected in the file
+  for (const [id, o] of Object.entries(local.overrides)){
+    const b = base.records.find(r=>r.id===id);
+    if (!b || Object.entries(o).every(([k,v]) => b[k]===v)) delete local.overrides[id];
+  }
+  local.removed = local.removed.filter(id => baseIds.has(id));
+  if (local.wishlist && JSON.stringify(local.wishlist) === JSON.stringify(base.wishlist)) local.wishlist = null;
+  await store.set('local', local);
+  merge(); renderAll();
+}
+
+/* ---------- helpers ---------- */
+const decade = y => y ? Math.floor(y/10)*10 : null;
+const sealedTxt = r => r.sealed ? 'Нерозпакована' : 'Розпакована';
+const uniq = a => [...new Set(a.filter(Boolean))];
+const coll = new Intl.Collator('uk');
+
+function filtered(){
+  const q = F.q.trim().toLowerCase();
+  let out = records.filter(r => {
+    if (F.status === 'sealed' && !r.sealed) return false;
+    if (F.status === 'open' && r.sealed) return false;
+    if (F.genre && r.genre !== F.genre) return false;
+    if (F.tag && !(r.tags||[]).includes(F.tag)) return false;
+    if (F.price){ const p = PR.find(x=>x[0]===F.price); if (r.price==null || r.price < p[2] || r.price >= p[3]) return false; }
+    if (F.artist && r.artist !== F.artist) return false;
+    if (F.year && String(decade(r.year)) !== F.year) return false;
+    if (q && !`${r.artist} ${r.album} ${r.genre} ${r.description} ${(r.tags||[]).join(' ')} ${r.year}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  const s = F.sort;
+  out.sort((a,b) => s==='year-asc' ? (a.year||9999)-(b.year||9999) : s==='year-desc' ? (b.year||0)-(a.year||0) : s==='added' ? b._order-a._order : s==='price-asc' ? (a.price??1e9)-(b.price??1e9) : s==='price-desc' ? (b.price??-1)-(a.price??-1) : coll.compare(a.artist,b.artist) || (a.year||0)-(b.year||0));
+  return out;
+}
+
+/* ---------- render ---------- */
+function renderStats(){
+  const sealed = records.filter(r=>r.sealed).length;
+  const genres = uniq(records.map(r=>r.genre)).length;
+  const yrs = records.map(r=>r.year).filter(Boolean);
+  $('#stats').innerHTML = [
+    [records.length,'платівок'],[sealed,'нерозпакованих'],[genres,'жанрів'],
+    [yrs.length ? `${Math.min(...yrs)}–${Math.max(...yrs)}` : '—','роки'],
+    ['≈ ' + money(records.reduce((s,r)=>s+(+r.price||0),0)),'орієнтовна вартість']
+  ].map(([b,s])=>`<div class="stat"><b>${b}</b><small>${s}</small></div>`).join('');
+  $('#cntCat').textContent = records.length;
+  $('#cntWish').textContent = wishlist.length;
+}
+
+function chipRow(el, label, items, key){
+  el.innerHTML = `<span class="lbl">${label}</span>` + items.map(([v,t,n]) =>
+    `<button class="chip ${F[key]===v?'on':''}" data-k="${key}" data-v="${esc(v)}">${esc(t)}${n!=null?` <span style="opacity:.6">${n}</span>`:''}</button>`).join('');
+}
+function renderFilters(){
+  const cnt = (fn) => records.filter(fn).length;
+  chipRow($('#fStatus'), 'Статус', [['all','Усі',records.length],['sealed','Нерозпаковані',cnt(r=>r.sealed)],['open','Розпаковані',cnt(r=>!r.sealed)]], 'status');
+  const genres = uniq(records.map(r=>r.genre)).sort(coll.compare);
+  chipRow($('#fGenre'), 'Жанр', [['','Усі'], ...genres.map(g=>[g,g,cnt(r=>r.genre===g)])], 'genre');
+  const tags = uniq(records.flatMap(r=>r.tags||[])).sort(coll.compare);
+  chipRow($('#fTag'), 'Добірки', [['','Усі'], ...tags.map(t=>[t,t,cnt(r=>(r.tags||[]).includes(t))])], 'tag');
+  chipRow($('#fPrice'), 'Вартість', [['','Будь-яка'], ...PR.map(([v,t,lo,hi])=>[v,t,cnt(r=>r.price!=null&&r.price>=lo&&r.price<hi)])], 'price');
+  const act = [F.status!=='all',F.genre,F.tag,F.price].filter(Boolean).length;
+  $('#fCnt').textContent = act || '';
+  const artists = uniq(records.map(r=>r.artist)).sort(coll.compare);
+  $('#fArtist').innerHTML = `<option value="">Усі виконавці</option>` + artists.map(a=>`<option ${F.artist===a?'selected':''}>${esc(a)}</option>`).join('');
+  const decs = uniq(records.map(r=>decade(r.year))).sort();
+  $('#fYear').innerHTML = `<option value="">Усі роки</option>` + decs.map(d=>`<option value="${d}" ${F.year===String(d)?'selected':''}>${d}-ті</option>`).join('');
+  $('#dlArtists').innerHTML = artists.map(a=>`<option value="${esc(a)}">`).join('');
+  $('#dlGenres').innerHTML = genres.map(a=>`<option value="${esc(a)}">`).join('');
+}
+
+function renderGrid(){
+  const list = filtered();
+  $('#resCount').textContent = `Показано ${list.length} з ${records.length}`;
+  $('#reset').hidden = !(F.q||F.artist||F.year||F.status!=='all'||F.genre||F.tag||F.price);
+  if (!list.length){ $('#grid').innerHTML = `<div class="empty" style="grid-column:1/-1">Нічого не знайдено. Спробуйте змінити фільтри.</div>`; return; }
+  $('#grid').innerHTML = list.map(r => `
+    <article class="rec" tabindex="0" data-id="${esc(r.id)}" aria-label="${esc(r.artist)} — ${esc(r.album)}">
+      <div class="sleeve" style="--lab:${LBL[Math.abs(hash(r.id))%LBL.length]}">
+        <div class="disc"></div>
+        <div class="cover">${r.cover?`<img loading="lazy" src="${esc(r.cover)}" alt="">`:''}</div>
+        ${r.sealed?'<span class="badge">Нерозпакована</span>':''}
+        ${r._local?'<span class="badge local">Нова</span>':''}
+      </div>
+      <div class="meta">
+        <div class="al">${esc(r.album)}</div>
+        <div class="ar">${esc(r.artist)}</div>
+        <div class="yr">${r.year?`<span>${r.year}</span>`:''}${r.genre?`<i>${esc(r.genre)}</i>`:''}</div>
+        <div class="pr"><span>Орієнт. вартість</span><b>${r.price!=null?'≈ '+money(r.price):'—'}</b></div>
+      </div>
+    </article>`).join('');
+}
+
+function renderWish(){
+  $('#wList').innerHTML = wishlist.length ? wishlist.map((w,i) => `
+    <div class="witem">
+      <div class="wdisc"></div>
+      <div class="wt"><b>${esc(w.title)}</b>${w.note?`<small>${esc(w.note)}</small>`:''}${w.link?`<small><a href="${esc(w.link)}" target="_blank" rel="noopener">${esc(w.link.replace(/^https?:\/\/(www\.)?/,''))}</a></small>`:''}</div>
+      <div class="wa">
+        ${w.link?`<a class="btn sm" href="${esc(w.link)}" target="_blank" rel="noopener">Відкрити</a>`:''}
+        <button class="btn sm" data-bought="${i}">Купив ✓</button>
+        <button class="btn sm danger" data-wdel="${i}" aria-label="Видалити">✕</button>
+      </div>
+    </div>`).join('') : `<div class="empty">Список бажань поки порожній.<br>Додайте назву або посилання на платівку, яку хочете купити.</div>`;
+}
+
+function renderExport(){
+  const n = local.records.length, other = Object.keys(local.overrides).length + local.removed.length + (local.wishlist!==null?1:0);
+  $('#exportbar').hidden = !dirty();
+  $('#exportText').innerHTML = `Є незбережені в файлі зміни${n?`: <b>${n}</b> нов${n===1?'а платівка':n<5?'і платівки':'их платівок'}`:''}${other?(n?' та ':': ')+'інші правки':''}. Вони зберігаються лише в цьому браузері. Завантажте оновлений <b>collection.json</b> і покладіть його в папку сайту замість старого.`;
+}
+
+function renderAll(){
+  renderStats(); renderFilters(); renderGrid(); renderWish(); renderExport();
+  $('#foot').innerHTML = `Дані: collection.json${base.updated?` · оновлено ${esc(base.updated)}`:''} · Фото обкладинок: папка processed/`;
+}
+
+/* ---------- modal ---------- */
+function openModal(id){
+  const r = records.find(x=>x.id===id); if (!r) return;
+  const facts = [['Виконавець',r.artist],['Альбом',r.album],['Рік виходу',r.year],['Видання',r.editionYear&&r.editionYear!==r.year?r.editionYear:null],['Жанр',r.genre],['Формат',r.format],['Лейбл',r.label&&r.label!=='—'?r.label:null],['Країна видання',r.country&&r.country!=='—'?r.country:null],['Статус',sealedTxt(r)]].filter(f=>f[1]);
+  const tracks = r.tracks || [];
+  $('#mbox').innerHTML = `
+    <div class="mimg">
+      <img id="mImg" src="${esc(r.cover||'')}" alt="${esc(r.album)}">
+      ${r.back?`<div class="flip"><button class="btn sm" data-side="cover">Обкладинка</button><button class="btn sm" data-side="back">Зворот</button></div>`:''}
+    </div>
+    <div class="mtext">
+      <button class="close" data-close aria-label="Закрити">×</button>
+      <div class="ar">${esc(r.artist)}</div>
+      <h2 id="mTitle">${esc(r.album)}</h2>
+      ${r.sealed?'<span class="badge" style="position:static;display:inline-block;margin-top:8px">Нерозпакована</span>':''}
+      <dl class="facts">${facts.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+      ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
+      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${r.price!=null?'≈ '+money(r.price):'не вказано'}</b>${r.priceBasis?`<small>Джерело оцінки: ${esc(r.priceBasis)}</small>`:''}</div>
+      ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
+      ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
+      ${(r.tags||[]).length?`<div class="tags">${r.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>`:''}
+      <div class="mactions">
+        <button class="btn sm" data-toggle-sealed="${esc(r.id)}">${r.sealed?'Позначити як розпаковану':'Позначити як нерозпаковану'}</button>
+        <button class="btn sm danger" data-remove="${esc(r.id)}">Прибрати з колекції</button>
+      </div>
+    </div>`;
+  $('#modal').classList.add('on'); document.body.style.overflow='hidden';
+  $('#mbox').dataset.id = id;
+  $('#mbox').querySelector('.close').focus();
+}
+function closeModal(){ $('#modal').classList.remove('on'); document.body.style.overflow=''; }
+$('#modal').addEventListener('click', async e => {
+  if (e.target === $('#modal') || e.target.closest('[data-close]')) return closeModal();
+  const side = e.target.closest('[data-side]');
+  if (side){ const r = records.find(x=>x.id===$('#mbox').dataset.id); $('#mImg').src = r[side.dataset.side]; return; }
+  const ts = e.target.closest('[data-toggle-sealed]');
+  if (ts){ const id = ts.dataset.toggleSealed; const r = records.find(x=>x.id===id);
+    const lr = local.records.find(x=>x.id===id);
+    if (lr) lr.sealed = !r.sealed; else local.overrides[id] = {...(local.overrides[id]||{}), sealed: !r.sealed};
+    await save(); openModal(id); toast(!r.sealed?'Позначено як нерозпаковану':'Позначено як розпаковану'); return; }
+  const rm = e.target.closest('[data-remove]');
+  if (rm){ const id = rm.dataset.remove; const r = records.find(x=>x.id===id);
+    if (!confirm(`Прибрати «${r.album}» з колекції?`)) return;
+    if (r._local) local.records = local.records.filter(x=>x.id!==id); else local.removed.push(id);
+    await save(); closeModal(); toast('Платівку прибрано'); }
+});
+document.addEventListener('keydown', e => { if (e.key==='Escape' && $('#modal').classList.contains('on')) closeModal(); });
+
+/* ---------- events: catalog ---------- */
+$('#grid').addEventListener('click', e => { const c = e.target.closest('.rec'); if (c) openModal(c.dataset.id); });
+$('#grid').addEventListener('keydown', e => { const c = e.target.closest('.rec'); if (c && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openModal(c.dataset.id);} });
+document.addEventListener('click', e => {
+  const c = e.target.closest('.chip[data-k]'); if (!c) return;
+  const k = c.dataset.k, v = c.dataset.v;
+  F[k] = (k!=='status' && F[k]===v) ? '' : v; renderFilters(); renderGrid();
+});
+$('#q').addEventListener('input', e => { F.q = e.target.value; renderGrid(); });
+$('#fArtist').addEventListener('change', e => { F.artist = e.target.value; renderGrid(); });
+$('#fYear').addEventListener('change', e => { F.year = e.target.value; renderGrid(); });
+$('#fSort').addEventListener('change', e => { F.sort = e.target.value; renderGrid(); });
+$('#reset').addEventListener('click', () => { Object.assign(F,{q:'',artist:'',year:'',status:'all',genre:'',tag:'',price:''}); $('#q').value=''; renderFilters(); renderGrid(); });
+function setFilters(open){
+  $('#filters').classList.toggle('closed', !open); $('#fToggle').setAttribute('aria-expanded', open);
+  $('#fToggleTxt').textContent = open ? 'Сховати фільтри' : 'Показати фільтри';
+  try { localStorage.setItem('vinyl:filtersOpen', open ? '1' : '0'); } catch {}
+}
+$('#fToggle').addEventListener('click', () => setFilters($('#filters').classList.contains('closed')));
+try { if (localStorage.getItem('vinyl:filtersOpen') === '0') setFilters(false); } catch {}
+
+/* ---------- tabs ---------- */
+function showTab(t){
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on', b.dataset.tab===t));
+  document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on', s.id==='tab-'+t));
+  try { history.replaceState(null,'','#'+t); } catch {}
+}
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+if (['wish','add'].includes(location.hash.slice(1))) showTab(location.hash.slice(1));
+
+/* ---------- wishlist ---------- */
+$('#wForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const title = $('#wTitle').value.trim(); if (!title) return;
+  local.wishlist = [...wishlist, { title, link: $('#wLink').value.trim(), note: $('#wNote').value.trim(), added: new Date().toISOString().slice(0,10) }];
+  e.target.reset(); await save(); toast('Додано до списку бажань');
+});
+$('#wList').addEventListener('click', async e => {
+  const d = e.target.closest('[data-wdel]'), b = e.target.closest('[data-bought]');
+  if (d){ local.wishlist = wishlist.filter((_,i)=>i!=d.dataset.wdel); await save(); }
+  if (b){
+    const w = wishlist[b.dataset.bought];
+    const [artist, album] = w.title.includes('—') ? w.title.split('—').map(s=>s.trim()) : w.title.includes(' - ') ? w.title.split(' - ').map(s=>s.trim()) : ['', w.title];
+    $('#aArtist').value = artist; $('#aAlbum').value = album; $('#aDesc').value = w.note || '';
+    pendingWish = Number(b.dataset.bought);
+    showTab('add'); toast('Додайте фото і збережіть: платівка зникне зі списку бажань');
+  }
+});
+let pendingWish = null;
+
+/* ---------- add record: image editor ---------- */
+const cv = $('#cv'), ctx = cv.getContext('2d');
+let img = null, view = { zoom:1, rot:0, bri:0, auto:true, x:0, y:0 }, autoLv = null, backData = null;
+
+function computeLevels(im){
+  const c = document.createElement('canvas'); const k = 200/Math.max(im.width,im.height);
+  c.width = Math.max(1,im.width*k|0); c.height = Math.max(1,im.height*k|0);
+  const x = c.getContext('2d'); x.drawImage(im,0,0,c.width,c.height);
+  const d = x.getImageData(0,0,c.width,c.height).data, h=[[],[],[]].map(()=>new Uint32Array(256));
+  for (let i=0;i<d.length;i+=4){ h[0][d[i]]++; h[1][d[i+1]]++; h[2][d[i+2]]++; }
+  const n = d.length/4, pct = (hh,p)=>{let s=0;for(let i=0;i<256;i++){s+=hh[i];if(s>=n*p)return i;}return 255;};
+  return h.map(hh => { const lo = pct(hh,.005), hi = pct(hh,.995); return [lo, Math.max(lo+1,hi)]; });
+}
+function draw(){
+  if (!img) return;
+  const S = cv.width;
+  ctx.save(); ctx.fillStyle='#111'; ctx.fillRect(0,0,S,S);
+  ctx.translate(S/2 + view.x, S/2 + view.y); ctx.rotate(view.rot*Math.PI/180);
+  const base = S / Math.min(img.width, img.height); const s = base * view.zoom;
+  ctx.drawImage(img, -img.width*s/2, -img.height*s/2, img.width*s, img.height*s);
+  ctx.restore();
+  if (view.auto || view.bri){
+    const id = ctx.getImageData(0,0,S,S), d = id.data, lv = view.auto ? autoLv : [[0,255],[0,255],[0,255]];
+    const lut = lv.map(([lo,hi]) => { const a = new Uint8ClampedArray(256); for (let i=0;i<256;i++){ let v = (i-lo)*255/(hi-lo); if (view.auto) v = v*0.7 + i*0.3; a[i] = v + view.bri; } return a; });
+    for (let i=0;i<d.length;i+=4){ d[i]=lut[0][d[i]]; d[i+1]=lut[1][d[i+1]]; d[i+2]=lut[2][d[i+2]]; }
+    ctx.putImageData(id,0,0);
+  }
+}
+function loadFile(f, cb){
+  if (!f || !f.type.startsWith('image/')) return toast('Оберіть файл зображення');
+  const url = URL.createObjectURL(f), im = new Image();
+  im.onload = () => cb(im, url); im.onerror = () => toast('Не вдалося відкрити зображення'); im.src = url;
+}
+function setImage(im){
+  img = im; autoLv = computeLevels(im);
+  Object.assign(view,{zoom:1,rot:0,bri:0,x:0,y:0}); $('#tZoom').value=1; $('#tRot').value=0; $('#tBri').value=0; syncOut();
+  cv.hidden = false; $('#drop .ph').hidden = true; $('#tools').hidden = false; $('#toolsHint').hidden = false; draw();
+}
+function syncOut(){ $('#oZoom').textContent = Math.round(view.zoom*100)+'%'; $('#oRot').textContent = view.rot.toFixed(1)+'°'; $('#oBri').textContent = view.bri; }
+$('#drop').addEventListener('click', () => { if (!img) $('#file').click(); });
+$('#drop').addEventListener('keydown', e => { if ((e.key==='Enter'||e.key===' ') && !img){ e.preventDefault(); $('#file').click(); } });
+$('#file').addEventListener('change', e => loadFile(e.target.files[0], im => setImage(im)));
+['dragenter','dragover'].forEach(t => $('#drop').addEventListener(t, e => { e.preventDefault(); $('#drop').classList.add('over'); }));
+['dragleave','drop'].forEach(t => $('#drop').addEventListener(t, e => { e.preventDefault(); $('#drop').classList.remove('over'); }));
+$('#drop').addEventListener('drop', e => loadFile(e.dataTransfer.files[0], im => setImage(im)));
+$('#tZoom').addEventListener('input', e => { view.zoom = +e.target.value; syncOut(); draw(); });
+$('#tRot').addEventListener('input', e => { view.rot = +e.target.value; syncOut(); draw(); });
+$('#tBri').addEventListener('input', e => { view.bri = +e.target.value; syncOut(); draw(); });
+$('#tAuto').addEventListener('change', e => { view.auto = e.target.checked; draw(); });
+let drag = null;
+cv.addEventListener('pointerdown', e => { drag = { x:e.clientX, y:e.clientY, vx:view.x, vy:view.y }; cv.setPointerCapture(e.pointerId); });
+cv.addEventListener('pointermove', e => { if (!drag) return; const k = cv.width / cv.getBoundingClientRect().width; view.x = drag.vx + (e.clientX-drag.x)*k; view.y = drag.vy + (e.clientY-drag.y)*k; draw(); });
+cv.addEventListener('pointerup', () => drag = null);
+cv.addEventListener('wheel', e => { e.preventDefault(); view.zoom = Math.min(3, Math.max(1, view.zoom * (e.deltaY<0?1.04:0.96))); $('#tZoom').value = view.zoom; syncOut(); draw(); }, {passive:false});
+
+$('#aBackBtn').addEventListener('click', () => $('#aBack').click());
+$('#aBack').addEventListener('change', e => loadFile(e.target.files[0], im => {
+  const c = document.createElement('canvas'), S = 1000; c.width = c.height = S;
+  const k = S/Math.min(im.width,im.height), x = c.getContext('2d');
+  x.drawImage(im, (S-im.width*k)/2, (S-im.height*k)/2, im.width*k, im.height*k);
+  backData = c.toDataURL('image/jpeg', .82); $('#aBackPrev').src = backData; $('#aBackPrev').hidden = false;
+}));
+
+function clearAdd(){
+  $('#aForm').reset(); img = null; backData = null; pendingWish = null;
+  cv.hidden = true; $('#drop .ph').hidden = false; $('#tools').hidden = true; $('#toolsHint').hidden = true; $('#aBackPrev').hidden = true; $('#file').value=''; $('#tAuto').checked = true; view.auto = true;
+}
+$('#aClear').addEventListener('click', clearAdd);
+const slug = s => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,'-').replace(/^-|-$/g,'').slice(0,60);
+$('#aForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!img){ toast('Спершу додайте фото обкладинки'); $('#drop').focus(); return; }
+  const artist = $('#aArtist').value.trim(), album = $('#aAlbum').value.trim();
+  let id = slug(`${artist}-${album}`) || 'record'; while (records.some(r=>r.id===id)) id += '-2';
+  const rec = {
+    id, artist, album, year: +$('#aYear').value || null, editionYear: null,
+    genre: $('#aGenre').value.trim(), sealed: $('#aSealed').checked,
+    price: $('#aPrice').value !== '' ? +$('#aPrice').value : null, priceBasis: $('#aPrice').value !== '' ? 'моя оцінка' : null,
+    format: $('#aFormat').value.trim(), tracks: [], about: '',
+    tags: $('#aTags').value.split(',').map(s=>s.trim()).filter(Boolean),
+    description: $('#aDesc').value.trim(),
+    cover: cv.toDataURL('image/jpeg', .86), back: backData, added: new Date().toISOString().slice(0,10)
+  };
+  local.records.push(rec);
+  if (pendingWish != null) local.wishlist = wishlist.filter((_,i)=>i!==pendingWish);
+  await save(); clearAdd();
+  Object.assign(F,{q:'',artist:'',year:'',status:'all',genre:'',tag:'',price:'',sort:'added'}); $('#fSort').value='added'; $('#q').value='';
+  renderFilters(); renderGrid(); showTab('catalog'); window.scrollTo({top:0}); toast(`«${album}» додано в колекцію`);
+});
+
+/* ---------- export ---------- */
+function download(name, text, type){
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text],{type})); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+$('#exportBtn').addEventListener('click', () => {
+  const recs = records.slice().sort((a,b)=>a._order-b._order).map(({_local,_order,...r}) => r);
+  const data = { updated: new Date().toISOString().slice(0,10), records: recs, wishlist };
+  const json = JSON.stringify(data, null, 2);
+  download('collection.json', json, 'application/json');
+  setTimeout(() => download('collection.js', '// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = ' + json + ';\n', 'text/javascript'), 400);
+  toast('Замініть collection.json і collection.js у папці сайту');
+});
+
+let tt; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('on'),2600); }
+
+load();
+})();
+</script>
+</body>
+</html>
