@@ -97,6 +97,10 @@ select.sel{background:var(--bg2);border:1px solid var(--line);border-radius:12px
 #filters.closed{grid-template-rows:0fr}
 .meta .pr{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--dim)}
 .meta .pr b{font:600 15px var(--head);color:var(--accent)}
+a.plink{color:inherit;text-decoration:underline;text-decoration-color:rgba(232,163,61,.45);text-underline-offset:3px}
+a.plink:hover{text-decoration-color:currentColor}
+a.plink .ext{font-size:.7em;opacity:.7;margin-left:3px}
+.pricebox small a{color:var(--accent)}
 .about{color:#d6cec3;line-height:1.7;margin:0 0 6px}
 .pricebox{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:rgba(232,163,61,.08);border:1px solid rgba(232,163,61,.25);border-radius:12px;padding:12px 16px;margin:18px 0}
 .pricebox b{font:700 24px var(--head);color:var(--accent)}
@@ -420,6 +424,9 @@ let base = { records: [], wishlist: [] };
 let local = { records: [], wishlist: null, overrides: {}, removed: [] };
 const F = { q:'', artist:'', year:'', sort:'artist', status:'all', genre:'', tag:'', price:'' };
 const PR = [['0-500','до 500 ₴',0,500],['500-1500','500–1 500 ₴',500,1500],['1500-3000','1 500–3 000 ₴',1500,3000],['3000+','від 3 000 ₴',3000,Infinity]];
+const host = u => { try { return new URL(u).hostname.replace(/^www\./,''); } catch { return ''; } };
+const priceTxt = r => r.price!=null ? '≈ '+money(r.price) : null;
+const priceLink = (r, empty) => { const t = priceTxt(r); if (!t) return empty; return r.priceUrl ? `<a class="plink" href="${esc(r.priceUrl)}" target="_blank" rel="noopener" title="Відкрити на ${esc(host(r.priceUrl))}">${t}<span class="ext">↗</span></a>` : t; };
 const money = n => n==null||n==='' ? '—' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
 let records = [], wishlist = [];
 
@@ -536,7 +543,7 @@ function renderGrid(){
         <div class="al">${esc(r.album)}</div>
         <div class="ar">${esc(r.artist)}</div>
         <div class="yr">${r.year?`<span>${r.year}</span>`:''}${r.genre?`<i>${esc(r.genre)}</i>`:''}</div>
-        <div class="pr"><span>Орієнт. вартість</span><b>${r.price!=null?'≈ '+money(r.price):'—'}</b></div>
+        <div class="pr"><span>Орієнт. вартість</span><b>${priceLink(r,'—')}</b></div>
       </div>
     </article>`).join('');
 }
@@ -582,7 +589,7 @@ function openModal(id){
       ${r.sealed?'<span class="badge" style="position:static;display:inline-block;margin-top:8px">Нерозпакована</span>':''}
       <dl class="facts">${facts.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
       ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
-      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${r.price!=null?'≈ '+money(r.price):'не вказано'}</b>${r.priceBasis?`<small>Джерело оцінки: ${esc(r.priceBasis)}</small>`:''}</div>
+      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}</small>`:''}</div>
       ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
       ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
       ${(r.tags||[]).length?`<div class="tags">${r.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>`:''}
@@ -614,8 +621,8 @@ $('#modal').addEventListener('click', async e => {
 document.addEventListener('keydown', e => { if (e.key==='Escape' && $('#modal').classList.contains('on')) closeModal(); });
 
 /* ---------- events: catalog ---------- */
-$('#grid').addEventListener('click', e => { const c = e.target.closest('.rec'); if (c) openModal(c.dataset.id); });
-$('#grid').addEventListener('keydown', e => { const c = e.target.closest('.rec'); if (c && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openModal(c.dataset.id);} });
+$('#grid').addEventListener('click', e => { if (e.target.closest('a')) return; const c = e.target.closest('.rec'); if (c) openModal(c.dataset.id); });
+$('#grid').addEventListener('keydown', e => { if (e.target.closest('a')) return; const c = e.target.closest('.rec'); if (c && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openModal(c.dataset.id);} });
 document.addEventListener('click', e => {
   const c = e.target.closest('.chip[data-k]'); if (!c) return;
   const k = c.dataset.k, v = c.dataset.v;
