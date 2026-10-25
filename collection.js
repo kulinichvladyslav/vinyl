@@ -1036,5 +1036,66 @@ window.COLLECTION = {
       "currency": "UAH"
     }
   ],
-  "wishlist": []
+  "wishlist": [
+    {
+      "title": "The Offspring — Rise and Fall, Rage and Grace",
+      "link": "https://jpv.com.ua/product/the-offspring-rise-and-fall-rage-and-grace-albom-perevidannya-2/",
+      "note": "jpv.com.ua · 1 798 ₴ · в наявності · LP, перевидання",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "The Offspring — Americana",
+      "link": "https://prom.ua/ua/p1863215438-the-offspring-americana.html",
+      "note": "prom.ua (Хитун-Бовтун) · 2 675 ₴ · в наявності · LP, gatefold, перевидання. На jpv.com.ua (2 648 ₴) і vinyla.com зараз немає",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Deep Purple — Made in Japan",
+      "link": "https://jpv.com.ua/product/deep-purple-made-in-japan-2-platvki-180-gram-albom-perevidannya-remastering/",
+      "note": "jpv.com.ua · 2 730 ₴ · в наявності · 2LP, 180 г, ремастеринг",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Run-DMC — Raising Hell",
+      "link": "https://jpv.com.ua/product/run-dmc-raising-hell-180-gram-albom-perevidannya-dodatkoviy-druk/",
+      "note": "Найкультовіший альбом Run-DMC (1986, «Walk This Way», «It's Tricky»). jpv.com.ua · 1 476 ₴ · зараз немає в наявності; на prom.ua під замовлення ≈ 1 973 ₴. Запасний варіант у наявності: дебют Run-D.M.C. (червоний вініл) — 1 427 ₴ на jpv",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Wu-Tang Clan — Enter the Wu-Tang (36 Chambers)",
+      "link": "https://jpv.com.ua/product/wu-tang-clan-enter-the-wu-tang-36-chambers-180-gram-albom-perevidannya/",
+      "note": "Найкультовіший альбом Wu-Tang Clan (1993). jpv.com.ua · 1 828 ₴ · в наявності · 180 г",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Depeche Mode — The Best Of (Volume 1)",
+      "link": "https://jpv.com.ua/product/depeche-mode-the-best-of-volume-1-3-platvki-zbrnik-perevidannya/",
+      "note": "jpv.com.ua · 3 618 ₴ · в наявності · 3LP",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "SadSvit — Cassette",
+      "link": "https://jpv.com.ua/product/sadsvit-cassette-korichneviy-albom-remastering/",
+      "note": "jpv.com.ua · 2 000 ₴ · в наявності · коричневий вініл",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Сусіди Стерплять — З найглибших кутків",
+      "link": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
+      "note": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Quest Pistols — Greatest Hits",
+      "link": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
+      "note": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Skinhate — Квиток до раю",
+      "link": "https://jpv.com.ua/product/skinhate-kvitok-do-rayu-albom-lmtovane-perevidannya-remastering/",
+      "note": "jpv.com.ua · 1 690 ₴ · в наявності · лімітоване, ремастеринг",
+      "added": "2026-10-25"
+    }
+  ]
 };
