@@ -155,12 +155,16 @@ def jpv_search(artist, album):
     """Find the same record on jpv.com.ua (works even when it's out of stock there)."""
     if not album:
         return None
-    r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products",
-                     params={"search": f"{artist} {album}".strip(), "per_page": 30}, headers=UA, timeout=30)
-    r.raise_for_status()
-    na, nb = norm(artist), norm(album)
+    found = []
+    for q in dict.fromkeys([album, re.sub(r"\s*\(.*?\)", "", album), artist]):  # jpv search works with one phrase at a time
+        if not q:
+            continue
+        r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"search": q, "per_page": 50}, headers=UA, timeout=30)
+        r.raise_for_status()
+        found += r.json()
+    na, nb = norm(artist), norm(re.sub(r"\s*\(.*?\)", "", album))
     best = None
-    for p in r.json():
+    for p in found:
         if "/ru/" in p["permalink"]:
             continue
         pa, pb = split_title(p["name"])
