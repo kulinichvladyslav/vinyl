@@ -9,6 +9,9 @@ on:
       url:
         description: "Тест: посилання на платівку (нічого не змінює, лише показує, що вдалося витягти)"
         required: false
+      title:
+        description: "Тест: «Виконавець — Альбом» (необов'язково)"
+        required: false
 
 permissions:
   contents: write
@@ -29,7 +32,7 @@ jobs:
       - run: pip install requests beautifulsoup4 pillow
       - name: Test extraction
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.url != '' }}
-        run: python scripts/enrich.py --dry-run "${{ inputs.url }}"
+        run: python scripts/enrich.py --dry-run "${{ inputs.url }}" "${{ inputs.title }}"
       - name: Enrich pending records
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
         run: python scripts/enrich.py
