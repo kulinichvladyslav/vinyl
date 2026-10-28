@@ -377,6 +377,21 @@ const store = (() => {
   };
 })();
 
+/* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
+const APP_VERSION = '2026-10-28b';
+async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
+function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
+if (location.protocol !== 'file:') latestVersion().then(v => {
+  if (!v || v === APP_VERSION) return;
+  try { const k = 'vinyl:reloaded:' + v; if (sessionStorage.getItem(k)) return; sessionStorage.setItem(k, '1'); } catch {}
+  reloadTo(v);
+});
+async function ensureFresh(){
+  if (location.protocol === 'file:') return;
+  const v = await latestVersion();
+  if (v && v !== APP_VERSION){ toast('Сторінка застаріла — оновлюю, натисніть ще раз'); setTimeout(() => reloadTo(v), 900); throw new Error('stale page'); }
+}
+
 /* ---------- owner mode: wishlist saved straight to GitHub ---------- */
 const GH = { owner:'kulinichvladyslav', repo:'vinyl', branch:'main' };
 const RO = document.body.classList.contains('ro');
@@ -393,6 +408,7 @@ async function gh(path, opt = {}){
 const ghFresh = () => gh(`/contents/collection.json?ref=${GH.branch}&t=${Date.now()}`, { raw:true });
 async function ghSaveWishlist(change, message){ return ghSave(data => { data.wishlist = change(data.wishlist || []); }, message); }
 async function ghSave(mutate, message){
+  await ensureFresh();
   const data = await ghFresh();                       // latest file, so nothing else gets overwritten
   data.wishlist = data.wishlist || [];
   mutate(data);

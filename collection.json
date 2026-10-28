@@ -1033,6 +1033,34 @@
         "Voyage, voyage (Instrumental)"
       ],
       "currency": "UAH"
+    },
+    {
+      "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
+      "artist": "Сусіди Стерплять",
+      "album": "З найглибших кутків",
+      "year": null,
+      "editionYear": null,
+      "genre": "",
+      "sealed": true,
+      "tags": [],
+      "description": "",
+      "cover": null,
+      "back": null,
+      "price": 1800,
+      "priceBasis": "jpv.com.ua",
+      "priceUrl": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
+      "format": "",
+      "label": "",
+      "country": "",
+      "about": "",
+      "tracks": [],
+      "currency": "UAH",
+      "added": "2026-10-28",
+      "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
+      "enrich": {
+        "url": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
+        "status": "pending"
+      }
     }
   ],
   "wishlist": [
