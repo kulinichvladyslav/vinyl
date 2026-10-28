@@ -204,7 +204,7 @@ footer{color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding:
   .chips .lbl{width:100%}
 }
 /* public read-only mode (GitHub Pages) */
-body.ro [data-tab="add"],body.ro #tab-add,body.ro #exportbar,body.ro [data-toggle-sealed],body.ro [data-remove],body.ro:not(.owner) #wForm,body.ro:not(.owner) [data-wdel],body.ro:not(.owner) [data-bought]{display:none!important}
+body.ro [data-tab="add"],body.ro #tab-add,body.ro #exportbar,body.ro:not(.owner) [data-toggle-sealed],body.ro [data-remove],body.ro:not(.owner) #wForm,body.ro:not(.owner) [data-wdel],body.ro:not(.owner) [data-bought]{display:none!important}
 body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
 .ownerbtn{background:none;border:0;color:inherit;opacity:.55;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
 .ownerbtn:hover{opacity:1}
@@ -378,7 +378,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-10-28b';
+const APP_VERSION = '2026-10-28c';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -485,7 +485,7 @@ document.addEventListener('submit', async e => {
     renderFilters(); renderGrid(); window.scrollTo({top:0});
     toast(w.link ? `«${album}» у колекції. Обкладинка й деталі з'являться за 1–2 хв` : `«${album}» у колекції`);
     if (w.link) waitEnrich(newId);
-  } catch (err) { console.error(err); toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+  } catch (err) { console.error(err); if (err.message !== 'stale page') toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
   f.classList.remove('busy');
 });
 async function waitEnrich(id, tries = 0){
@@ -693,6 +693,7 @@ function openModal(id){
       <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}</small>`:''}</div>
       ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
       ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
+      ${OWNER&&(r.needs||[]).length?`<p class="hint" style="margin:14px 0 0">Не знайшов в інтернеті: ${r.needs.map(n=>n==='back'?'фото звороту':'треклист').join(' і ')}. Скинь фото в чат — додам.</p>`:''}
       ${(r.tags||[]).length?`<div class="tags">${r.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>`:''}
       <div class="mactions">
         <button class="btn sm" data-toggle-sealed="${esc(r.id)}">${r.sealed?'Позначити як розпаковану':'Позначити як нерозпаковану'}</button>
@@ -709,6 +710,15 @@ $('#modal').addEventListener('click', async e => {
   const side = e.target.closest('[data-side]');
   if (side){ const r = records.find(x=>x.id===$('#mbox').dataset.id); $('#mImg').src = r[side.dataset.side]; return; }
   const ts = e.target.closest('[data-toggle-sealed]');
+  if (ts && OWNER){
+    const id = ts.dataset.toggleSealed, r = records.find(x=>x.id===id); if (!r) return;
+    const nv = !r.sealed; ts.disabled = true; toast('Зберігаю…');
+    try {
+      await ghSave(data => { const x = data.records.find(y=>y.id===id); if (x) x.sealed = nv; }, `Колекція: ${r.artist} — ${r.album}: ${nv ? 'нерозпакована' : 'розпакована'}`);
+      openModal(id); toast(nv ? 'Позначено як нерозпаковану' : 'Позначено як розпаковану');
+    } catch (err) { console.error(err); ts.disabled = false; if (err.message !== 'stale page') toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+    return;
+  }
   if (ts){ const id = ts.dataset.toggleSealed; const r = records.find(x=>x.id===id);
     const lr = local.records.find(x=>x.id===id);
     if (lr) lr.sealed = !r.sealed; else local.overrides[id] = {...(local.overrides[id]||{}), sealed: !r.sealed};
@@ -759,7 +769,7 @@ $('#wForm').addEventListener('submit', async e => {
   if (OWNER){
     const f = e.target; f.classList.add('busy'); toast('Зберігаю на сайті…');
     try { await ghSaveWishlist(w => [...w, item], `Wishlist: + ${title}`); f.reset(); toast('Додано. На сайті для всіх з\'явиться за ~1 хв'); }
-    catch (err) { console.error(err); toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+    catch (err) { console.error(err); if (err.message !== 'stale page') toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
     f.classList.remove('busy'); return;
   }
   local.wishlist = [...wishlist, item];
@@ -776,7 +786,7 @@ $('#wList').addEventListener('click', async e => {
     try {
       await ghSaveWishlist(list => { const i = list.findIndex(same); return i < 0 ? list : list.filter((_,k)=>k!==i); }, `Wishlist: − ${w.title}`);
       toast('Прибрано зі списку бажань');
-    } catch (err) { console.error(err); (d||b).disabled = false; toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+    } catch (err) { console.error(err); (d||b).disabled = false; if (err.message !== 'stale page') toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
     return;
   }
   if (d){ local.wishlist = wishlist.filter((_,i)=>i!=d.dataset.wdel); await save(); }
