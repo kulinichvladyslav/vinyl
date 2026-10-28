@@ -1065,29 +1065,29 @@
       "id": "quest-pistols-greatest-hits",
       "artist": "Quest Pistols",
       "album": "Greatest Hits",
-      "year": null,
-      "editionYear": null,
+      "year": 2023,
+      "editionYear": 2023,
       "genre": "",
       "sealed": true,
-      "tags": [],
-      "description": "",
-      "cover": null,
+      "tags": [
+        "Українське",
+        "Кольоровий вініл",
+        "Збірки"
+      ],
+      "description": "Між знаком авторського права й датою пресу тут тринадцять років. Збірку склали у 2010-му, а на вініл вона потрапила аж у 2023-му, і на етикетці стоять обидві дати: копірайт Moon Records 2010, фонограма Moon Vinyl 2023.",
+      "cover": "processed/quest-pistols-greatest-hits.jpg",
       "back": null,
       "price": 1650,
       "priceBasis": "jpv.com.ua",
       "priceUrl": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
-      "format": "",
-      "label": "",
-      "country": "",
-      "about": "",
+      "format": "LP, збірник, рожевий",
+      "label": "Moon Records (2)",
+      "country": "Україна",
+      "about": "Між знаком авторського права й датою пресу тут тринадцять років. Збірку склали у 2010-му, а на вініл вона потрапила аж у 2023-му, і на етикетці стоять обидві дати: копірайт Moon Records 2010, фонограма Moon Vinyl 2023. Укладач названий поіменно — Андрій Пасічник, оформлення зробив Дмитро Личагін. Виготовила платівку Moon Vinyl s.r.o. за виключною ліцензією Moon Records, каталожний номер MV 0057-1. Шістнадцять пісень, рівно по вісім на сторону. Усі шістнадцять назв російськомовні — саме так гурт і записувався в ті роки, і збірка це не приховує. Сторона A відкривається «Я Устал», сторона B закривається «Девочкой Моей», між ними — той набір, який у гурту справді крутили. Тому що його ніде немає: ні на самому релізі, ні у зовнішніх базах. Ми не ставимо в опис часи, яких не бачили, тому блоку з хвилинами по сторонах тут не буде.",
       "tracks": [],
       "currency": "UAH",
       "added": "2026-10-28",
-      "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
-      "enrich": {
-        "url": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
-        "status": "pending"
-      }
+      "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл"
     }
   ],
   "wishlist": [
