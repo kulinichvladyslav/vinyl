@@ -1061,6 +1061,34 @@ window.COLLECTION = {
       "currency": "UAH",
       "added": "2026-10-28",
       "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване"
+    },
+    {
+      "id": "quest-pistols-greatest-hits",
+      "artist": "Quest Pistols",
+      "album": "Greatest Hits",
+      "year": null,
+      "editionYear": null,
+      "genre": "",
+      "sealed": true,
+      "tags": [],
+      "description": "",
+      "cover": null,
+      "back": null,
+      "price": 1650,
+      "priceBasis": "jpv.com.ua",
+      "priceUrl": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
+      "format": "",
+      "label": "",
+      "country": "",
+      "about": "",
+      "tracks": [],
+      "currency": "UAH",
+      "added": "2026-10-28",
+      "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
+      "enrich": {
+        "url": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
+        "status": "pending"
+      }
     }
   ],
   "wishlist": [
@@ -1104,12 +1132,6 @@ window.COLLECTION = {
       "title": "SadSvit — Cassette",
       "link": "https://jpv.com.ua/product/sadsvit-cassette-korichneviy-albom-remastering/",
       "note": "jpv.com.ua · 2 000 ₴ · в наявності · коричневий вініл",
-      "added": "2026-10-25"
-    },
-    {
-      "title": "Quest Pistols — Greatest Hits",
-      "link": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
-      "note": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
       "added": "2026-10-25"
     },
     {
