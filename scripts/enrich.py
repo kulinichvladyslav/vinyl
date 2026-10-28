@@ -387,6 +387,75 @@ def write(data):
         f.write("// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = " + js + ";\n")
 
 
+def current_price(rec):
+    """(price, basis, url, in_stock) from the shop, or None. jpv first; other shops if they let us in."""
+    url = rec.get("priceUrl") or ""
+    host = urllib.parse.urlparse(url).hostname or ""
+    if host.endswith("jpv.com.ua"):
+        m = re.search(r"/product/([^/?#]+)", url)
+        if m:
+            r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"slug": m.group(1)}, headers=UA, timeout=30)
+            r.raise_for_status()
+            items = r.json()
+            if items and items[0].get("prices", {}).get("price"):
+                pr = items[0]["prices"]
+                return round(int(pr["price"]) / 10 ** pr.get("currency_minor_unit", 2)), "jpv.com.ua (Just Punk Vinyl)", url, items[0].get("is_in_stock")
+        return None
+    if host and "discogs.com" not in host:
+        try:
+            info = from_generic(url)
+            if info.get("price"):
+                return round(info["price"]), host.replace("www.", ""), url, None
+        except Exception as e:
+            print("   ", host, "недоступний:", e)
+    return None
+
+
+def reprice(data, requested):
+    """Refresh every record's price. Vintage records priced from Discogs stay as they are."""
+    today = date.today().isoformat()
+    before = sum(r.get("price") or 0 for r in data["records"])
+    changed, same, skipped = [], 0, []
+    for rec in data["records"]:
+        try:
+            cur = current_price(rec)
+        except Exception as e:
+            print("  ", rec["id"], "помилка:", e)
+            cur = None
+        if not cur:
+            skipped.append(rec["id"])
+            continue
+        price, basis, url, stock = cur
+        if (rec.get("priceBasis") or "").startswith("оцінка") or rec.get("priceAdjust") is not None:
+            # e.g. signed copy = shop price + premium; keep the premium constant
+            if rec.get("priceAdjust") is None:
+                m = re.search(r"(\d[\d\s\u00a0]*)\s*₴", rec.get("priceBasis") or "")  # "звичайне видання 2500 ₴ + автографи"
+                base_old = int(re.sub(r"\D", "", m.group(1))) if m else price
+                rec["priceAdjust"] = (rec.get("price") or base_old) - base_old
+            price = price + rec["priceAdjust"]
+        else:
+            rec["priceBasis"] = basis
+        old = rec.get("price")
+        rec["priceChecked"] = today
+        if stock is not None:
+            rec["priceInStock"] = bool(stock)
+        if old != price:
+            rec["price"] = price
+            hist = rec.setdefault("priceHistory", [])
+            if old is not None and not hist:
+                hist.append({"date": rec.get("added") or "2026-10-25", "price": old})
+            hist.append({"date": today, "price": price})
+            changed.append({"id": rec["id"], "album": rec.get("album"), "old": old, "new": price})
+            print(f"   {rec['id']}: {old} -> {price}")
+        else:
+            same += 1
+        time.sleep(0.3)
+    after = sum(r.get("price") or 0 for r in data["records"])
+    data["priceCheck"] = {"requested": requested, "date": today, "before": before, "after": after,
+                          "changed": changed, "unchanged": same, "skipped": len(skipped)}
+    print(f"Ціни: {before} -> {after}; змінено {len(changed)}, без змін {same}, пропущено {len(skipped)}")
+
+
 def apply_patch(data, patch):
     """Manual fixes: {"<record id>": {"tracks": [...], "backUrl": "...", "coverUrl": "...", "genre": "...", ...}}"""
     byid = {r["id"]: r for r in data["records"]}
@@ -418,6 +487,17 @@ def main():
         data["updated"] = date.today().isoformat()
         write(data)
         return
+    rp = os.path.join(ROOT, "reprice.json")
+    if os.path.exists(rp):
+        with open(rp, encoding="utf-8") as f:
+            req = json.load(f).get("requested")
+        with open(os.path.join(ROOT, "collection.json"), encoding="utf-8") as f:
+            data = json.load(f)
+        if req and (data.get("priceCheck") or {}).get("requested") != req:
+            print("Оновлення цін, запит", req)
+            reprice(data, req)
+            data["updated"] = date.today().isoformat()
+            write(data)
     if os.environ.get("TEST_URL", "").strip():
         sys.argv = [sys.argv[0], "--dry-run", os.environ["TEST_URL"].strip(), os.environ.get("TEST_TITLE", "")]
     if len(sys.argv) > 2 and sys.argv[1] == "--dry-run":
