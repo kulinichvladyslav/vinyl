@@ -1039,29 +1039,28 @@ window.COLLECTION = {
       "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
       "artist": "Сусіди Стерплять",
       "album": "З найглибших кутків",
-      "year": null,
-      "editionYear": null,
+      "year": 2024,
+      "editionYear": 2024,
       "genre": "",
       "sealed": true,
-      "tags": [],
-      "description": "",
-      "cover": null,
+      "tags": [
+        "Українське",
+        "Кольоровий вініл"
+      ],
+      "description": "«З найглибших кутків» — український тираж 2024 року на блакитному вінілі кольору baby blue. Незручна правда про трек-лист: позицій десять, а різних пісень дев’ять.",
+      "cover": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv.jpg",
       "back": null,
       "price": 1800,
       "priceBasis": "jpv.com.ua",
       "priceUrl": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
-      "format": "",
-      "label": "",
-      "country": "",
-      "about": "",
+      "format": "LP, лімітоване",
+      "label": "Aby Sho Mzk, HVG",
+      "country": "Україна",
+      "about": "«З найглибших кутків» — український тираж 2024 року на блакитному вінілі кольору baby blue. Незручна правда про трек-лист: позицій десять, а різних пісень дев’ять. «Сон це маленька смерть» стоїть п’ятою на стороні A і повертається останньою на стороні B в уповільненій версії з позначкою Slowed. Альбом короткий — 30 хвилин на дві сторони. За нотатками Discogs, всередині одна з шести випадкових карток із фотографією гурту. На вкладеному флаєрі напис «Collect them all», а в соцмережах гурт оголосив, що перший, хто збере всі шість карток, отримає будь-яку платівку Aby Sho Mzk, видану після 11 листопада 2024 року, і квитки на будь-який концерт HVG у 2025-му. Тобто картка в конверті — частина акції, а не просто вкладка. Реліз вийшов одночасно на HVG під номером HVG006 і на Aby Sho Mzk під ASM092. У раннаутах вибито SUSIDY STERP – A1 і SUSIDY STERP – B1 — інших міток завод не залишив.",
       "tracks": [],
       "currency": "UAH",
       "added": "2026-10-28",
-      "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
-      "enrich": {
-        "url": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
-        "status": "pending"
-      }
+      "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване"
     }
   ],
   "wishlist": [
