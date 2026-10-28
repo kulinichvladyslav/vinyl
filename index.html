@@ -209,6 +209,11 @@ body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
 .ownerbtn{background:none;border:0;color:inherit;opacity:.55;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
 .ownerbtn:hover{opacity:1}
 #wForm.busy,#buyForm.busy{opacity:.6;pointer-events:none}
+.stat.val{position:relative}
+.reprice{display:block;margin-top:6px;background:none;border:1px solid rgba(232,163,61,.45);color:var(--accent);border-radius:999px;padding:3px 10px;font:600 11px var(--body);cursor:pointer;white-space:nowrap}
+.reprice:hover{background:rgba(232,163,61,.12)}
+.reprice[disabled]{opacity:.7;cursor:progress}
+.stat .pchk{display:block;margin-top:3px;font-size:10px;opacity:.7}
 .mbox.single{grid-template-columns:1fr;max-width:560px}
 .mbox.single .mtext{position:relative}
 .noimg{aspect-ratio:1;display:grid;place-items:center;color:var(--muted);font-size:14px;background:repeating-radial-gradient(circle at 50% 50%,#151515 0 2px,#1d1d1d 2px 4px);border-radius:6px}
@@ -378,7 +383,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-10-28c';
+const APP_VERSION = '2026-10-28d';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -407,6 +412,41 @@ async function gh(path, opt = {}){
 }
 const ghFresh = () => gh(`/contents/collection.json?ref=${GH.branch}&t=${Date.now()}`, { raw:true });
 async function ghSaveWishlist(change, message){ return ghSave(data => { data.wishlist = change(data.wishlist || []); }, message); }
+async function ghCommit(files, message){
+  const ref = await gh(`/git/ref/heads/${GH.branch}`);
+  const head = await gh(`/git/commits/${ref.object.sha}`);
+  const tree = await gh('/git/trees', { method:'POST', body: JSON.stringify({ base_tree: head.tree.sha,
+    tree: Object.entries(files).map(([path, content]) => ({ path, mode:'100644', type:'blob', content })) }) });
+  const commit = await gh('/git/commits', { method:'POST', body: JSON.stringify({ message, tree: tree.sha, parents: [ref.object.sha] }) });
+  await gh(`/git/refs/heads/${GH.branch}`, { method:'PATCH', body: JSON.stringify({ sha: commit.sha }) });
+}
+function setBase(data){ base = { records: data.records || base.records, wishlist: data.wishlist || [], updated: data.updated, priceCheck: data.priceCheck }; }
+/* ---------- refresh all prices (done by the GitHub Action) ---------- */
+let repricing = false;
+async function repriceAll(){
+  if (repricing) return;
+  if (!confirm('Оновити ціни всіх платівок? Ціни з jpv.com.ua та інших магазинів перевіряться заново (1–3 хв). Вінтажні платівки з оцінкою за Discogs залишаться як є.')) return;
+  try { await ensureFresh(); } catch { return; }
+  const ts = new Date().toISOString();
+  repricing = true; renderStats(); toast('Запускаю оновлення цін…');
+  try {
+    await ghCommit({ 'reprice.json': JSON.stringify({ requested: ts }, null, 2) + '\n' }, 'Ціни: запит на оновлення');
+  } catch (err) { repricing = false; renderStats(); toast('Не вдалося запустити: ' + err.message.slice(0,60)); return; }
+  for (let i = 0; i < 24; i++){
+    await new Promise(r => setTimeout(r, 15000));
+    try {
+      const data = await ghFresh();
+      if (data.priceCheck && data.priceCheck.requested === ts){
+        setBase(data); merge(); repricing = false; renderAll();
+        const pc = data.priceCheck, diff = pc.after - pc.before;
+        toast(`Ціни оновлено: ${pc.changed.length} змінилось. Разом ≈ ${money(pc.after)} (${diff >= 0 ? '+' : '−'}${money(Math.abs(diff))})`);
+        return;
+      }
+    } catch {}
+  }
+  repricing = false; renderStats(); toast('Оновлення ще триває — перезавантажте сторінку за пару хвилин');
+}
+document.addEventListener('click', e => { if (e.target.closest('#repriceBtn')) repriceAll(); });
 async function ghSave(mutate, message){
   await ensureFresh();
   const data = await ghFresh();                       // latest file, so nothing else gets overwritten
@@ -415,14 +455,8 @@ async function ghSave(mutate, message){
   data.updated = new Date().toISOString().slice(0,10);
   const json = JSON.stringify(data, null, 2) + '\n';
   const js = '// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = ' + JSON.stringify(data, null, 2) + ';\n';
-  const ref = await gh(`/git/ref/heads/${GH.branch}`);
-  const head = await gh(`/git/commits/${ref.object.sha}`);
-  const tree = await gh('/git/trees', { method:'POST', body: JSON.stringify({ base_tree: head.tree.sha, tree: [
-    { path:'collection.json', mode:'100644', type:'blob', content: json },
-    { path:'collection.js', mode:'100644', type:'blob', content: js } ] }) });
-  const commit = await gh('/git/commits', { method:'POST', body: JSON.stringify({ message, tree: tree.sha, parents: [ref.object.sha] }) });
-  await gh(`/git/refs/heads/${GH.branch}`, { method:'PATCH', body: JSON.stringify({ sha: commit.sha }) });
-  base = { records: data.records || base.records, wishlist: data.wishlist, updated: data.updated };
+  await ghCommit({ 'collection.json': json, 'collection.js': js }, message);
+  setBase(data);
   local.wishlist = null; await store.set('local', local); merge(); renderAll();
   return data;
 }
@@ -494,7 +528,7 @@ async function waitEnrich(id, tries = 0){
     try {
       const data = await ghFresh(); const r = (data.records||[]).find(x => x.id === id);
       if (r && !(r.enrich && r.enrich.status === 'pending')){
-        base = { records: data.records, wishlist: data.wishlist || [], updated: data.updated }; merge(); renderAll();
+        setBase(data); merge(); renderAll();
         toast(r.enrich ? `Не вдалося підтягнути дані для «${r.album}» — скинь фото в чат` : `«${r.album}»: обкладинку й деталі додано`);
         return;
       }
@@ -547,7 +581,7 @@ async function load(){
   if (!data && location.protocol !== 'file:') try { const r = await fetch('collection.json', {cache:'no-store'}); if (r.ok) data = await r.json(); } catch {}
   if (!data && window.COLLECTION) data = window.COLLECTION;
   if (!data) data = { records: [], wishlist: [] };
-  base = { records: data.records || [], wishlist: data.wishlist || [], updated: data.updated };
+  base = { records: data.records || [], wishlist: data.wishlist || [], updated: data.updated, priceCheck: data.priceCheck };
   const l = await store.get('local');
   if (l) local = { records: l.records||[], wishlist: l.wishlist ?? null, overrides: l.overrides||{}, removed: l.removed||[] };
   // drop local records that are now part of base file (after export/replace)
@@ -598,7 +632,8 @@ function renderStats(){
     [records.length,'платівок'],[sealed,'нерозпакованих'],[genres,'жанрів'],
     [yrs.length ? `${Math.min(...yrs)}–${Math.max(...yrs)}` : '—','роки'],
     ['≈ ' + money(records.reduce((s,r)=>s+(+r.price||0),0)),'орієнтовна вартість']
-  ].map(([b,s])=>`<div class="stat"><b>${b}</b><small>${s}</small></div>`).join('');
+  ].map(([b,s],i,a)=>`<div class="stat${i===a.length-1?' val':''}"><b>${b}</b><small>${s}</small>${i===a.length-1&&OWNER?
+      `<button class="reprice${repricing?' spin':''}" id="repriceBtn" ${repricing?'disabled':''} title="Оновити ціни всіх платівок">↻ ${repricing?'оновлюю…':'оновити ціни'}</button>${base.priceCheck?`<small class="pchk">перевірено ${esc(base.priceCheck.date.split('-').reverse().join('.'))}</small>`:''}`:''}</div>`).join('');
   $('#cntCat').textContent = records.length;
   $('#cntWish').textContent = wishlist.length;
 }
@@ -690,7 +725,7 @@ function openModal(id){
       ${r.sealed?'<span class="badge" style="position:static;display:inline-block;margin-top:8px">Нерозпакована</span>':''}
       <dl class="facts">${facts.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
       ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
-      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}</small>`:''}</div>
+      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}${r.priceChecked?` · перевірено ${esc(r.priceChecked.split('-').reverse().join('.'))}`:''}${r.priceInStock===false?' · зараз немає в наявності':''}${(r.priceHistory||[]).length>1?` · раніше ${money(r.priceHistory[r.priceHistory.length-2].price)}`:''}</small>`:''}</div>
       ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
       ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
       ${OWNER&&(r.needs||[]).length?`<p class="hint" style="margin:14px 0 0">Не знайшов в інтернеті: ${r.needs.map(n=>n==='back'?'фото звороту':'треклист').join(' і ')}. Скинь фото в чат — додам.</p>`:''}
