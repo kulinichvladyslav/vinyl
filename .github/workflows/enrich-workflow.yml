@@ -3,7 +3,7 @@ name: Заповнити дані купленої платівки
 on:
   push:
     branches: [main]
-    paths: [collection.json]
+    paths: [collection.json, reprice.json]
   workflow_dispatch:
     inputs:
       url:
