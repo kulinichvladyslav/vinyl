@@ -293,7 +293,9 @@ window.COLLECTION = {
       "country": "Україна",
       "about": "Дебютний альбом ужгородського гурту Epolets вийшов у 2014 році і приніс гурту відомість. До 10-річчя у 2024 році вийшло ювілейне вінілове видання. Конверт чорний, з подряпинами, кругла червона наліпка «10th anniversary edition».",
       "tracks": [],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "morricone-le-professionnel",
@@ -415,7 +417,9 @@ window.COLLECTION = {
         "Інстинкт",
         "Тиха революція (feat. Дарія Астаф'єва)"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "imagine-dragons-mercury-act-2",
@@ -463,7 +467,9 @@ window.COLLECTION = {
         "They Don't Know You Like I Do",
         "Enemy (with JID)"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "kurgan-agregat-zembondzhu-autograph",
@@ -501,7 +507,10 @@ window.COLLECTION = {
         "Таксофон",
         "Габелі"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceAdjust": 1500,
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "james-bond-greatest-hits",
@@ -588,7 +597,9 @@ window.COLLECTION = {
         "Кольорова",
         "Добряк"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "michael-jackson-number-ones",
@@ -635,7 +646,9 @@ window.COLLECTION = {
         "Break of Dawn",
         "One More Chance"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "prodigy-their-law",
@@ -679,7 +692,9 @@ window.COLLECTION = {
         "One Love",
         "Hotride"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "bloodhound-gang-hooray-for-boobies",
@@ -727,7 +742,9 @@ window.COLLECTION = {
         "This Is Stupid",
         "The Ten Coolest Things About New Jersey"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "kurgan-agregat-zembondzhu",
@@ -764,7 +781,9 @@ window.COLLECTION = {
       "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
       "priceUrl": "https://jpv.com.ua/product/kurgan-agregat-zembondzhu-zelenyj-prozoryj-albom-limitovane-perevydannya/",
       "currency": "UAH",
-      "price": 2500
+      "price": 2500,
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "music-tribute-tarantino",
@@ -868,7 +887,9 @@ window.COLLECTION = {
       "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
       "priceUrl": "https://jpv.com.ua/product/michael-jackson-number-ones-2-plativky-remasteryng-zbirnyk-perevydannya/",
       "currency": "UAH",
-      "price": 2338
+      "price": 2338,
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "linkin-park-hybrid-theory",
@@ -909,7 +930,9 @@ window.COLLECTION = {
         "Cure for the Itch",
         "Pushing Me Away"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "rammstein-mutter",
@@ -949,7 +972,9 @@ window.COLLECTION = {
         "Adios",
         "Nebel"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": true
     },
     {
       "id": "daft-punk-random-access-memories",
@@ -1001,7 +1026,9 @@ window.COLLECTION = {
         "The Writing of Fragments of Time",
         "Touch (2021 Epilogue)"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "desireless-voyage-voyage",
@@ -1051,7 +1078,7 @@ window.COLLECTION = {
       "cover": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv.jpg",
       "back": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv_back.jpg",
       "price": 1800,
-      "priceBasis": "jpv.com.ua",
+      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
       "priceUrl": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
       "format": "LP, лімітоване",
       "label": "Aby Sho Mzk, HVG",
@@ -1071,7 +1098,9 @@ window.COLLECTION = {
       ],
       "currency": "UAH",
       "added": "2026-10-28",
-      "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване"
+      "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     },
     {
       "id": "quest-pistols-greatest-hits",
@@ -1090,7 +1119,7 @@ window.COLLECTION = {
       "cover": "processed/quest-pistols-greatest-hits.jpg",
       "back": "processed/quest-pistols-greatest-hits_back.jpg",
       "price": 1650,
-      "priceBasis": "jpv.com.ua",
+      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
       "priceUrl": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
       "format": "LP, збірник, рожевий",
       "label": "Moon Records (2)",
@@ -1116,7 +1145,9 @@ window.COLLECTION = {
       ],
       "currency": "UAH",
       "added": "2026-10-28",
-      "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл"
+      "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
+      "priceChecked": "2026-10-28",
+      "priceInStock": false
     }
   ],
   "wishlist": [
@@ -1198,5 +1229,14 @@ window.COLLECTION = {
       "note": "2010; «Not Afraid», «Love the Way You Lie». Rozetka (продавець B Records) · 2 920 ₴ · в наявності. На jpv.com.ua (2 816 ₴) зараз немає; vinyla.com — передзамовлення ≈ 2 350 ₴",
       "added": "2026-10-26"
     }
-  ]
+  ],
+  "priceCheck": {
+    "requested": "2026-10-28T11:32:38Z",
+    "date": "2026-10-28",
+    "before": 56445,
+    "after": 56445,
+    "changed": [],
+    "unchanged": 15,
+    "skipped": 13
+  }
 };
