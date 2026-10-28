@@ -12,6 +12,9 @@ on:
       title:
         description: "Тест: «Виконавець — Альбом» (необов'язково)"
         required: false
+      patch:
+        description: "Ручне виправлення (JSON): {\"<id>\": {\"tracks\": [...], \"backUrl\": \"...\"}}"
+        required: false
 
 permissions:
   contents: write
@@ -24,17 +27,17 @@ concurrency:
 jobs:
   enrich:
     runs-on: ubuntu-latest
+    env:
+      TEST_URL: ${{ inputs.url }}
+      TEST_TITLE: ${{ inputs.title }}
+      PATCH: ${{ inputs.patch }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install requests beautifulsoup4 pillow
-      - name: Test extraction
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.url != '' }}
-        run: python scripts/enrich.py --dry-run "${{ inputs.url }}" "${{ inputs.title }}"
-      - name: Enrich pending records
-        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
+      - name: Enrich / test / patch
         run: python scripts/enrich.py
       - name: Commit
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
