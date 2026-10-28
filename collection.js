@@ -1231,7 +1231,7 @@ window.COLLECTION = {
     }
   ],
   "priceCheck": {
-    "requested": "2026-10-28T11:32:38Z",
+    "requested": "2026-10-28T14:56:12.980Z",
     "date": "2026-10-28",
     "before": 56445,
     "after": 56445,
