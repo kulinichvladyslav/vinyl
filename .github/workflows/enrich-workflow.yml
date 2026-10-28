@@ -1,0 +1,47 @@
+name: Заповнити дані купленої платівки
+
+on:
+  push:
+    branches: [main]
+    paths: [collection.json]
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Тест: посилання на платівку (нічого не змінює, лише показує, що вдалося витягти)"
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: enrich
+  cancel-in-progress: false
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests beautifulsoup4 pillow
+      - name: Test extraction
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.url != '' }}
+        run: python scripts/enrich.py --dry-run "${{ inputs.url }}"
+      - name: Enrich pending records
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
+        run: python scripts/enrich.py
+      - name: Commit
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "No changes"; exit 0; fi
+          git config user.name "vinyl-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add collection.json collection.js processed
+          git commit -m "Колекція: дані й обкладинка для купленої платівки"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
