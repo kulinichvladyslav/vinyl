@@ -147,16 +147,61 @@ def from_generic(url):
             "source": urllib.parse.urlparse(url).hostname.replace("www.", "")}
 
 
-def fetch_shop(url):
+def norm(t):
+    return re.sub(r"[^0-9a-zа-яіїєґ]+", " ", (t or "").lower().replace("ё", "е")).strip()
+
+
+def jpv_search(artist, album):
+    """Find the same record on jpv.com.ua (works even when it's out of stock there)."""
+    if not album:
+        return None
+    r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products",
+                     params={"search": f"{artist} {album}".strip(), "per_page": 30}, headers=UA, timeout=30)
+    r.raise_for_status()
+    na, nb = norm(artist), norm(album)
+    best = None
+    for p in r.json():
+        if "/ru/" in p["permalink"]:
+            continue
+        pa, pb = split_title(p["name"])
+        score = (2 if norm(pb) == nb else 1 if nb and nb in norm(p["name"]) else 0) + (1 if na and na in norm(pa) else 0)
+        if score >= 2 and (not best or score > best[0]):
+            best = (score, p["permalink"])
+    if not best:
+        return None
+    print("  found on jpv:", best[1])
+    d = from_jpv(best[1])
+    if d:
+        d["source"] = "jpv.com.ua (дані й обкладинка)"
+    return d
+
+
+def fetch_shop(url, artist="", album=""):
     host = urllib.parse.urlparse(url).hostname or ""
-    if host.endswith("jpv.com.ua"):
+    info, err = None, None
+    try:
+        info = from_jpv(url) if host.endswith("jpv.com.ua") else None
+        if not info:
+            info = from_generic(url)
+    except Exception as e:
+        err = e
+        print("  shop page failed:", e)
+    if not info or not info.get("image"):
         try:
-            d = from_jpv(url)
-            if d:
-                return d
+            alt = jpv_search(artist or (info or {}).get("artist", ""), album or (info or {}).get("album", ""))
         except Exception as e:
-            print("jpv API failed, trying page:", e)
-    return from_generic(url)
+            alt = None
+            print("  jpv search failed:", e)
+        if alt:
+            alt["trusted_names"] = False if (artist and album) else True
+            if info:  # keep what the original shop gave (price etc.)
+                alt.update({k: v for k, v in info.items() if v and k in ("price",)})
+            info = alt
+    if not info:
+        if artist or album:
+            return {"artist": artist, "album": album, "source": host.replace("www.", "")}
+        raise err or RuntimeError("no data")
+    return info
 
 
 def musicbrainz(artist, album):
@@ -173,7 +218,7 @@ def musicbrainz(artist, album):
     if not groups:
         return {}
     g = groups[0]
-    out = {}
+    out = {"mbid": g.get("id")}
     y = (g.get("first-release-date") or "")[:4]
     if y.isdigit():
         out["year"] = int(y)
@@ -226,7 +271,7 @@ def auto_tags(rec, info):
 
 def enrich(rec):
     url = rec["enrich"]["url"]
-    info = fetch_shop(url)
+    info = fetch_shop(url, rec.get("artist", ""), rec.get("album", ""))
     for k in ("artist", "album", "label", "country", "format", "editionYear"):
         if info.get(k) and not rec.get(k):
             rec[k] = info[k]
@@ -247,10 +292,19 @@ def enrich(rec):
         rec["price"] = round(info["price"])
     rec.setdefault("priceBasis", info.get("source"))
     rec["tags"] = auto_tags(rec, info)
-    if info.get("image"):
-        path = f"processed/{rec['id']}.jpg"
-        save_cover(info["image"], os.path.join(ROOT, path))
-        rec["cover"] = path
+    images = [info.get("image")] if info.get("image") else []
+    if mb.get("mbid"):
+        images.append(f"https://coverartarchive.org/release-group/{mb['mbid']}/front-1200")
+    path = f"processed/{rec['id']}.jpg"
+    for img in images:
+        try:
+            save_cover(img, os.path.join(ROOT, path))
+            rec["cover"] = path
+            break
+        except Exception as e:
+            print("  cover failed:", img, e)
+    if not rec.get("cover"):
+        raise RuntimeError("обкладинку не знайдено")
     return rec
 
 
@@ -264,7 +318,8 @@ def write(data):
 
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--dry-run":
-        info = fetch_shop(sys.argv[2])
+        a, b = split_title(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[3] else ("", "")
+        info = fetch_shop(sys.argv[2], a, b)
         info["musicbrainz"] = musicbrainz(info.get("artist"), re.sub(r"\s*\(.*?\)", "", info.get("album", "")))
         info["about"] = (info.get("about") or "")[:300]
         print(json.dumps(info, ensure_ascii=False, indent=2))
