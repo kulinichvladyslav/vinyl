@@ -387,7 +387,39 @@ def write(data):
         f.write("// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = " + js + ";\n")
 
 
+def apply_patch(data, patch):
+    """Manual fixes: {"<record id>": {"tracks": [...], "backUrl": "...", "coverUrl": "...", "genre": "...", ...}}"""
+    byid = {r["id"]: r for r in data["records"]}
+    for rid, fields in patch.items():
+        rec = byid.get(rid)
+        if not rec:
+            print("  no record", rid)
+            continue
+        for key, suffix in (("coverUrl", ""), ("backUrl", "_back")):
+            url = fields.pop(key, None)
+            if url:
+                path = f"processed/{rid}{suffix}.jpg"
+                save_cover(url, os.path.join(ROOT, path))
+                rec["cover" if not suffix else "back"] = path
+        rec.update(fields)
+        needs = [k for k in ("tracks", "back") if not rec.get(k)]
+        if needs:
+            rec["needs"] = needs
+        else:
+            rec.pop("needs", None)
+        print("  patched", rid, sorted(fields) )
+
+
 def main():
+    if os.environ.get("PATCH", "").strip():
+        with open(os.path.join(ROOT, "collection.json"), encoding="utf-8") as f:
+            data = json.load(f)
+        apply_patch(data, json.loads(os.environ["PATCH"]))
+        data["updated"] = date.today().isoformat()
+        write(data)
+        return
+    if os.environ.get("TEST_URL", "").strip():
+        sys.argv = [sys.argv[0], "--dry-run", os.environ["TEST_URL"].strip(), os.environ.get("TEST_TITLE", "")]
     if len(sys.argv) > 2 and sys.argv[1] == "--dry-run":
         a, b = split_title(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[3] else ("", "")
         info = fetch_shop(sys.argv[2], a, b)
