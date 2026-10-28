@@ -208,14 +208,29 @@ def fetch_shop(url, artist="", album=""):
     return info
 
 
+def squash(t):
+    return re.sub(r"[^0-9a-zа-яіїєґ]+", "", (t or "").lower())
+
+
+def mb_get(path, **params):
+    time.sleep(1.1)  # MusicBrainz allows ~1 request per second
+    r = requests.get("https://musicbrainz.org/ws/2/" + path, params={**params, "fmt": "json"}, headers=MB_UA, timeout=30)
+    r.raise_for_status()
+    return r.json()
+
+
 def musicbrainz(artist, album):
     if not artist or not album:
         return {}
-    q = f'artist:"{artist}" AND releasegroup:"{album}"'
+    groups = []
     try:
-        r = requests.get("https://musicbrainz.org/ws/2/release-group/", params={"query": q, "fmt": "json", "limit": 5}, headers=MB_UA, timeout=30)
-        r.raise_for_status()
-        groups = [g for g in r.json().get("release-groups", []) if g.get("score", 0) >= 80]
+        for q in (f'artist:"{artist}" AND releasegroup:"{album}"', f'releasegroup:"{album}"'):
+            res = mb_get("release-group/", query=q, limit=10).get("release-groups", [])
+            # accept only groups whose artist matches (ignoring punctuation: Run-DMC == Run‐D.M.C.)
+            groups = [g for g in res if g.get("score", 0) >= 80 and squash(artist) in squash(" ".join(
+                c.get("name", "") + " " + c.get("artist", {}).get("name", "") for c in g.get("artist-credit", [])))]
+            if groups:
+                break
     except Exception as e:
         print("MusicBrainz failed:", e)
         return {}
@@ -232,6 +247,36 @@ def musicbrainz(artist, album):
         if any(key == n or key in n.split() or n.startswith(key) for n in names):
             out["genre"] = ua
             break
+    return out
+
+
+def mb_tracks_and_back(mbid):
+    """Tracklist (vinyl release preferred) and a back-cover URL from the Cover Art Archive."""
+    out = {}
+    try:
+        rels = mb_get("release", **{"release-group": mbid, "inc": "recordings media", "limit": 100}).get("releases", [])
+    except Exception as e:
+        print("  MusicBrainz releases failed:", e)
+        return out
+    def is_vinyl(r):
+        return any("vinyl" in (m.get("format") or "").lower() for m in r.get("media", []))
+    rels.sort(key=lambda r: (not is_vinyl(r), r.get("status") != "Official", r.get("date") or "9999"))
+    for r in rels:
+        tracks = [t.get("title") for m in r.get("media", []) for t in m.get("tracks", []) if t.get("title")]
+        if tracks:
+            out["tracks"] = tracks
+            break
+    for r in rels[:12]:
+        if not r.get("cover-art-archive", {}).get("back"):
+            continue
+        try:
+            imgs = requests.get(f"https://coverartarchive.org/release/{r['id']}", headers=MB_UA, timeout=30).json().get("images", [])
+            back = next((i for i in imgs if "Back" in (i.get("types") or [])), None)
+            if back:
+                out["back"] = back.get("thumbnails", {}).get("1200") or back.get("thumbnails", {}).get("large") or back.get("image")
+                break
+        except Exception as e:
+            print("  Cover Art Archive failed:", e)
     return out
 
 
@@ -309,6 +354,28 @@ def enrich(rec):
             print("  cover failed:", img, e)
     if not rec.get("cover"):
         raise RuntimeError("обкладинку не знайдено")
+    add_tracks_and_back(rec, mb)
+    return rec
+
+
+def add_tracks_and_back(rec, mb=None):
+    if mb is None:
+        mb = musicbrainz(rec.get("artist"), re.sub(r"\s*\(.*?\)", "", rec.get("album", "")))
+    extra = mb_tracks_and_back(mb["mbid"]) if mb.get("mbid") else {}
+    if extra.get("tracks") and not rec.get("tracks"):
+        rec["tracks"] = extra["tracks"]
+    if extra.get("back") and not rec.get("back"):
+        try:
+            bpath = f"processed/{rec['id']}_back.jpg"
+            save_cover(extra["back"], os.path.join(ROOT, bpath))
+            rec["back"] = bpath
+        except Exception as e:
+            print("  back cover failed:", e)
+    missing = [k for k in ("tracks", "back") if not rec.get(k)]
+    if missing:
+        rec["needs"] = missing  # Claude will ask for photos / fill in by hand
+    else:
+        rec.pop("needs", None)
     return rec
 
 
@@ -324,7 +391,9 @@ def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--dry-run":
         a, b = split_title(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[3] else ("", "")
         info = fetch_shop(sys.argv[2], a, b)
-        info["musicbrainz"] = musicbrainz(info.get("artist"), re.sub(r"\s*\(.*?\)", "", info.get("album", "")))
+        info["musicbrainz"] = musicbrainz(a or info.get("artist"), re.sub(r"\s*\(.*?\)", "", b or info.get("album", "")))
+        if info["musicbrainz"].get("mbid"):
+            info["musicbrainz"].update(mb_tracks_and_back(info["musicbrainz"]["mbid"]))
         info["about"] = (info.get("about") or "")[:300]
         print(json.dumps(info, ensure_ascii=False, indent=2))
         return
@@ -333,6 +402,16 @@ def main():
     changed = False
     for rec in data["records"]:
         e = rec.get("enrich")
+        if not e and rec.get("added") and "needs" not in rec and not (rec.get("tracks") and rec.get("back")):
+            # bought via the site before tracklist/back lookup existed: try once
+            print("Tracks/back for", rec["id"])
+            try:
+                add_tracks_and_back(rec)
+            except Exception as ex:
+                print("  failed:", ex)
+                rec["needs"] = [k for k in ("tracks", "back") if not rec.get(k)]
+            changed = True
+            continue
         if not e or e.get("status") == "done":
             continue
         print("Enriching", rec["id"], e.get("url"))
@@ -343,7 +422,6 @@ def main():
             print("  failed:", ex)
             rec["enrich"] = {**e, "status": "failed", "error": str(ex)[:200], "tried": date.today().isoformat()}
         changed = True
-        time.sleep(1.1)  # MusicBrainz rate limit
     if changed:
         data["updated"] = date.today().isoformat()
         write(data)
