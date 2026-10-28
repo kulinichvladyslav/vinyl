@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-10-25",
+  "updated": "2026-10-28",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1077,12 +1077,6 @@ window.COLLECTION = {
       "title": "SadSvit — Cassette",
       "link": "https://jpv.com.ua/product/sadsvit-cassette-korichneviy-albom-remastering/",
       "note": "jpv.com.ua · 2 000 ₴ · в наявності · коричневий вініл",
-      "added": "2026-10-25"
-    },
-    {
-      "title": "Сусіди Стерплять — З найглибших кутків",
-      "link": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
-      "note": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
       "added": "2026-10-25"
     },
     {
