@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-10-28",
+  "updated": "2026-10-25",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1080,9 +1080,21 @@ window.COLLECTION = {
       "added": "2026-10-25"
     },
     {
+      "title": "Сусіди Стерплять — З найглибших кутків",
+      "link": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
+      "note": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
+      "added": "2026-10-25"
+    },
+    {
       "title": "Quest Pistols — Greatest Hits",
       "link": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
       "note": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
+      "added": "2026-10-25"
+    },
+    {
+      "title": "Skinhate — Квиток до раю",
+      "link": "https://jpv.com.ua/product/skinhate-kvitok-do-rayu-albom-lmtovane-perevidannya-remastering/",
+      "note": "jpv.com.ua · 1 690 ₴ · в наявності · лімітоване, ремастеринг",
       "added": "2026-10-25"
     },
     {

@@ -208,7 +208,11 @@ body.ro [data-tab="add"],body.ro #tab-add,body.ro #exportbar,body.ro [data-toggl
 body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
 .ownerbtn{background:none;border:0;color:inherit;opacity:.55;font:inherit;cursor:pointer;text-decoration:underline;padding:0}
 .ownerbtn:hover{opacity:1}
-#wForm.busy{opacity:.6;pointer-events:none}
+#wForm.busy,#buyForm.busy{opacity:.6;pointer-events:none}
+.mbox.single{grid-template-columns:1fr;max-width:560px}
+.mbox.single .mtext{position:relative}
+.noimg{aspect-ratio:1;display:grid;place-items:center;color:var(--muted);font-size:14px;background:repeating-radial-gradient(circle at 50% 50%,#151515 0 2px,#1d1d1d 2px 4px);border-radius:6px}
+.badge.pend{top:auto;bottom:10px;background:#2b2b2b;color:var(--accent);border:1px solid rgba(232,163,61,.4)}
 </style>
 </head>
 <body>
@@ -387,9 +391,11 @@ async function gh(path, opt = {}){
   return opt.raw ? r.json() : r.status === 204 ? null : r.json();
 }
 const ghFresh = () => gh(`/contents/collection.json?ref=${GH.branch}&t=${Date.now()}`, { raw:true });
-async function ghSaveWishlist(change, message){
+async function ghSaveWishlist(change, message){ return ghSave(data => { data.wishlist = change(data.wishlist || []); }, message); }
+async function ghSave(mutate, message){
   const data = await ghFresh();                       // latest file, so nothing else gets overwritten
-  data.wishlist = change(data.wishlist || []);
+  data.wishlist = data.wishlist || [];
+  mutate(data);
   data.updated = new Date().toISOString().slice(0,10);
   const json = JSON.stringify(data, null, 2) + '\n';
   const js = '// Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)\nwindow.COLLECTION = ' + JSON.stringify(data, null, 2) + ';\n';
@@ -402,6 +408,83 @@ async function ghSaveWishlist(change, message){
   await gh(`/git/refs/heads/${GH.branch}`, { method:'PATCH', body: JSON.stringify({ sha: commit.sha }) });
   base = { records: data.records || base.records, wishlist: data.wishlist, updated: data.updated };
   local.wishlist = null; await store.set('local', local); merge(); renderAll();
+  return data;
+}
+/* ---------- bought: wishlist -> collection ---------- */
+const TRL = {а:'a',б:'b',в:'v',г:'h',ґ:'g',д:'d',е:'e',є:'ie',ж:'zh',з:'z',и:'y',і:'i',ї:'i',й:'i',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'kh',ц:'ts',ч:'ch',ш:'sh',щ:'shch',ь:'',ю:'iu',я:'ia',ы:'y',э:'e',ё:'e',ъ:''};
+const slugUa = s => ([...String(s).toLowerCase()].map(c => TRL[c] ?? c).join('').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70) || 'record');
+const splitTitle = t => { for (const sep of [' — ',' – ',' - ']) if (t.includes(sep)) { const [a, ...b] = t.split(sep); return [a.trim(), b.join(sep).trim()]; } return ['', t.trim()]; };
+const notePrice = n => { const m = String(n||'').match(/(\d[\d\s\u00a0]*)\s*₴/); return m ? +m[1].replace(/\D/g,'') : null; };
+let buyIdx = null;
+function openBuy(i){
+  const w = wishlist[i]; if (!w) return; buyIdx = i;
+  const [artist, album] = splitTitle(w.title);
+  const h = w.link ? host(w.link) : '';
+  $('#mbox').classList.add('single');
+  $('#mbox').innerHTML = `
+    <form class="mtext formcol" id="buyForm">
+      <button type="button" class="close" data-close aria-label="Закрити">×</button>
+      <div class="ar">Купив платівку</div>
+      <h2 id="mTitle" style="margin-bottom:6px">Перенести в колекцію</h2>
+      <div class="row">
+        <div class="field"><label for="bArtist">Виконавець</label><input id="bArtist" value="${esc(artist)}"></div>
+        <div class="field"><label for="bAlbum">Альбом *</label><input id="bAlbum" required value="${esc(album)}"></div>
+      </div>
+      <div class="field"><label for="bPrice">Ціна, ₴</label><input id="bPrice" type="number" min="0" step="1" value="${notePrice(w.note) ?? ''}"></div>
+      <label class="check"><input type="checkbox" id="bSealed" checked> <span><b>Нерозпакована</b> (sealed)</span></label>
+      <p class="hint" style="margin:0">${w.link ? `Обкладинку, рік, жанр, лейбл, формат і опис підтягну автоматично з <b>${esc(h)}</b> — це займе 1–2 хвилини після збереження.` : 'Посилання немає — обкладинку й деталі додасть Claude, коли скинеш фото в чат.'}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn pri" type="submit">Перенести в колекцію</button>
+        <button class="btn" type="button" data-close>Скасувати</button>
+      </div>
+    </form>`;
+  $('#modal').classList.add('on'); document.body.style.overflow='hidden';
+  $('#bAlbum').focus();
+}
+document.addEventListener('submit', async e => {
+  if (e.target.id !== 'buyForm') return;
+  e.preventDefault();
+  const w = wishlist[buyIdx]; if (!w) return;
+  const f = e.target; f.classList.add('busy');
+  const artist = $('#bArtist').value.trim(), album = $('#bAlbum').value.trim();
+  const price = $('#bPrice').value !== '' ? +$('#bPrice').value : null;
+  const same = x => x.title === w.title && (x.added||'') === (w.added||'') && (x.link||'') === (w.link||'');
+  let newId = '';
+  toast('Переношу в колекцію…');
+  try {
+    await ghSave(data => {
+      const i = data.wishlist.findIndex(same); if (i >= 0) data.wishlist.splice(i, 1);
+      const ids = new Set(data.records.map(r => r.id));
+      let id = slugUa((artist ? artist + ' ' : '') + album), k = 2; while (ids.has(id)) id = slugUa((artist ? artist + ' ' : '') + album) + '-' + k++;
+      newId = id;
+      data.records.push({ id, artist, album, year: null, editionYear: null, genre: '', sealed: $('#bSealed').checked, tags: [],
+        description: '', cover: null, back: null,
+        price, priceBasis: w.link ? host(w.link) : 'ціна покупки', priceUrl: w.link || null,
+        format: '', label: '', country: '', about: '', tracks: [], currency: 'UAH',
+        added: new Date().toISOString().slice(0,10), boughtNote: w.note || '',
+        ...(w.link ? { enrich: { url: w.link, status: 'pending' } } : {}) });
+    }, `Колекція: куплено ${w.title}`);
+    closeModal(); showTab('catalog');
+    Object.assign(F,{q:'',artist:'',year:'',status:'all',genre:'',tag:'',price:'',sort:'added'}); $('#fSort').value='added'; $('#q').value='';
+    renderFilters(); renderGrid(); window.scrollTo({top:0});
+    toast(w.link ? `«${album}» у колекції. Обкладинка й деталі з'являться за 1–2 хв` : `«${album}» у колекції`);
+    if (w.link) waitEnrich(newId);
+  } catch (err) { console.error(err); toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
+  f.classList.remove('busy');
+});
+async function waitEnrich(id, tries = 0){
+  if (tries > 15) return;
+  setTimeout(async () => {
+    try {
+      const data = await ghFresh(); const r = (data.records||[]).find(x => x.id === id);
+      if (r && !(r.enrich && r.enrich.status === 'pending')){
+        base = { records: data.records, wishlist: data.wishlist || [], updated: data.updated }; merge(); renderAll();
+        toast(r.enrich ? `Не вдалося підтягнути дані для «${r.album}» — скинь фото в чат` : `«${r.album}»: обкладинку й деталі додано`);
+        return;
+      }
+    } catch {}
+    waitEnrich(id, tries + 1);
+  }, 20000);
 }
 async function ownerLogin(){
   const t = (window.prompt('Вставте GitHub-токен (fine-grained, доступ лише до репозиторію vinyl, Contents: Read and write). Він збережеться тільки в цьому браузері.') || '').trim();
@@ -537,6 +620,7 @@ function renderGrid(){
         <div class="disc"></div>
         <div class="cover">${r.cover?`<img loading="lazy" src="${esc(r.cover)}" alt="">`:''}</div>
         ${r.sealed?'<span class="badge">Нерозпакована</span>':''}
+        ${r.enrich&&r.enrich.status==='pending'?'<span class="badge pend">Оновлюється…</span>':''}
         ${r._local?'<span class="badge local">Нова</span>':''}
       </div>
       <div class="meta">
@@ -577,9 +661,10 @@ function openModal(id){
   const r = records.find(x=>x.id===id); if (!r) return;
   const facts = [['Виконавець',r.artist],['Альбом',r.album],['Рік виходу',r.year],['Видання',r.editionYear&&r.editionYear!==r.year?r.editionYear:null],['Жанр',r.genre],['Формат',r.format],['Лейбл',r.label&&r.label!=='—'?r.label:null],['Країна видання',r.country&&r.country!=='—'?r.country:null],['Статус',sealedTxt(r)]].filter(f=>f[1]);
   const tracks = r.tracks || [];
+  $('#mbox').classList.remove('single');
   $('#mbox').innerHTML = `
     <div class="mimg">
-      <img id="mImg" src="${esc(r.cover||'')}" alt="${esc(r.album)}">
+      ${r.cover?`<img id="mImg" src="${esc(r.cover)}" alt="${esc(r.album)}">`:`<div class="noimg">${r.enrich&&r.enrich.status==='pending'?'Обкладинка завантажується…':'Немає фото'}</div>`}
       ${r.back?`<div class="flip"><button class="btn sm" data-side="cover">Обкладинка</button><button class="btn sm" data-side="back">Зворот</button></div>`:''}
     </div>
     <div class="mtext">
@@ -666,13 +751,15 @@ $('#wForm').addEventListener('submit', async e => {
 });
 $('#wList').addEventListener('click', async e => {
   const d = e.target.closest('[data-wdel]'), b = e.target.closest('[data-bought]');
-  if (OWNER && (d || b)){
-    const w = wishlist[(d || b).dataset[d ? 'wdel' : 'bought']]; if (!w) return;
+  if (OWNER && b){ openBuy(Number(b.dataset.bought)); return; }
+  if (OWNER && d){
+    const w = wishlist[d.dataset.wdel]; if (!w) return;
+    if (!confirm(`Прибрати «${w.title}» зі списку бажань?`)) return;
     const same = x => x.title === w.title && (x.added||'') === (w.added||'') && (x.link||'') === (w.link||'');
     (d||b).disabled = true; toast('Зберігаю на сайті…');
     try {
-      await ghSaveWishlist(list => { const i = list.findIndex(same); return i < 0 ? list : list.filter((_,k)=>k!==i); }, `Wishlist: ${b ? 'куплено' : '−'} ${w.title}`);
-      toast(b ? 'Вітаю з покупкою! Скинь фото в чат, і я додам платівку в колекцію' : 'Прибрано зі списку бажань');
+      await ghSaveWishlist(list => { const i = list.findIndex(same); return i < 0 ? list : list.filter((_,k)=>k!==i); }, `Wishlist: − ${w.title}`);
+      toast('Прибрано зі списку бажань');
     } catch (err) { console.error(err); (d||b).disabled = false; toast('Не вдалося зберегти: ' + err.message.slice(0,60)); }
     return;
   }
