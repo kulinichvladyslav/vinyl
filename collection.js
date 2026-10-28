@@ -1086,12 +1086,6 @@ window.COLLECTION = {
       "added": "2026-10-25"
     },
     {
-      "title": "Skinhate — Квиток до раю",
-      "link": "https://jpv.com.ua/product/skinhate-kvitok-do-rayu-albom-lmtovane-perevidannya-remastering/",
-      "note": "jpv.com.ua · 1 690 ₴ · в наявності · лімітоване, ремастеринг",
-      "added": "2026-10-25"
-    },
-    {
       "title": "Океан Ельзи — Янанебібув",
       "link": "https://jpv.com.ua/product/okean-elzy-yananebibuv-2-plativky-prozoryj-synij-remasteryng-albom/",
       "note": "jpv.com.ua · 2 900 ₴ · в наявності · 2LP, прозорий синій вініл, ремастеринг",
