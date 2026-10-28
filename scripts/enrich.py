@@ -204,7 +204,7 @@ def save_cover(img_url, path):
 
 
 def auto_tags(rec, info):
-    f = (info.get("features") or "") + " " + rec.get("album", "").lower()
+    f = " ".join([info.get("features") or "", rec.get("album", ""), rec.get("format", ""), (info.get("about") or "")[:400]]).lower()
     tags = list(rec.get("tags") or [])
     def add(t):
         if t not in tags:
@@ -213,7 +213,7 @@ def auto_tags(rec, info):
     if (rec.get("country") or "").lower().startswith("україн") or re.search(r"[іїєґ]", names) or re.search(
             r"moon records|abyss|shamych|аудіо україна|lavina|comp music|enjoy records|vinyla records", (rec.get("label") or "").lower()):
         add("Українське")
-    if re.search(r"прозор|кольоров|червон|синій|синя|жовт|зелен|рожев|білий|біла|мармур|бризк|splatter|colou?r|коричнев|помаранч|фіолет|блакит|бірюз|золот|срібл", f):
+    if re.search(r"прозор|кольоров|вінілі кольору|baby blue|червон|синій|синя|жовт|зелен|рожев|білий|біла|мармур|бризк|splatter|colou?r|коричнев|помаранч|фіолет|блакит|бірюз|золот|срібл", f):
         add("Кольоровий вініл")
     if re.search(r"збірник|greatest hits|best of|the best|hits", f):
         add("Збірки")
