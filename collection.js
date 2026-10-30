@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1237,12 +1237,12 @@ window.COLLECTION = {
     }
   ],
   "priceCheck": {
-    "requested": "2026-10-28T14:56:12.980Z",
-    "date": "2026-10-28",
+    "requested": "2026-10-30T15:51:40.554Z",
+    "date": "2026-10-30",
     "before": 56445,
     "after": 56445,
     "changed": [],
-    "unchanged": 15,
-    "skipped": 13
+    "unchanged": 0,
+    "skipped": 28
   }
 };
