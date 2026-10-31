@@ -20,9 +20,9 @@
         "Photo/photo_2_2026-10-25_14-18-09.jpg",
         "Photo/photo_1_2026-10-25_14-18-09.jpg"
       ],
-      "price": 2200,
-      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=%D0%9A%D0%B8%D0%BD%D0%BE+%D0%93%D1%80%D1%83%D0%BF%D0%BF%D0%B0+%D0%BA%D1%80%D0%BE%D0%B2%D0%B8&type=release&format_exact=Vinyl",
+      "price": 3000,
+      "priceBasis": "OLX, Russian Disc 1991 — 31.10.2026",
+      "priceUrl": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0-%D0%BA%D1%80%D0%BE%D0%B2%D0%B8-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/",
       "format": "LP",
       "label": "Red Wave / Русский диск",
       "country": "СРСР / США",
@@ -44,18 +44,23 @@
       "discogsId": 1063994,
       "priceSources": [
         {
-          "source": "vinyl.com.ua",
-          "price": 469,
-          "title": "Пластинка группа Кино \" Группа крови \" 1991 Russian Disc ‎– R60 00473 , СССР",
-          "url": "https://vinyl.com.ua/uk/vinyl/plastinka-gruppa-kino-gruppa-krovi-1991-russian-disc-r60-00473-sssr-37448.html"
+          "source": "OLX",
+          "price": 3000,
+          "title": "КИНО — «Группа крови» (1991), Original Russian Disc",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0-%D0%BA%D1%80%D0%BE%D0%B2%D0%B8-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2200
         },
         {
-          "source": "Discogs",
-          "price": 4988,
-          "title": "від $109.99 · 8 у продажу",
-          "url": "https://www.discogs.com/sell/release/1063994"
+          "date": "2026-10-31",
+          "price": 3000
         }
-      ]
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "kino-noch",
@@ -76,9 +81,9 @@
         "Photo/photo_4_2026-10-25_14-18-09.jpg",
         "Photo/photo_3_2026-10-25_14-18-09.jpg"
       ],
-      "price": 2500,
-      "priceBasis": "медіана: vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/release/2005085",
+      "price": 1500,
+      "priceBasis": "OLX, Мелодия 1988 — 31.10.2026",
+      "priceUrl": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%BD%D0%BE%D1%87%D1%8C-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -100,16 +105,28 @@
       "discogsId": 2005085,
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 1134,
-          "title": "від $25.0 · 3 у продажу",
-          "url": "https://www.discogs.com/sell/release/2005085"
+          "source": "OLX",
+          "price": 1500,
+          "title": "Цой Кино Ночь, перший прес 1988",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%BD%D0%BE%D1%87%D1%8C-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/"
         },
         {
-          "source": "vinyl.com.ua",
-          "price": 2500,
-          "title": "Кино – Ночь LP / Мелодия – С90 26795 003 / USSR 1988",
-          "url": "https://vinyl.com.ua/uk/vinyl/kino-noch-lp-melodija-s90-26795-003-ussr-1988-438266.html"
+          "source": "OLX",
+          "price": 1500,
+          "title": "Группа КИНО — «Ночь» (1988)",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%BD%D0%BE%D1%87%D1%8C-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/"
+        },
+        {
+          "source": "OLX",
+          "price": 1000,
+          "title": "Группа Кино «Ночь», вживана",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%BD%D0%BE%D1%87%D1%8C-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/"
+        },
+        {
+          "source": "OLX",
+          "price": 735,
+          "title": "Кино — Ночь, вживана",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BA%D0%B8%D0%BD%D0%BE-%D0%BD%D0%BE%D1%87%D1%8C-%D0%BF%D0%BB%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%BA%D0%B0/"
         }
       ],
       "priceChecked": "2026-10-31",
@@ -121,6 +138,10 @@
         {
           "date": "2026-10-31",
           "price": 2500
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1500
         }
       ]
     },
@@ -192,9 +213,9 @@
         "Photo/photo_8_2026-10-25_14-18-09.jpg",
         "Photo/photo_7_2026-10-25_14-18-09.jpg"
       ],
-      "price": 250,
-      "priceBasis": "медіана: vinyl.com.ua ×4",
-      "priceUrl": "https://www.discogs.com/release/2374138",
+      "price": 500,
+      "priceBasis": "OLX, Мелодия — 31.10.2026",
+      "priceUrl": "https://www.olx.ua/uk/list/q-modern-talking-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC-%D0%BE-%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8/",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -215,37 +236,35 @@
       "discogsId": 2374138,
       "priceSources": [
         {
-          "source": "vinyl.com.ua",
-          "price": 120,
-          "title": "Модерн Токинг - Поговорим О Любви ( Мелодия )",
-          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-pogovorim-o-lubvi-melodija--255078.html"
+          "source": "OLX",
+          "price": 450,
+          "title": "Поговорим о любви, Мелодія 1985",
+          "url": "https://www.olx.ua/uk/list/q-modern-talking-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC-%D0%BE-%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8/"
         },
         {
-          "source": "vinyl.com.ua",
-          "price": 150,
-          "title": "Модерн Токинг-Modern talking-Поговорим о любви (є проблема, див. в описі) (3)-NM-, Мелодія",
-          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-je-problema-div-v-opisi-3-nm-melodija-566602.html"
+          "source": "OLX",
+          "price": 500,
+          "title": "Поговорим о любви, Мелодія, СРСР",
+          "url": "https://www.olx.ua/uk/list/q-modern-talking-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC-%D0%BE-%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8/"
         },
         {
-          "source": "Discogs",
-          "price": 181,
-          "title": "від $3.99 · 4 у продажу",
-          "url": "https://www.discogs.com/sell/release/2374138"
-        },
-        {
-          "source": "vinyl.com.ua",
-          "price": 350,
-          "title": "Модерн Токинг-Modern talking-Поговорим о любви (1)-Ex.+, Мелодія",
-          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-1-ex-melodija-482317.html"
-        },
-        {
-          "source": "vinyl.com.ua",
-          "price": 350,
-          "title": "Модерн Токинг-Modern talking-Поговорим о любви (4)-Ex.+, Мелодія",
-          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-4-ex-melodija-512615.html"
+          "source": "OLX",
+          "price": 550,
+          "title": "Let's Talk About Love",
+          "url": "https://www.olx.ua/uk/list/q-modern-talking-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC-%D0%BE-%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8/"
         }
       ],
-      "priceChecked": "2026-10-31"
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-31",
+          "price": 250
+        },
+        {
+          "date": "2026-10-31",
+          "price": 500
+        }
+      ]
     },
     {
       "id": "nautilus-rodivshiysya",
@@ -266,9 +285,9 @@
         "Photo/photo_10_2026-10-25_14-18-09.jpg",
         "Photo/photo_9_2026-10-25_14-18-09.jpg"
       ],
-      "price": 450,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Nautilus+Pompilius+%D0%A0%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F+%D0%B2+%D1%8D%D1%82%D1%83+%D0%BD%D0%BE%D1%87%D1%8C&type=release&format_exact=Vinyl",
+      "price": 1850,
+      "priceBasis": "vinyl.com.ua + OLX, Russian Disc 1991 — 31.10.2026",
+      "priceUrl": "https://vinyl.com.ua/uk/search/?q=%D0%A0%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F",
       "format": "LP",
       "label": "Русский диск",
       "country": "СРСР",
@@ -289,18 +308,35 @@
       "discogsId": 1619386,
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 408,
-          "title": "від $8.99 · 14 у продажу",
-          "url": "https://www.discogs.com/sell/release/1619386"
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Nautilus Pompilius – Родившийся в эту ночь, Russian Disc",
+          "url": "https://vinyl.com.ua/uk/search/?q=%D0%A0%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F"
         },
         {
           "source": "vinyl.com.ua",
-          "price": 1900,
-          "title": "Nautilus Pompilius ‎– Родившийся В Эту Ночь LP / Russian Disc ‎– R60 00105 / USSR 1991",
-          "url": "https://vinyl.com.ua/uk/vinyl/nautilus-pompilius-rodivshijsa-v-etu-noch-lp-russian-disc-r60-00105-ussr-1991-523148.html"
+          "price": 1875,
+          "title": "Наутилус Помпилиус — Родившийся в эту ночь (1991)",
+          "url": "https://vinyl.com.ua/uk/search/?q=%D0%A0%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F"
+        },
+        {
+          "source": "OLX",
+          "price": 1500,
+          "title": "Nautilus Pompilius — Родившийся в эту ночь",
+          "url": "https://www.olx.ua/uk/list/q-%D0%BD%D0%B0%D1%83%D1%82%D0%B8%D0%BB%D1%83%D1%81-%D1%80%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F-%D0%B2-%D1%8D%D1%82%D1%83-%D0%BD%D0%BE%D1%87%D1%8C/"
         }
-      ]
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 450
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1850
+        }
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "robin-beck-first-time",
@@ -321,9 +357,9 @@
         "Photo/photo_12_2026-10-25_14-18-09.jpg",
         "Photo/photo_11_2026-10-25_14-18-09.jpg"
       ],
-      "price": 150,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Robin+Beck+First+Time&type=release&format_exact=Vinyl",
+      "price": 100,
+      "priceBasis": "vinyl.com.ua, 12\" 1988 — 31.10.2026",
+      "priceUrl": "https://vinyl.com.ua/uk/search/?q=Robin%20Beck",
       "format": "12\" maxi-single",
       "label": "Mercury",
       "country": "Німеччина",
@@ -337,12 +373,29 @@
       "discogsId": 618158,
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 41,
-          "title": "від $0.9 · 60 у продажу",
-          "url": "https://www.discogs.com/sell/release/618158"
+          "source": "vinyl.com.ua",
+          "price": 80,
+          "title": "Robin Beck — First Time",
+          "url": "https://vinyl.com.ua/uk/search/?q=Robin%20Beck"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 100,
+          "title": "Robin Beck — First Time MS 12\" 45RPM",
+          "url": "https://vinyl.com.ua/uk/search/?q=Robin%20Beck"
         }
-      ]
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 150
+        },
+        {
+          "date": "2026-10-31",
+          "price": 100
+        }
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "marybell-katastrophy-amygdala",
@@ -481,9 +534,9 @@
         "Photo/photo_20_2026-10-25_14-18-10.jpg",
         "Photo/photo_19_2026-10-25_14-18-10.jpg"
       ],
-      "price": 950,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Queen+Greatest+Hits&type=release&format_exact=Vinyl",
+      "price": 1500,
+      "priceBasis": "OLX, оригінал 1981 (вживаний) — 31.10.2026",
+      "priceUrl": "https://www.olx.ua/uk/list/q-queen-greatest-hits-1981/",
       "format": "LP",
       "label": "EMI / Pathé Marconi",
       "country": "Франція",
@@ -512,12 +565,41 @@
       "discogsId": 6904770,
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 77,
-          "title": "від $1.69 · 9 у продажу",
-          "url": "https://www.discogs.com/sell/release/6904770"
+          "source": "OLX",
+          "price": 1500,
+          "title": "Queen Greatest Hits, вживана",
+          "url": "https://www.olx.ua/uk/list/q-queen-greatest-hits-1981/"
+        },
+        {
+          "source": "OLX",
+          "price": 2900,
+          "title": "Queen «Greatest Hits» вінтажна 1981",
+          "url": "https://www.olx.ua/uk/list/q-queen-greatest-hits-1981/"
+        },
+        {
+          "source": "muziker.ua",
+          "price": 1749,
+          "title": "Перевидання 2LP (для порівняння, інше видання)",
+          "url": "https://www.muziker.ua/search?q=queen+greatest+hits"
+        },
+        {
+          "source": "lampala.com.ua",
+          "price": 2985,
+          "title": "Перевидання 2LP 2026 (для порівняння)",
+          "url": "https://lampala.com.ua/search?term=queen+greatest+hits"
         }
-      ]
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 950
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1500
+        }
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "kurgan-agregat-pole-kanifoli",
@@ -950,9 +1032,9 @@
         "Photo/photo_40_2026-10-25_14-18-10.jpg",
         "Photo/photo_39_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1500,
-      "priceBasis": "медіана: vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/release/15999788",
+      "price": 1250,
+      "priceBasis": "muziker.ua, 2LP Remastered, в наявності — 31.10.2026",
+      "priceUrl": "https://www.muziker.ua/search?q=music+tribute+tarantino",
       "format": "2LP",
       "label": "Wagram / Collection Cinezik",
       "country": "Франція",
@@ -965,16 +1047,10 @@
       ],
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 786,
-          "title": "від $17.32 · 6 у продажу",
-          "url": "https://www.discogs.com/sell/release/15999788"
-        },
-        {
-          "source": "vinyl.com.ua",
-          "price": 1521,
-          "title": "Various – Music Tribute Tarantino - The Very Best Songs From Quentin Tarantino's Films",
-          "url": "https://vinyl.com.ua/uk/vinyl/various-music-tribute-tarantino-the-very-best-songs-from-quentin-tarantinos-films-427736.html"
+          "source": "muziker.ua",
+          "price": 1239,
+          "title": "Music Tribute Tarantino (Remastered) (2 LP), в наявності",
+          "url": "https://www.muziker.ua/search?q=music+tribute+tarantino"
         }
       ],
       "priceChecked": "2026-10-31",
@@ -986,6 +1062,10 @@
         {
           "date": "2026-10-31",
           "price": 1500
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1250
         }
       ]
     },
@@ -1246,9 +1326,9 @@
         "Photo/photo_52_2026-10-25_14-18-10.jpg",
         "Photo/photo_51_2026-10-25_14-18-10.jpg"
       ],
-      "price": 200,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Desireless+Voyage+Voyage&type=release&format_exact=Vinyl",
+      "price": 750,
+      "priceBasis": "vinyl.com.ua, 7\" 1986 — 31.10.2026",
+      "priceUrl": "https://vinyl.com.ua/uk/search/?q=Desireless",
       "format": "7\" single",
       "label": "CBS",
       "country": "Франція",
@@ -1261,12 +1341,29 @@
       "discogsId": 5213959,
       "priceSources": [
         {
-          "source": "Discogs",
-          "price": 255,
-          "title": "від $5.62 · 2 у продажу",
-          "url": "https://www.discogs.com/sell/release/5213959"
+          "source": "vinyl.com.ua",
+          "price": 750,
+          "title": "Desireless — Voyage / Destin Fragile, сингл",
+          "url": "https://vinyl.com.ua/uk/search/?q=Desireless"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 975,
+          "title": "Desireless — Voyage Voyage 1986, 7\" (Holland)",
+          "url": "https://vinyl.com.ua/uk/search/?q=Desireless"
         }
-      ]
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 200
+        },
+        {
+          "date": "2026-10-31",
+          "price": 750
+        }
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
