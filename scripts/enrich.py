@@ -631,6 +631,12 @@ def apply_patch(data, patch):
                 path = f"processed/{rid}{suffix}.jpg"
                 save_cover(url, os.path.join(ROOT, path))
                 rec["cover" if not suffix else "back"] = path
+        if "price" in fields and fields["price"] != rec.get("price"):
+            hist = rec.setdefault("priceHistory", [])
+            if not hist and rec.get("price") is not None:
+                hist.append({"date": rec.get("priceChecked") or "2026-10-25", "price": rec["price"]})
+            hist.append({"date": date.today().isoformat(), "price": fields["price"]})
+            fields.setdefault("priceChecked", date.today().isoformat())
         rec.update(fields)
         needs = [k for k in ("tracks", "back") if not rec.get(k)]
         if needs:
