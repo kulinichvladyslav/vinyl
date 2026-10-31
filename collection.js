@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -41,7 +41,8 @@ window.COLLECTION = {
         "Песня без слов",
         "Легенда"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 1063994
     },
     {
       "id": "kino-noch",
@@ -82,7 +83,8 @@ window.COLLECTION = {
         "Игра",
         "Мы хотим танцевать"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 2005085
     },
     {
       "id": "rusya-popelyushka",
@@ -122,7 +124,8 @@ window.COLLECTION = {
         "Русалонька",
         "Дівчина русява"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 2325281
     },
     {
       "id": "modern-talking-pogovorim-o-lyubvi",
@@ -162,7 +165,8 @@ window.COLLECTION = {
         "Don't Give Up",
         "You Can Win If You Want"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 2374138
     },
     {
       "id": "nautilus-rodivshiysya",
@@ -202,7 +206,8 @@ window.COLLECTION = {
         "Джульетта",
         "Как падший ангел"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 1619386
     },
     {
       "id": "robin-beck-first-time",
@@ -235,7 +240,8 @@ window.COLLECTION = {
         "First Time (7\" Version)",
         "First Time (Instrumental)"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 618158
     },
     {
       "id": "marybell-katastrophy-amygdala",
@@ -264,7 +270,11 @@ window.COLLECTION = {
       "country": "—",
       "about": "Альбом гурту Marybell Katastrophy на бордовому вінілі з чорними й білими бризками. Тираж вінілу розпродано, тому ціна орієнтовна.",
       "tracks": [],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 4449649,
+      "needs": [
+        "tracks"
+      ]
     },
     {
       "id": "epolets-dogma",
@@ -332,7 +342,8 @@ window.COLLECTION = {
         "Fée Morgane",
         "Chi Mai"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 428442
     },
     {
       "id": "queen-greatest-hits",
@@ -380,7 +391,8 @@ window.COLLECTION = {
         "We Will Rock You",
         "We Are the Champions"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 6904770
     },
     {
       "id": "kurgan-agregat-pole-kanifoli",
@@ -554,7 +566,8 @@ window.COLLECTION = {
         "Moonraker",
         "For Your Eyes Only"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 11640340
     },
     {
       "id": "skryabin-the-best-vol-1",
@@ -812,7 +825,11 @@ window.COLLECTION = {
       "country": "Франція",
       "about": "Подвійна збірка французької серії Collection Cinezik з піснями, які Квентін Тарантіно зробив культовими: з «Кримінального чтива», «Убити Білла», «Джанго», «Безславних виродків» і «Одного разу в Голлівуді». На ілюстрації обкладинки впізнавані образи з його фільмів.",
       "tracks": [],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 15999788,
+      "needs": [
+        "tracks"
+      ]
     },
     {
       "id": "requiem-for-a-dream",
@@ -840,7 +857,11 @@ window.COLLECTION = {
       "country": "США",
       "about": "Саундтрек Клінта Менселла у виконанні Kronos Quartet до фільму Даррена Аронофскі «Реквієм за мрією» (2000). Тему «Lux Aeterna» потім використовували в безлічі трейлерів, і вона стала однією з найвідоміших кіномелодій XXI століття. Музика поділена на «сезони» фільму: Summer, Fall, Winter.",
       "tracks": [],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 8384112,
+      "needs": [
+        "tracks"
+      ]
     },
     {
       "id": "michael-jackson-number-ones-sealed",
@@ -1060,7 +1081,8 @@ window.COLLECTION = {
         "Voyage, voyage",
         "Voyage, voyage (Instrumental)"
       ],
-      "currency": "UAH"
+      "currency": "UAH",
+      "discogsId": 5213959
     },
     {
       "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
