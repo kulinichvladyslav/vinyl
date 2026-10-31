@@ -42,7 +42,21 @@ window.COLLECTION = {
         "Легенда"
       ],
       "currency": "UAH",
-      "discogsId": 1063994
+      "discogsId": 1063994,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 469,
+          "title": "Пластинка группа Кино \" Группа крови \" 1991 Russian Disc ‎– R60 00473 , СССР",
+          "url": "https://vinyl.com.ua/uk/vinyl/plastinka-gruppa-kino-gruppa-krovi-1991-russian-disc-r60-00473-sssr-37448.html"
+        },
+        {
+          "source": "Discogs",
+          "price": 4988,
+          "title": "від $109.99 · 8 у продажу",
+          "url": "https://www.discogs.com/sell/release/1063994"
+        }
+      ]
     },
     {
       "id": "kino-noch",
@@ -63,9 +77,9 @@ window.COLLECTION = {
         "Photo/photo_4_2026-10-25_14-18-09.jpg",
         "Photo/photo_3_2026-10-25_14-18-09.jpg"
       ],
-      "price": 2000,
-      "priceBasis": "vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=%D0%9A%D0%B8%D0%BD%D0%BE+%D0%9D%D0%BE%D1%87%D1%8C&type=release&format_exact=Vinyl",
+      "price": 2500,
+      "priceBasis": "медіана: vinyl.com.ua",
+      "priceUrl": "https://www.discogs.com/release/2005085",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -84,7 +98,32 @@ window.COLLECTION = {
         "Мы хотим танцевать"
       ],
       "currency": "UAH",
-      "discogsId": 2005085
+      "discogsId": 2005085,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 1134,
+          "title": "від $25.0 · 3 у продажу",
+          "url": "https://www.discogs.com/sell/release/2005085"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2500,
+          "title": "Кино – Ночь LP / Мелодия – С90 26795 003 / USSR 1988",
+          "url": "https://vinyl.com.ua/uk/vinyl/kino-noch-lp-melodija-s90-26795-003-ussr-1988-438266.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2000
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2500
+        }
+      ]
     },
     {
       "id": "rusya-popelyushka",
@@ -125,7 +164,15 @@ window.COLLECTION = {
         "Дівчина русява"
       ],
       "currency": "UAH",
-      "discogsId": 2325281
+      "discogsId": 2325281,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 2293,
+          "title": "від $50.56 · 10 у продажу",
+          "url": "https://www.discogs.com/sell/release/2325281"
+        }
+      ]
     },
     {
       "id": "modern-talking-pogovorim-o-lyubvi",
@@ -147,8 +194,8 @@ window.COLLECTION = {
         "Photo/photo_7_2026-10-25_14-18-09.jpg"
       ],
       "price": 250,
-      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=Modern+Talking+%D0%9F%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC+%D0%BE+%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8+%28Let%27s+Talk+About+Love%29&type=release&format_exact=Vinyl",
+      "priceBasis": "медіана: vinyl.com.ua ×4",
+      "priceUrl": "https://www.discogs.com/release/2374138",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -166,7 +213,40 @@ window.COLLECTION = {
         "You Can Win If You Want"
       ],
       "currency": "UAH",
-      "discogsId": 2374138
+      "discogsId": 2374138,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 120,
+          "title": "Модерн Токинг - Поговорим О Любви ( Мелодия )",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-pogovorim-o-lubvi-melodija--255078.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 150,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (є проблема, див. в описі) (3)-NM-, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-je-problema-div-v-opisi-3-nm-melodija-566602.html"
+        },
+        {
+          "source": "Discogs",
+          "price": 181,
+          "title": "від $3.99 · 4 у продажу",
+          "url": "https://www.discogs.com/sell/release/2374138"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 350,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (1)-Ex.+, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-1-ex-melodija-482317.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 350,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (4)-Ex.+, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-4-ex-melodija-512615.html"
+        }
+      ],
+      "priceChecked": "2026-10-31"
     },
     {
       "id": "nautilus-rodivshiysya",
@@ -207,7 +287,21 @@ window.COLLECTION = {
         "Как падший ангел"
       ],
       "currency": "UAH",
-      "discogsId": 1619386
+      "discogsId": 1619386,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 408,
+          "title": "від $8.99 · 14 у продажу",
+          "url": "https://www.discogs.com/sell/release/1619386"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Nautilus Pompilius ‎– Родившийся В Эту Ночь LP / Russian Disc ‎– R60 00105 / USSR 1991",
+          "url": "https://vinyl.com.ua/uk/vinyl/nautilus-pompilius-rodivshijsa-v-etu-noch-lp-russian-disc-r60-00105-ussr-1991-523148.html"
+        }
+      ]
     },
     {
       "id": "robin-beck-first-time",
@@ -241,7 +335,15 @@ window.COLLECTION = {
         "First Time (Instrumental)"
       ],
       "currency": "UAH",
-      "discogsId": 618158
+      "discogsId": 618158,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 41,
+          "title": "від $0.9 · 60 у продажу",
+          "url": "https://www.discogs.com/sell/release/618158"
+        }
+      ]
     },
     {
       "id": "marybell-katastrophy-amygdala",
@@ -274,6 +376,14 @@ window.COLLECTION = {
       "discogsId": 4449649,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 271,
+          "title": "від $5.98 · 4 у продажу",
+          "url": "https://www.discogs.com/sell/release/4449649"
+        }
       ]
     },
     {
@@ -304,7 +414,7 @@ window.COLLECTION = {
       "about": "Дебютний альбом ужгородського гурту Epolets вийшов у 2014 році і приніс гурту відомість. До 10-річчя у 2024 році вийшло ювілейне вінілове видання. Конверт чорний, з подряпинами, кругла червона наліпка «10th anniversary edition».",
       "tracks": [],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": true
     },
     {
@@ -343,7 +453,15 @@ window.COLLECTION = {
         "Chi Mai"
       ],
       "currency": "UAH",
-      "discogsId": 428442
+      "discogsId": 428442,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 148,
+          "title": "від $3.26 · 86 у продажу",
+          "url": "https://www.discogs.com/sell/release/428442"
+        }
+      ]
     },
     {
       "id": "queen-greatest-hits",
@@ -392,7 +510,15 @@ window.COLLECTION = {
         "We Are the Champions"
       ],
       "currency": "UAH",
-      "discogsId": 6904770
+      "discogsId": 6904770,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 77,
+          "title": "від $1.69 · 9 у продажу",
+          "url": "https://www.discogs.com/sell/release/6904770"
+        }
+      ]
     },
     {
       "id": "kurgan-agregat-pole-kanifoli",
@@ -430,7 +556,7 @@ window.COLLECTION = {
         "Тиха революція (feat. Дарія Астаф'єва)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": true
     },
     {
@@ -480,7 +606,7 @@ window.COLLECTION = {
         "Enemy (with JID)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -521,7 +647,7 @@ window.COLLECTION = {
       ],
       "currency": "UAH",
       "priceAdjust": 1500,
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": true
     },
     {
@@ -567,7 +693,15 @@ window.COLLECTION = {
         "For Your Eyes Only"
       ],
       "currency": "UAH",
-      "discogsId": 11640340
+      "discogsId": 11640340,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 454,
+          "title": "від $10.0 · 13 у продажу",
+          "url": "https://www.discogs.com/sell/release/11640340"
+        }
+      ]
     },
     {
       "id": "skryabin-the-best-vol-1",
@@ -611,7 +745,7 @@ window.COLLECTION = {
         "Добряк"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -660,7 +794,7 @@ window.COLLECTION = {
         "One More Chance"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -706,7 +840,7 @@ window.COLLECTION = {
         "Hotride"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -756,7 +890,7 @@ window.COLLECTION = {
         "The Ten Coolest Things About New Jersey"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -795,7 +929,7 @@ window.COLLECTION = {
       "priceUrl": "https://jpv.com.ua/product/kurgan-agregat-zembondzhu-zelenyj-prozoryj-albom-limitovane-perevydannya/",
       "currency": "UAH",
       "price": 2500,
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": true
     },
     {
@@ -817,9 +951,9 @@ window.COLLECTION = {
         "Photo/photo_40_2026-10-25_14-18-10.jpg",
         "Photo/photo_39_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1950,
-      "priceBasis": "vinyla.com",
-      "priceUrl": "https://www.discogs.com/search/?q=Music+Tribute+Tarantino&type=release&format_exact=Vinyl",
+      "price": 1500,
+      "priceBasis": "медіана: vinyl.com.ua",
+      "priceUrl": "https://www.discogs.com/release/15999788",
       "format": "2LP",
       "label": "Wagram / Collection Cinezik",
       "country": "Франція",
@@ -829,6 +963,31 @@ window.COLLECTION = {
       "discogsId": 15999788,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 786,
+          "title": "від $17.32 · 6 у продажу",
+          "url": "https://www.discogs.com/sell/release/15999788"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1521,
+          "title": "Various – Music Tribute Tarantino - The Very Best Songs From Quentin Tarantino's Films",
+          "url": "https://vinyl.com.ua/uk/vinyl/various-music-tribute-tarantino-the-very-best-songs-from-quentin-tarantinos-films-427736.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 1950
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1500
+        }
       ]
     },
     {
@@ -861,6 +1020,14 @@ window.COLLECTION = {
       "discogsId": 8384112,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 1019,
+          "title": "від $22.47 · 19 у продажу",
+          "url": "https://www.discogs.com/sell/release/8384112"
+        }
       ]
     },
     {
@@ -909,7 +1076,7 @@ window.COLLECTION = {
       "priceUrl": "https://jpv.com.ua/product/michael-jackson-number-ones-2-plativky-remasteryng-zbirnyk-perevydannya/",
       "currency": "UAH",
       "price": 2338,
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -930,7 +1097,7 @@ window.COLLECTION = {
         "Photo/photo_46_2026-10-25_14-18-10.jpg",
         "Photo/photo_45_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1798,
+      "price": 1898,
       "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
       "priceUrl": "https://jpv.com.ua/product/linkin-park-hybrid-theory-rozkladna-obkladinka-albom-perevidannya/",
       "format": "LP",
@@ -952,8 +1119,18 @@ window.COLLECTION = {
         "Pushing Me Away"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 1798
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1898
+        }
+      ]
     },
     {
       "id": "rammstein-mutter",
@@ -994,7 +1171,7 @@ window.COLLECTION = {
         "Nebel"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": true
     },
     {
@@ -1048,7 +1225,7 @@ window.COLLECTION = {
         "Touch (2021 Epilogue)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -1082,7 +1259,15 @@ window.COLLECTION = {
         "Voyage, voyage (Instrumental)"
       ],
       "currency": "UAH",
-      "discogsId": 5213959
+      "discogsId": 5213959,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 255,
+          "title": "від $5.62 · 2 у продажу",
+          "url": "https://www.discogs.com/sell/release/5213959"
+        }
+      ]
     },
     {
       "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
@@ -1121,7 +1306,7 @@ window.COLLECTION = {
       "currency": "UAH",
       "added": "2026-10-28",
       "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     },
     {
@@ -1168,7 +1353,7 @@ window.COLLECTION = {
       "currency": "UAH",
       "added": "2026-10-28",
       "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
-      "priceChecked": "2026-10-28",
+      "priceChecked": "2026-10-31",
       "priceInStock": false
     }
   ],
@@ -1259,12 +1444,31 @@ window.COLLECTION = {
     }
   ],
   "priceCheck": {
-    "requested": "2026-10-30T15:51:40.554Z",
-    "date": "2026-10-30",
+    "requested": "2026-10-31T12:09:50Z",
+    "date": "2026-10-31",
     "before": 56445,
-    "after": 56445,
-    "changed": [],
-    "unchanged": 0,
-    "skipped": 28
+    "after": 56595,
+    "changed": [
+      {
+        "id": "kino-noch",
+        "album": "Ночь",
+        "old": 2000,
+        "new": 2500
+      },
+      {
+        "id": "music-tribute-tarantino",
+        "album": "Music Tribute Tarantino",
+        "old": 1950,
+        "new": 1500
+      },
+      {
+        "id": "linkin-park-hybrid-theory",
+        "album": "Hybrid Theory",
+        "old": 1798,
+        "new": 1898
+      }
+    ],
+    "unchanged": 15,
+    "skipped": 10
   }
 };
