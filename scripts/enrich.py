@@ -537,7 +537,7 @@ def market_price(rec):
         time.sleep(1)
     ua = [x for x in found if x["source"] != "Discogs"]
     if not ua:  # Discogs "lowest" alone is a floor, not a market price: show it, keep our price
-        rec["priceSources"] = found
+        rec["priceSourcesAuto"] = found
         return None
     prices = sorted(x["price"] for x in ua)
     mid = len(prices) // 2
@@ -554,7 +554,7 @@ def reprice(data, requested):
     """Refresh every record's price. Vintage records priced from Discogs stay as they are."""
     today = date.today().isoformat()
     before = sum(r.get("price") or 0 for r in data["records"])
-    changed, same, skipped = [], 0, []
+    changed, same, skipped, suggested = [], 0, [], []
     for rec in data["records"]:
         try:
             cur = current_price(rec)
@@ -566,24 +566,16 @@ def reprice(data, requested):
             print("  ", rec["id"], "— jpv не відповів, ціну залишено")
             continue
         if not cur:
+            # Vintage / not sold in shops: never change the price automatically (Vladyslav's rule),
+            # only collect offers so Claude can propose a new estimate.
             mp = market_price(rec)
-            if not mp:
-                skipped.append(rec["id"])
-                print("  ", rec["id"], "— пропозицій не знайдено")
-                continue
-            price, basis, sources = mp
-            old = rec.get("price") or price
-            if not (old / 3 <= price <= old * 3):
-                print(f"   {rec['id']}: {old} -> {price}? різниця завелика, не змінюю")
-                rec["priceSources"] = sources
-                skipped.append(rec["id"])
-                continue
-            rec["priceSources"] = sources
-            url = f"https://www.discogs.com/release/{rec['discogsId']}" if rec.get("discogsId") else rec.get("priceUrl")
-            cur = (price, basis, url, None)
-            market = True
-        else:
-            market = False
+            if mp:
+                rec["priceSuggested"], _, rec["priceSourcesAuto"] = mp
+                suggested.append({"id": rec["id"], "album": rec.get("album"), "price": rec.get("price"), "suggested": mp[0]})
+                print(f"   {rec['id']}: ціна {rec.get('price')}, ринок ≈ {mp[0]} (не змінюю, лише пропозиція)")
+            skipped.append(rec["id"])
+            continue
+        market = False
         price, basis, url, stock = cur
         if url:
             rec["priceUrl"] = url
@@ -613,7 +605,7 @@ def reprice(data, requested):
         time.sleep(0.3)
     after = sum(r.get("price") or 0 for r in data["records"])
     data["priceCheck"] = {"requested": requested, "date": today, "before": before, "after": after,
-                          "changed": changed, "unchanged": same, "skipped": len(skipped)}
+                          "changed": changed, "unchanged": same, "skipped": len(skipped), "suggested": suggested}
     print(f"Ціни: {before} -> {after}; змінено {len(changed)}, без змін {same}, пропущено {len(skipped)}")
 
 
