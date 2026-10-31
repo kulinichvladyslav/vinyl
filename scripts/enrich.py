@@ -411,6 +411,135 @@ def current_price(rec):
     return None
 
 
+# ---------- prices for records not sold on jpv (vintage, sold-out) ----------
+LABEL_SYN = {
+    "мелодия": ["мелодия", "мелодія", "melodiya", "melodia"],
+    "русский диск": ["русский диск", "російський диск", "russian disc", "russkiy disk"],
+    "red wave": ["red wave"],
+    "аудіо україна": ["аудіо україна", "аудио украина", "audio ukraine"],
+    "pathé marconi": ["pathé", "pathe", "marconi"],
+    "emi": ["emi"], "emi electrola": ["electrola"], "liberty": ["liberty"], "mercury": ["mercury"],
+    "general music": ["general music", "général music"], "cbs": ["cbs"],
+}
+ARTIST_ALT = {"nautilus pompilius": ["наутилус", "nautilus"], "кино": ["кино", "кіно", "kino", "цой"],
+              "modern talking": ["modern talking", "модерн токинг"], "руся": ["руся", "rusya"]}
+_rate = {}
+
+
+def usd_rate():
+    if "usd" not in _rate:
+        try:
+            r = requests.get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange", params={"valcode": "USD", "json": ""}, timeout=30)
+            _rate["usd"] = float(r.json()[0]["rate"])
+        except Exception as e:
+            print("   курс НБУ недоступний:", e)
+            _rate["usd"] = 41.5
+    return _rate["usd"]
+
+
+def _words(t):
+    return [w for w in norm(t).split() if len(w) > 1]
+
+
+def listing_matches(title, rec, modern):
+    t = norm(title)
+    if re.search(r"\b(cd|компакт|касет|кассет|mc|dvd|футболк|постер|плакат)\b", t):
+        return False
+    album = re.sub(r"\s*\(.*?\)", "", rec.get("album", ""))
+    if not all(w in t for w in _words(album)):
+        return False
+    art = (rec.get("artist") or "").lower()
+    alts = ARTIST_ALT.get(art, [art]) if art and art != "various artists" else []
+    if alts and not any(norm(a) in t for a in alts):
+        return False
+    if modern:
+        return True
+    labels = [x.strip().lower() for x in re.split(r"[/&,]", rec.get("label") or "") if x.strip() and x.strip() != "—"]
+    if not labels:
+        return True
+    syns = [s2 for l in labels for s2 in LABEL_SYN.get(l, [l])]
+    return any(norm(s2) in t for s2 in syns)
+
+
+def search_vinyl_com_ua(rec, modern):
+    q = re.sub(r"\s*\(.*?\)", "", rec.get("album", ""))
+    r = requests.get("https://vinyl.com.ua/uk/search/", params={"q": q}, headers=UA, timeout=30)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    out = []
+    for it in soup.select(".sr-gallery-item"):
+        a = it.select_one("a.sr-glItem-img")
+        pr = it.select_one(".pricik")
+        if not a or not pr or "/vinyl/" not in (a.get("href") or ""):
+            continue
+        price = re.sub(r"\D", "", pr.get_text())
+        if price and listing_matches(a.get("title", ""), rec, modern):
+            out.append({"source": "vinyl.com.ua", "price": int(price), "title": a.get("title", "")[:120], "url": a["href"]})
+    return out
+
+
+def search_prom(rec, modern):
+    album = re.sub(r"\s*\(.*?\)", "", rec.get("album", ""))
+    q = (rec.get("artist", "") + " " + album + " lp").replace("Various Artists", "").strip()
+    r = requests.get("https://prom.ua/ua/search", params={"search_term": q}, headers=UA, timeout=30)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    out = []
+    for b in soup.select('[data-qaid="product_block"]'):
+        name = b.select_one('[data-qaid="product_name"]')
+        price = b.select_one('[data-qaid="product_price"]')
+        pres = b.select_one('[data-qaid="product_presence"]')
+        link = b.select_one('a[data-qaid="product_link"]') or b.select_one("a[href]")
+        if not name or not price or not price.get("data-qaprice"):
+            continue
+        if pres and not re.search(r"наявн|відправ", pres.get_text().lower()):
+            continue
+        title = name.get_text(" ", strip=True)
+        if "вініл" not in title.lower() and "lp" not in title.lower() and "vinyl" not in title.lower():
+            continue
+        if listing_matches(title, rec, modern):
+            out.append({"source": "prom.ua", "price": int(float(price["data-qaprice"])), "title": title[:120],
+                        "url": urllib.parse.urljoin("https://prom.ua", (link.get("href") or "").split("?")[0])})
+    return out
+
+
+def discogs_lowest(rec):
+    rid = rec.get("discogsId")
+    if not rid:
+        return []
+    r = requests.get(f"https://api.discogs.com/releases/{rid}", headers=MB_UA, timeout=30)
+    r.raise_for_status()
+    j = r.json()
+    if j.get("lowest_price") and j.get("num_for_sale"):
+        uah = round(float(j["lowest_price"]) * usd_rate())
+        return [{"source": "Discogs", "price": uah, "title": f"від ${j['lowest_price']} · {j['num_for_sale']} у продажу",
+                 "url": f"https://www.discogs.com/sell/release/{rid}"}]
+    return []
+
+
+def market_price(rec):
+    """Median of matching listings in Ukraine (vinyl.com.ua, prom.ua) + Discogs lowest price."""
+    modern = (rec.get("editionYear") or rec.get("year") or 0) >= 2000
+    found = []
+    for fn in (search_vinyl_com_ua, search_prom, discogs_lowest):
+        try:
+            found += fn(rec, modern) if fn is not discogs_lowest else fn(rec)
+        except Exception as e:
+            print("   ", fn.__name__, "помилка:", e)
+        time.sleep(1)
+    if not found:
+        return None
+    prices = sorted(x["price"] for x in found)
+    mid = len(prices) // 2
+    med = prices[mid] if len(prices) % 2 else (prices[mid - 1] + prices[mid]) / 2
+    med = int(round(med / 50.0) * 50) or prices[0]
+    counts = {}
+    for x in found:
+        counts[x["source"]] = counts.get(x["source"], 0) + 1
+    basis = "медіана: " + ", ".join(f"{k} ×{v}" if v > 1 else k for k, v in counts.items())
+    return med, basis, sorted(found, key=lambda x: x["price"])[:8]
+
+
 def reprice(data, requested):
     """Refresh every record's price. Vintage records priced from Discogs stay as they are."""
     today = date.today().isoformat()
@@ -423,10 +552,28 @@ def reprice(data, requested):
             print("  ", rec["id"], "помилка:", e)
             cur = None
         if not cur:
-            skipped.append(rec["id"])
-            continue
+            mp = market_price(rec)
+            if not mp:
+                skipped.append(rec["id"])
+                print("  ", rec["id"], "— пропозицій не знайдено")
+                continue
+            price, basis, sources = mp
+            old = rec.get("price") or price
+            if not (old / 3 <= price <= old * 3):
+                print(f"   {rec['id']}: {old} -> {price}? різниця завелика, не змінюю")
+                rec["priceSources"] = sources
+                skipped.append(rec["id"])
+                continue
+            rec["priceSources"] = sources
+            url = f"https://www.discogs.com/release/{rec['discogsId']}" if rec.get("discogsId") else rec.get("priceUrl")
+            cur = (price, basis, url, None)
+            market = True
+        else:
+            market = False
         price, basis, url, stock = cur
-        if (rec.get("priceBasis") or "").startswith("оцінка") or rec.get("priceAdjust") is not None:
+        if url:
+            rec["priceUrl"] = url
+        if not market and ((rec.get("priceBasis") or "").startswith("оцінка") or rec.get("priceAdjust") is not None):
             # e.g. signed copy = shop price + premium; keep the premium constant
             if rec.get("priceAdjust") is None:
                 m = re.search(r"(\d[\d\s\u00a0]*)\s*₴", rec.get("priceBasis") or "")  # "звичайне видання 2500 ₴ + автографи"
