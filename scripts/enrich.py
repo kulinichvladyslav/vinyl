@@ -66,16 +66,28 @@ def split_title(name):
 
 
 # ---------- shop parsers ----------
-def from_jpv(url):
+def jpv_product(url, hints=()):
+    """jpv's Store API now needs a search word together with the slug: try words until the product comes back."""
     m = re.search(r"/product/([^/?#]+)", url)
     if not m:
         return None
-    r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"slug": m.group(1)}, headers=UA, timeout=30)
-    r.raise_for_status()
-    items = r.json()
-    if not items:
+    slug = m.group(1)
+    words = []
+    for h in list(hints) + [slug.replace("-", " ")]:
+        for w in re.split(r"[\s\-–—,.:;()«»\"']+", h or ""):
+            if len(w) >= 3 and w.lower() not in ("the", "lp", "and") and w.lower() not in [x.lower() for x in words]:
+                words.append(w)
+    for w in words[:8]:
+        r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"search": w, "slug": slug}, headers=UA, timeout=30)
+        if r.status_code == 200 and r.json():
+            return r.json()[0]
+    return None
+
+
+def from_jpv(url, hints=()):
+    p = jpv_product(url, hints)
+    if not p:
         return None
-    p = items[0]
     attrs = {a["name"]: ", ".join(t["name"] for t in a["terms"]) for a in p.get("attributes", [])}
     artist, album = split_title(p["name"])
     artist = attrs.get("Виконавець") or artist
@@ -174,7 +186,7 @@ def jpv_search(artist, album):
     if not best:
         return None
     print("  found on jpv:", best[1])
-    d = from_jpv(best[1])
+    d = from_jpv(best[1], (album, artist))
     if d:
         d["source"] = "jpv.com.ua (дані й обкладинка)"
     return d
@@ -184,7 +196,7 @@ def fetch_shop(url, artist="", album=""):
     host = urllib.parse.urlparse(url).hostname or ""
     info, err = None, None
     try:
-        info = from_jpv(url) if host.endswith("jpv.com.ua") else None
+        info = from_jpv(url, (album, artist)) if host.endswith("jpv.com.ua") else None
         if not info:
             info = from_generic(url)
     except Exception as e:
@@ -392,15 +404,11 @@ def current_price(rec):
     url = rec.get("priceUrl") or ""
     host = urllib.parse.urlparse(url).hostname or ""
     if host.endswith("jpv.com.ua"):
-        m = re.search(r"/product/([^/?#]+)", url)
-        if m:
-            r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"slug": m.group(1)}, headers=UA, timeout=30)
-            r.raise_for_status()
-            items = r.json()
-            if items and items[0].get("prices", {}).get("price"):
-                pr = items[0]["prices"]
-                return round(int(pr["price"]) / 10 ** pr.get("currency_minor_unit", 2)), "jpv.com.ua (Just Punk Vinyl)", url, items[0].get("is_in_stock")
-        return None
+        p = jpv_product(url, (rec.get("album", ""), rec.get("artist", "")))
+        if p and p.get("prices", {}).get("price"):
+            pr = p["prices"]
+            return round(int(pr["price"]) / 10 ** pr.get("currency_minor_unit", 2)), "jpv.com.ua (Just Punk Vinyl)", url, p.get("is_in_stock")
+        return "keep"  # jpv didn't answer: keep the jpv price, never replace it with other shops
     if host and "discogs.com" not in host:
         try:
             info = from_generic(url)
@@ -527,14 +535,16 @@ def market_price(rec):
         except Exception as e:
             print("   ", fn.__name__, "помилка:", e)
         time.sleep(1)
-    if not found:
+    ua = [x for x in found if x["source"] != "Discogs"]
+    if not ua:  # Discogs "lowest" alone is a floor, not a market price: show it, keep our price
+        rec["priceSources"] = found
         return None
-    prices = sorted(x["price"] for x in found)
+    prices = sorted(x["price"] for x in ua)
     mid = len(prices) // 2
     med = prices[mid] if len(prices) % 2 else (prices[mid - 1] + prices[mid]) / 2
     med = int(round(med / 50.0) * 50) or prices[0]
     counts = {}
-    for x in found:
+    for x in ua:
         counts[x["source"]] = counts.get(x["source"], 0) + 1
     basis = "медіана: " + ", ".join(f"{k} ×{v}" if v > 1 else k for k, v in counts.items())
     return med, basis, sorted(found, key=lambda x: x["price"])[:8]
@@ -551,6 +561,10 @@ def reprice(data, requested):
         except Exception as e:
             print("  ", rec["id"], "помилка:", e)
             cur = None
+        if cur == "keep":
+            skipped.append(rec["id"])
+            print("  ", rec["id"], "— jpv не відповів, ціну залишено")
+            continue
         if not cur:
             mp = market_price(rec)
             if not mp:
@@ -638,7 +652,14 @@ def main():
     if os.environ.get("PATCH", "").strip():
         with open(os.path.join(ROOT, "collection.json"), encoding="utf-8") as f:
             data = json.load(f)
-        apply_patch(data, json.loads(os.environ["PATCH"]))
+        patch = json.loads(os.environ["PATCH"])
+        sha = patch.pop("__restore__", None)
+        if sha:  # roll collection.json back to an earlier commit
+            r = requests.get(f"https://raw.githubusercontent.com/{os.environ.get('GITHUB_REPOSITORY', 'kulinichvladyslav/vinyl')}/{sha}/collection.json", timeout=30)
+            r.raise_for_status()
+            data = r.json()
+            print("  restored collection.json from", sha)
+        apply_patch(data, patch)
         data["updated"] = date.today().isoformat()
         write(data)
         return
