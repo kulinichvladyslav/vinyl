@@ -12,6 +12,9 @@ on:
       title:
         description: "Тест: «Виконавець — Альбом» (необов'язково)"
         required: false
+      probe:
+        description: "Діагностика: адреси через пробіл"
+        required: false
       patch:
         description: "Ручне виправлення (JSON): {\"<id>\": {\"tracks\": [...], \"backUrl\": \"...\"}}"
         required: false
@@ -31,6 +34,7 @@ jobs:
       TEST_URL: ${{ inputs.url }}
       TEST_TITLE: ${{ inputs.title }}
       PATCH: ${{ inputs.patch }}
+      PROBE: ${{ inputs.probe }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -40,7 +44,7 @@ jobs:
       - name: Enrich / test / patch
         run: python scripts/enrich.py
       - name: Commit
-        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.url != '') }}
+        if: ${{ !(github.event_name == 'workflow_dispatch' && (inputs.url != '' || inputs.probe != '')) }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
