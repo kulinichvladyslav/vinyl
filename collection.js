@@ -21,9 +21,9 @@ window.COLLECTION = {
         "Photo/photo_2_2026-10-25_14-18-09.jpg",
         "Photo/photo_1_2026-10-25_14-18-09.jpg"
       ],
-      "price": 2200,
-      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=%D0%9A%D0%B8%D0%BD%D0%BE+%D0%93%D1%80%D1%83%D0%BF%D0%BF%D0%B0+%D0%BA%D1%80%D0%BE%D0%B2%D0%B8&type=release&format_exact=Vinyl",
+      "price": 2750,
+      "priceBasis": "медіана: vinyl.com.ua, Discogs",
+      "priceUrl": "https://www.discogs.com/release/1063994",
       "format": "LP",
       "label": "Red Wave / Русский диск",
       "country": "СРСР / США",
@@ -42,7 +42,32 @@ window.COLLECTION = {
         "Легенда"
       ],
       "currency": "UAH",
-      "discogsId": 1063994
+      "discogsId": 1063994,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 469,
+          "title": "Пластинка группа Кино \" Группа крови \" 1991 Russian Disc ‎– R60 00473 , СССР",
+          "url": "https://vinyl.com.ua/uk/vinyl/plastinka-gruppa-kino-gruppa-krovi-1991-russian-disc-r60-00473-sssr-37448.html"
+        },
+        {
+          "source": "Discogs",
+          "price": 4988,
+          "title": "від $109.99 · 8 у продажу",
+          "url": "https://www.discogs.com/sell/release/1063994"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2200
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2750
+        }
+      ]
     },
     {
       "id": "kino-noch",
@@ -63,9 +88,9 @@ window.COLLECTION = {
         "Photo/photo_4_2026-10-25_14-18-09.jpg",
         "Photo/photo_3_2026-10-25_14-18-09.jpg"
       ],
-      "price": 2000,
-      "priceBasis": "vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=%D0%9A%D0%B8%D0%BD%D0%BE+%D0%9D%D0%BE%D1%87%D1%8C&type=release&format_exact=Vinyl",
+      "price": 1800,
+      "priceBasis": "медіана: vinyl.com.ua, Discogs",
+      "priceUrl": "https://www.discogs.com/release/2005085",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -84,7 +109,32 @@ window.COLLECTION = {
         "Мы хотим танцевать"
       ],
       "currency": "UAH",
-      "discogsId": 2005085
+      "discogsId": 2005085,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 1134,
+          "title": "від $25.0 · 3 у продажу",
+          "url": "https://www.discogs.com/sell/release/2005085"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2500,
+          "title": "Кино – Ночь LP / Мелодия – С90 26795 003 / USSR 1988",
+          "url": "https://vinyl.com.ua/uk/vinyl/kino-noch-lp-melodija-s90-26795-003-ussr-1988-438266.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2000
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1800
+        }
+      ]
     },
     {
       "id": "rusya-popelyushka",
@@ -105,9 +155,9 @@ window.COLLECTION = {
         "Photo/photo_6_2026-10-25_14-18-09.jpg",
         "Photo/photo_5_2026-10-25_14-18-09.jpg"
       ],
-      "price": 3250,
-      "priceBasis": "vinyl.com.ua (середнє за оголошеннями)",
-      "priceUrl": "https://www.discogs.com/search/?q=%D0%A0%D1%83%D1%81%D1%8F+%D0%9F%D0%BE%D0%BF%D0%B5%D0%BB%D1%8E%D1%88%D0%BA%D0%B0.+%D0%9D%D0%B0%D0%B9%D0%BA%D1%80%D0%B0%D1%89%D1%96+%D1%85%D1%96%D1%82%D0%B8&type=release&format_exact=Vinyl",
+      "price": 2300,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/2325281",
       "format": "LP",
       "label": "Аудіо Україна",
       "country": "Україна",
@@ -125,7 +175,26 @@ window.COLLECTION = {
         "Дівчина русява"
       ],
       "currency": "UAH",
-      "discogsId": 2325281
+      "discogsId": 2325281,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 2293,
+          "title": "від $50.56 · 10 у продажу",
+          "url": "https://www.discogs.com/sell/release/2325281"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 3250
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2300
+        }
+      ]
     },
     {
       "id": "modern-talking-pogovorim-o-lyubvi",
@@ -146,9 +215,9 @@ window.COLLECTION = {
         "Photo/photo_8_2026-10-25_14-18-09.jpg",
         "Photo/photo_7_2026-10-25_14-18-09.jpg"
       ],
-      "price": 250,
-      "priceBasis": "Discogs (медіана) / vinyl.com.ua",
-      "priceUrl": "https://www.discogs.com/search/?q=Modern+Talking+%D0%9F%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC+%D0%BE+%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8+%28Let%27s+Talk+About+Love%29&type=release&format_exact=Vinyl",
+      "price": 200,
+      "priceBasis": "медіана: vinyl.com.ua ×4, Discogs",
+      "priceUrl": "https://www.discogs.com/release/2374138",
       "format": "LP",
       "label": "Мелодия",
       "country": "СРСР",
@@ -166,7 +235,50 @@ window.COLLECTION = {
         "You Can Win If You Want"
       ],
       "currency": "UAH",
-      "discogsId": 2374138
+      "discogsId": 2374138,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 120,
+          "title": "Модерн Токинг - Поговорим О Любви ( Мелодия )",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-pogovorim-o-lubvi-melodija--255078.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 150,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (є проблема, див. в описі) (3)-NM-, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-je-problema-div-v-opisi-3-nm-melodija-566602.html"
+        },
+        {
+          "source": "Discogs",
+          "price": 181,
+          "title": "від $3.99 · 4 у продажу",
+          "url": "https://www.discogs.com/sell/release/2374138"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 350,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (1)-Ex.+, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-1-ex-melodija-482317.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 350,
+          "title": "Модерн Токинг-Modern talking-Поговорим о любви (4)-Ex.+, Мелодія",
+          "url": "https://vinyl.com.ua/uk/vinyl/modern-toking-modern-talking-pogovorim-o-lubvi-4-ex-melodija-512615.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 250
+        },
+        {
+          "date": "2026-10-31",
+          "price": 200
+        }
+      ]
     },
     {
       "id": "nautilus-rodivshiysya",
@@ -187,9 +299,9 @@ window.COLLECTION = {
         "Photo/photo_10_2026-10-25_14-18-09.jpg",
         "Photo/photo_9_2026-10-25_14-18-09.jpg"
       ],
-      "price": 450,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Nautilus+Pompilius+%D0%A0%D0%BE%D0%B4%D0%B8%D0%B2%D1%88%D0%B8%D0%B9%D1%81%D1%8F+%D0%B2+%D1%8D%D1%82%D1%83+%D0%BD%D0%BE%D1%87%D1%8C&type=release&format_exact=Vinyl",
+      "price": 1150,
+      "priceBasis": "медіана: vinyl.com.ua, Discogs",
+      "priceUrl": "https://www.discogs.com/release/1619386",
       "format": "LP",
       "label": "Русский диск",
       "country": "СРСР",
@@ -207,7 +319,32 @@ window.COLLECTION = {
         "Как падший ангел"
       ],
       "currency": "UAH",
-      "discogsId": 1619386
+      "discogsId": 1619386,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 408,
+          "title": "від $8.99 · 14 у продажу",
+          "url": "https://www.discogs.com/sell/release/1619386"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Nautilus Pompilius ‎– Родившийся В Эту Ночь LP / Russian Disc ‎– R60 00105 / USSR 1991",
+          "url": "https://vinyl.com.ua/uk/vinyl/nautilus-pompilius-rodivshijsa-v-etu-noch-lp-russian-disc-r60-00105-ussr-1991-523148.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 450
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1150
+        }
+      ]
     },
     {
       "id": "robin-beck-first-time",
@@ -228,9 +365,9 @@ window.COLLECTION = {
         "Photo/photo_12_2026-10-25_14-18-09.jpg",
         "Photo/photo_11_2026-10-25_14-18-09.jpg"
       ],
-      "price": 150,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Robin+Beck+First+Time&type=release&format_exact=Vinyl",
+      "price": 50,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/618158",
       "format": "12\" maxi-single",
       "label": "Mercury",
       "country": "Німеччина",
@@ -241,7 +378,26 @@ window.COLLECTION = {
         "First Time (Instrumental)"
       ],
       "currency": "UAH",
-      "discogsId": 618158
+      "discogsId": 618158,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 41,
+          "title": "від $0.9 · 60 у продажу",
+          "url": "https://www.discogs.com/sell/release/618158"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 150
+        },
+        {
+          "date": "2026-10-31",
+          "price": 50
+        }
+      ]
     },
     {
       "id": "marybell-katastrophy-amygdala",
@@ -274,6 +430,14 @@ window.COLLECTION = {
       "discogsId": 4449649,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 271,
+          "title": "від $5.98 · 4 у продажу",
+          "url": "https://www.discogs.com/sell/release/4449649"
+        }
       ]
     },
     {
@@ -295,8 +459,8 @@ window.COLLECTION = {
         "Photo/photo_16_2026-10-25_14-18-10.jpg",
         "Photo/photo_15_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1900,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2100,
+      "priceBasis": "медіана: vinyl.com.ua ×2, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/epolets-dogma-10th-anniversary-edition-sriy-marmur-albom-limtovane/",
       "format": "LP, ювілейне видання",
       "label": "HVG & Abyss Music",
@@ -304,8 +468,38 @@ window.COLLECTION = {
       "about": "Дебютний альбом ужгородського гурту Epolets вийшов у 2014 році і приніс гурту відомість. До 10-річчя у 2024 році вийшло ювілейне вінілове видання. Конверт чорний, з подряпинами, кругла червона наліпка «10th anniversary edition».",
       "tracks": [],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Вінілова платівка Epolets – Dogma (10th Anniversary Edition) НОВА",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilova-plativka-epolets-dogma-10th-anniversary-edition-nova-478170.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2100,
+          "title": "Epolets Dogma (10th Anniversary Edition) (LP, Album, Grey Marble Vinyl)",
+          "url": "https://prom.ua/ua/p2494302297-epolets-dogma-10th.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 3895,
+          "title": "Epolets – Dogma (10th Anniversary Edition) (LP, Album, Grey Marble Vinyl)",
+          "url": "https://vinyl.com.ua/uk/vinyl/epolets-dogma-10th-anniversary-edition-lp-album-grey-marble-vinyl-649280.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 1900
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2100
+        }
+      ]
     },
     {
       "id": "morricone-le-professionnel",
@@ -326,9 +520,9 @@ window.COLLECTION = {
         "Photo/photo_18_2026-10-25_14-18-10.jpg",
         "Photo/photo_17_2026-10-25_14-18-10.jpg"
       ],
-      "price": 400,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Ennio+Morricone+Le+Professionnel+%28OST%29&type=release&format_exact=Vinyl",
+      "price": 150,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/428442",
       "format": "LP",
       "label": "General Music",
       "country": "Франція",
@@ -343,7 +537,26 @@ window.COLLECTION = {
         "Chi Mai"
       ],
       "currency": "UAH",
-      "discogsId": 428442
+      "discogsId": 428442,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 148,
+          "title": "від $3.26 · 86 у продажу",
+          "url": "https://www.discogs.com/sell/release/428442"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 400
+        },
+        {
+          "date": "2026-10-31",
+          "price": 150
+        }
+      ]
     },
     {
       "id": "queen-greatest-hits",
@@ -392,7 +605,15 @@ window.COLLECTION = {
         "We Are the Champions"
       ],
       "currency": "UAH",
-      "discogsId": 6904770
+      "discogsId": 6904770,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 77,
+          "title": "від $1.69 · 9 у продажу",
+          "url": "https://www.discogs.com/sell/release/6904770"
+        }
+      ]
     },
     {
       "id": "kurgan-agregat-pole-kanifoli",
@@ -412,8 +633,8 @@ window.COLLECTION = {
         "Photo/photo_22_2026-10-25_14-18-10.jpg",
         "Photo/photo_21_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2500,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 4500,
+      "priceBasis": "медіана: vinyl.com.ua ×3, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/kurgan-agregat-pole-kanifoli-albom/",
       "format": "LP",
       "label": "Shamych / Abyss Music",
@@ -430,8 +651,44 @@ window.COLLECTION = {
         "Тиха революція (feat. Дарія Астаф'єва)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 2449,
+          "title": "Курган & Agregat – ПОЛЕ КАНІФОЛІ LP Вініл Новий",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-pole-kanifoli-lp-vinil-novij-535218.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2450,
+          "title": "Курган & Agregat – Поле Каніфолі",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-pole-kanifoli-686865.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 6555,
+          "title": "Курган & Agregat - Поле Каніфолі (LP, Album, Vinyl)",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-pole-kanifoli-lp-album-vinyl-649253.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 6555,
+          "title": "Вінілова платівка Курган & Agregat - Поле Каніфолі (LP, Album, Vinyl)",
+          "url": "https://prom.ua/ua/p2996149458-vinilovaya-plastinka-kurgan.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2500
+        },
+        {
+          "date": "2026-10-31",
+          "price": 4500
+        }
+      ]
     },
     {
       "id": "imagine-dragons-mercury-act-2",
@@ -451,8 +708,8 @@ window.COLLECTION = {
         "Photo/photo_24_2026-10-25_14-18-10.jpg",
         "Photo/photo_23_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2558,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2750,
+      "priceBasis": "медіана: vinyl.com.ua ×5, prom.ua ×3",
       "priceUrl": "https://jpv.com.ua/product/imagine-dragons-mercury-act-2-2-platvki-albom/",
       "format": "2LP",
       "label": "Kidinakorner / Interscope",
@@ -480,8 +737,68 @@ window.COLLECTION = {
         "Enemy (with JID)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1840,
+          "title": "Вінілові платівки Imagine Dragons – Mercury - Act 2 2022 НОВІ",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilovi-plativki-imagine-dragons-mercury-act-2-2022-novi-322841.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 1985,
+          "title": "Вініловий диск LP Imagine Dragons: Mercury-Act 1 (White Vinyl)",
+          "url": "https://prom.ua/ua/m-3351024065107115366-vinilovyj-disk-imagine.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2100,
+          "title": "Imagine Dragons - Mercury - Act 2 (2022)",
+          "url": "https://vinyl.com.ua/uk/vinyl/imagine-dragons-mercury-act-2-2022-315949.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2588,
+          "title": "Вінілова платівка Imagine Dragons - Mercury - Act 1 1LP (602438534272)",
+          "url": "https://prom.ua/ua/p2355809879-vinilovaya-plastinka-imagine.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2929,
+          "title": "Вінілова платівка Imagine Dragons - Mercury - Act 2 2LP (602448144812)",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilova-plativka-imagine-dragons-mercury-act-2-2lp-602448144812-439601.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2999,
+          "title": "Imagine Dragons - Mercury - Act 2 (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/imagine-dragons-mercury-act-2-2-lp-680058.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 3311,
+          "title": "Imagine Dragons - Mercury Act 2",
+          "url": "https://vinyl.com.ua/uk/vinyl/imagine-dragons-mercury-act-2-401223.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 3369,
+          "title": "Вінілова платівка Imagine Dragons - Mercury - Act 2 2LP (602448144812)",
+          "url": "https://prom.ua/ua/p2355809878-vinilovaya-plastinka-imagine.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2558
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2750
+        }
+      ]
     },
     {
       "id": "kurgan-agregat-zembondzhu-autograph",
@@ -502,8 +819,8 @@ window.COLLECTION = {
         "Photo/photo_26_2026-10-25_14-18-10.jpg",
         "Photo/photo_25_2026-10-25_14-18-10.jpg"
       ],
-      "price": 4000,
-      "priceBasis": "оцінка: звичайне видання 2500 ₴ на jpv.com.ua + автографи",
+      "price": 4650,
+      "priceBasis": "медіана: vinyl.com.ua ×5, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/kurgan-agregat-zembondzhu-zelenyj-prozoryj-albom-limitovane-perevydannya/",
       "format": "LP",
       "label": "Shamych / Abyss Music",
@@ -521,8 +838,56 @@ window.COLLECTION = {
       ],
       "currency": "UAH",
       "priceAdjust": 1500,
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 2449,
+          "title": "Курган & Agregat – Зембонджу LP Вініл Запечатаний",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-lp-vinil-zapechatanij-687040.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2450,
+          "title": "Курган & Agregat – Зембонджу",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-289860.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2450,
+          "title": "Курган & Agregat – Зембонджу",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-686864.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 6875,
+          "title": "Курган & Agregat - Зембонджу - 2021. (LP). 12. Vinyl. Пластинка. Ukraine. S/S",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-2021-lp-12-vinyl-plastinka-ukraine-ss-292476.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 6985,
+          "title": "Курган & Agregat – Зембонджу (Vinyl, LP, Album, Stereo)",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-vinyl-lp-album-stereo-649321.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 6985,
+          "title": "Вінілова платівка Курган & Agregat Зембонджу ( LP, Album, Vinyl)",
+          "url": "https://prom.ua/ua/p3085316111-vinilovaya-plastinka-kurgan.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 4000
+        },
+        {
+          "date": "2026-10-31",
+          "price": 4650
+        }
+      ]
     },
     {
       "id": "james-bond-greatest-hits",
@@ -544,9 +909,9 @@ window.COLLECTION = {
         "Photo/photo_28_2026-10-25_14-18-10.jpg",
         "Photo/photo_27_2026-10-25_14-18-10.jpg"
       ],
-      "price": 400,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=James+Bond+Greatest+Hits&type=release&format_exact=Vinyl",
+      "price": 450,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/11640340",
       "format": "LP",
       "label": "Liberty / EMI Electrola",
       "country": "Німеччина",
@@ -567,7 +932,26 @@ window.COLLECTION = {
         "For Your Eyes Only"
       ],
       "currency": "UAH",
-      "discogsId": 11640340
+      "discogsId": 11640340,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 454,
+          "title": "від $10.0 · 13 у продажу",
+          "url": "https://www.discogs.com/sell/release/11640340"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 400
+        },
+        {
+          "date": "2026-10-31",
+          "price": 450
+        }
+      ]
     },
     {
       "id": "skryabin-the-best-vol-1",
@@ -588,8 +972,8 @@ window.COLLECTION = {
         "Photo/photo_30_2026-10-25_14-18-10.jpg",
         "Photo/photo_29_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2190,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 3000,
+      "priceBasis": "медіана: vinyl.com.ua ×3, prom.ua ×2",
       "priceUrl": "https://jpv.com.ua/product/skryabn-the-best-volume-1-zbrnik/",
       "format": "LP",
       "label": "Moon Records",
@@ -611,8 +995,50 @@ window.COLLECTION = {
         "Добряк"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1650,
+          "title": "Вінілова платівка Скрябін – The Best Volume 1 2019 НОВА",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilova-plativka-skrabin-the-best-volume-1-2019-nova-325310.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2985,
+          "title": "Скрябін – The Best Volume 1 (LP, Compilation, White Vinyl)",
+          "url": "https://vinyl.com.ua/uk/vinyl/skrabin-the-best-volume-1-lp-compilation-white-vinyl-651959.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2985,
+          "title": "Вінілова платівка Скрябін The Best Volume 1 (LP, Compilation, White Vinyl)",
+          "url": "https://prom.ua/ua/p2940825554-vinilovaya-plastinka-skryabin.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2985,
+          "title": "Вінілова платівка Скрябін The Best volume 3 (LP, Compilation, Yellow Vinyl)",
+          "url": "https://prom.ua/ua/p2940858086-vinilovaya-plastinka-skryabin.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 4850,
+          "title": "Скрябін / Скрябин (The Best Volume 1) 2019. (LP). 12. Colour Vinyl. S/S. Germany. Limited Edition",
+          "url": "https://vinyl.com.ua/uk/vinyl/skrabin-skrabin-the-best-volume-1-2019-lp-12-colour-vinyl-ss-germany-limited-edition-19836.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2190
+        },
+        {
+          "date": "2026-10-31",
+          "price": 3000
+        }
+      ]
     },
     {
       "id": "michael-jackson-number-ones",
@@ -632,8 +1058,8 @@ window.COLLECTION = {
         "Photo/photo_32_2026-10-25_14-18-10.jpg",
         "Photo/photo_31_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2338,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2000,
+      "priceBasis": "медіана: vinyl.com.ua ×19, prom.ua ×4",
       "priceUrl": "https://jpv.com.ua/product/michael-jackson-number-ones-2-plativky-remasteryng-zbirnyk-perevydannya/",
       "format": "2LP",
       "label": "Epic / Sony Music",
@@ -660,8 +1086,68 @@ window.COLLECTION = {
         "One More Chance"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1495,
+          "title": "Вініл платівка Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinil-plativka-michael-jackson-number-ones-689035.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1499,
+          "title": "Michael Jackson - Number Ones (Reissue) (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-reissue-2-lp-644260.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1600,
+          "title": "Michael Jackson - Number Ones. (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-2-lp-653930.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1700,
+          "title": "Michael Jackson - Number Ones (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-2-lp-613162.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1850,
+          "title": "New Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/new-michael-jackson-number-ones-622875.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1850,
+          "title": "Michael Jackson - Number Ones (Reissue) (Red Coloured) (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-reissue-red-coloured-2-lp-644259.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1860,
+          "title": "Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-677234.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-682321.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2338
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2000
+        }
+      ]
     },
     {
       "id": "prodigy-their-law",
@@ -681,8 +1167,8 @@ window.COLLECTION = {
         "Photo/photo_34_2026-10-25_14-18-10.jpg",
         "Photo/photo_33_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2558,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2200,
+      "priceBasis": "медіана: vinyl.com.ua ×5, prom.ua ×3",
       "priceUrl": "https://jpv.com.ua/product/the-prodigy-their-law-the-singles-1990-2005-2-platvki-zbrnik-perevidannya/",
       "format": "2LP",
       "label": "XL Recordings",
@@ -706,8 +1192,68 @@ window.COLLECTION = {
         "Hotride"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1840,
+          "title": "Вінілові платівки The Prodigy – Their Law - The Singles 1990-2005 (The Best) 2005 НОВІ",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilovi-plativki-the-prodigy-their-law-the-singles-1990-2005-the-best-2005-novi-391229.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1875,
+          "title": "The Prodigy – Their Law: The Singles 1990-2005 LP, Vinyl ORIGINAL RELEASE",
+          "url": "https://vinyl.com.ua/uk/vinyl/the-prodigy-their-law-the-singles-1990-2005-lp-vinyl-original-release-606899.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1920,
+          "title": "The Prodigy – Their Law - The Singles 1990-2005",
+          "url": "https://vinyl.com.ua/uk/vinyl/the-prodigy-their-law-the-singles-1990-2005-226343.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2000,
+          "title": "Вінілова платівка The Prodigy Their Law - The Singles 1990-2005 (2 LP)",
+          "url": "https://prom.ua/ua/p2472556715-vinilovaya-plastinka-the.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2385,
+          "title": "The Prodigy Their Law: The Singles 1990-2005 (2LP, Compilation, Reissue, Silver Marbled Translucent Vinyl)",
+          "url": "https://prom.ua/ua/p1848210266-the-prodigy-their.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2690,
+          "title": "Нова запечатана пластинка The Prodigy Their Law The Singles 1990-2005 2LP",
+          "url": "https://prom.ua/ua/p2430319921-novaya-zapechatannaya-plastinka.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2720,
+          "title": "The Prodigy - Their Law Singles 1990-2005 (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/the-prodigy-their-law-singles-1990-2005-2-lp-678076.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2975,
+          "title": "The Prodigy - Their Law. The Singles - 1990-2005. (2LP). Coloured Vinyl. Пластинки. Europe. S/S.",
+          "url": "https://vinyl.com.ua/uk/vinyl/the-prodigy-their-law-the-singles-1990-2005-2lp-coloured-vinyl-plastinki-europe-ss-572430.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2558
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2200
+        }
+      ]
     },
     {
       "id": "bloodhound-gang-hooray-for-boobies",
@@ -728,8 +1274,8 @@ window.COLLECTION = {
         "Photo/photo_36_2026-10-25_14-18-10.jpg",
         "Photo/photo_35_2026-10-25_14-18-10.jpg"
       ],
-      "price": 4157,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 4250,
+      "priceBasis": "медіана: vinyl.com.ua ×2",
       "priceUrl": "https://jpv.com.ua/product/bloodhound-gang-hooray-for-boobies-2-platvki-siny-bliy-brizki/",
       "format": "2LP, splatter-вініл",
       "label": "Geffen / Universal",
@@ -756,8 +1302,32 @@ window.COLLECTION = {
         "The Ten Coolest Things About New Jersey"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 2599,
+          "title": "Bloodhound Gang – Hooray For Boobies (20th Anniversary Edition, Limited, Blue & Yellow Splatter)",
+          "url": "https://vinyl.com.ua/uk/vinyl/bloodhound-gang-hooray-for-boobies-20th-anniversary-edition-limited-blue-yellow-splatter-503395.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 5875,
+          "title": "Bloodhound Gang - Hooray For Boobies - 2000. (2LP). 12. Coloured Vinyl. Пластинки. UK, Europe, USA.",
+          "url": "https://vinyl.com.ua/uk/vinyl/bloodhound-gang-hooray-for-boobies-2000-2lp-12-coloured-vinyl-plastinki-uk-europe-usa-571441.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 4157
+        },
+        {
+          "date": "2026-10-31",
+          "price": 4250
+        }
+      ]
     },
     {
       "id": "kurgan-agregat-zembondzhu",
@@ -791,12 +1361,60 @@ window.COLLECTION = {
       "format": "LP",
       "label": "Shamych / Abyss Music",
       "country": "Україна",
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "priceBasis": "медіана: vinyl.com.ua ×5, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/kurgan-agregat-zembondzhu-zelenyj-prozoryj-albom-limitovane-perevydannya/",
       "currency": "UAH",
-      "price": 2500,
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "price": 4650,
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 2449,
+          "title": "Курган & Agregat – Зембонджу LP Вініл Запечатаний",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-lp-vinil-zapechatanij-687040.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2450,
+          "title": "Курган & Agregat – Зембонджу",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-289860.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2450,
+          "title": "Курган & Agregat – Зембонджу",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-686864.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 6875,
+          "title": "Курган & Agregat - Зембонджу - 2021. (LP). 12. Vinyl. Пластинка. Ukraine. S/S",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-2021-lp-12-vinyl-plastinka-ukraine-ss-292476.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 6985,
+          "title": "Курган & Agregat – Зембонджу (Vinyl, LP, Album, Stereo)",
+          "url": "https://vinyl.com.ua/uk/vinyl/kurgan-agregat-zembondzhu-vinyl-lp-album-stereo-649321.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 6985,
+          "title": "Вінілова платівка Курган & Agregat Зембонджу ( LP, Album, Vinyl)",
+          "url": "https://prom.ua/ua/p3085316111-vinilovaya-plastinka-kurgan.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2500
+        },
+        {
+          "date": "2026-10-31",
+          "price": 4650
+        }
+      ]
     },
     {
       "id": "music-tribute-tarantino",
@@ -817,9 +1435,9 @@ window.COLLECTION = {
         "Photo/photo_40_2026-10-25_14-18-10.jpg",
         "Photo/photo_39_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1950,
-      "priceBasis": "vinyla.com",
-      "priceUrl": "https://www.discogs.com/search/?q=Music+Tribute+Tarantino&type=release&format_exact=Vinyl",
+      "price": 1150,
+      "priceBasis": "медіана: vinyl.com.ua, Discogs",
+      "priceUrl": "https://www.discogs.com/release/15999788",
       "format": "2LP",
       "label": "Wagram / Collection Cinezik",
       "country": "Франція",
@@ -829,6 +1447,31 @@ window.COLLECTION = {
       "discogsId": 15999788,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 786,
+          "title": "від $17.32 · 6 у продажу",
+          "url": "https://www.discogs.com/sell/release/15999788"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1521,
+          "title": "Various – Music Tribute Tarantino - The Very Best Songs From Quentin Tarantino's Films",
+          "url": "https://vinyl.com.ua/uk/vinyl/various-music-tribute-tarantino-the-very-best-songs-from-quentin-tarantinos-films-427736.html"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 1950
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1150
+        }
       ]
     },
     {
@@ -849,9 +1492,9 @@ window.COLLECTION = {
         "Photo/photo_42_2026-10-25_14-18-10.jpg",
         "Photo/photo_41_2026-10-25_14-18-10.jpg"
       ],
-      "price": 2800,
-      "priceBasis": "vinyla.com",
-      "priceUrl": "https://www.discogs.com/search/?q=Clint+Mansell+Requiem+for+a+Dream&type=release&format_exact=Vinyl",
+      "price": 1000,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/8384112",
       "format": "LP",
       "label": "Nonesuch",
       "country": "США",
@@ -861,6 +1504,25 @@ window.COLLECTION = {
       "discogsId": 8384112,
       "needs": [
         "tracks"
+      ],
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 1019,
+          "title": "від $22.47 · 19 у продажу",
+          "url": "https://www.discogs.com/sell/release/8384112"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2800
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1000
+        }
       ]
     },
     {
@@ -905,12 +1567,72 @@ window.COLLECTION = {
       "format": "2LP",
       "label": "Epic / Sony Music",
       "country": "ЄС",
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "priceBasis": "медіана: vinyl.com.ua ×19, prom.ua ×4",
       "priceUrl": "https://jpv.com.ua/product/michael-jackson-number-ones-2-plativky-remasteryng-zbirnyk-perevydannya/",
       "currency": "UAH",
-      "price": 2338,
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "price": 2000,
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1495,
+          "title": "Вініл платівка Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinil-plativka-michael-jackson-number-ones-689035.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1499,
+          "title": "Michael Jackson - Number Ones (Reissue) (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-reissue-2-lp-644260.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1600,
+          "title": "Michael Jackson - Number Ones. (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-2-lp-653930.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1700,
+          "title": "Michael Jackson - Number Ones (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-2-lp-613162.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1850,
+          "title": "New Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/new-michael-jackson-number-ones-622875.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1850,
+          "title": "Michael Jackson - Number Ones (Reissue) (Red Coloured) (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-reissue-red-coloured-2-lp-644259.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1860,
+          "title": "Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-677234.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1900,
+          "title": "Michael Jackson – Number Ones",
+          "url": "https://vinyl.com.ua/uk/vinyl/michael-jackson-number-ones-682321.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 2338
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2000
+        }
+      ]
     },
     {
       "id": "linkin-park-hybrid-theory",
@@ -930,8 +1652,8 @@ window.COLLECTION = {
         "Photo/photo_46_2026-10-25_14-18-10.jpg",
         "Photo/photo_45_2026-10-25_14-18-10.jpg"
       ],
-      "price": 1798,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 1650,
+      "priceBasis": "медіана: vinyl.com.ua ×17, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/linkin-park-hybrid-theory-rozkladna-obkladinka-albom-perevidannya/",
       "format": "LP",
       "label": "Warner Records",
@@ -952,8 +1674,68 @@ window.COLLECTION = {
         "Pushing Me Away"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1250,
+          "title": "Linkin Park - Hybrid Theory S / S",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-s-s-439438.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1350,
+          "title": "Linkin Park – Hybrid Theory платівка",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-plativka-273973.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1400,
+          "title": "Linkin Park \"Hybrid Theory\" LP",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-lp-637094.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1419,
+          "title": "Linkin Park – Hybrid Theory LP 12\" Europe",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-lp-12-europe-497465.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1450,
+          "title": "Linkin Park - Hybrid Theory",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-594412.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1455,
+          "title": "Виниловая пластинка Linkin Park – Hybrid Theory 2000 Линкин Парк НОВАЯ",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilovaja-plastinka-linkin-park-hybrid-theory-2000-linkin-park-novaja-270249.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1499,
+          "title": "Linkin Park – Hybrid Theory LP Вініл запечатаний",
+          "url": "https://vinyl.com.ua/uk/vinyl/linkin-park-hybrid-theory-lp-vinil-zapechatanij-189155.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1500,
+          "title": "Вінілова платівка Linkin Park - Hybrid Theory 1lp",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilova-plativka-linkin-park-hybrid-theory-1lp-571411.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 1798
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1650
+        }
+      ]
     },
     {
       "id": "rammstein-mutter",
@@ -973,8 +1755,8 @@ window.COLLECTION = {
         "Photo/photo_48_2026-10-25_14-18-10.jpg",
         "Photo/photo_47_2026-10-25_14-18-10.jpg"
       ],
-      "price": 3728,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2800,
+      "priceBasis": "медіана: vinyl.com.ua ×11, prom.ua ×7",
       "priceUrl": "https://jpv.com.ua/product/rammstein-mutter-2-plativky-180-gram-albom-perevydannya-remasteryng/",
       "format": "2LP",
       "label": "Universal",
@@ -994,8 +1776,68 @@ window.COLLECTION = {
         "Nebel"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": true
+      "priceChecked": "2026-10-31",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1890,
+          "title": "Rammstein – Mutter",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-598405.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2150,
+          "title": "Rammstein – Mutter",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-689000.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2200,
+          "title": "Rammstein - Mutter",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-617981.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2295,
+          "title": "Вініл платівка Rammstein – Mutter",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinil-plativka-rammstein-mutter-690283.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2590,
+          "title": "Rammstein ‎– Mutter (2LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-2lp-609745.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2699,
+          "title": "Rammstein – Mutter (2LP, Album, Gatefold, Vinyl)",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-2lp-album-gatefold-vinyl-506562.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2700,
+          "title": "Rammstein – Mutter",
+          "url": "https://vinyl.com.ua/uk/vinyl/rammstein-mutter-539514.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2730,
+          "title": "Вінілові платівки Rammstein – Mutter 2001 НОВІ",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilovi-plativki-rammstein-mutter-2001-novi-625635.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 3728
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2800
+        }
+      ]
     },
     {
       "id": "daft-punk-random-access-memories",
@@ -1016,8 +1858,8 @@ window.COLLECTION = {
         "Photo/photo_50_2026-10-25_14-18-10.jpg",
         "Photo/photo_49_2026-10-25_14-18-10.jpg"
       ],
-      "price": 4230,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 2400,
+      "priceBasis": "медіана: vinyl.com.ua ×16, prom.ua ×7",
       "priceUrl": "https://jpv.com.ua/product/daft-punk-random-access-memories-10th-anniversary-edition-3-platvki-180-gram-albom-perevidannya/",
       "format": "3LP, ювілейне видання",
       "label": "Columbia / Sony Music",
@@ -1048,8 +1890,68 @@ window.COLLECTION = {
         "Touch (2021 Epilogue)"
       ],
       "currency": "UAH",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1790,
+          "title": "Daft Punk – Random Access Memories платівка",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-plativka-245798.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1940,
+          "title": "Виниловые пластинки Daft Punk – Random Access Memories 2013 НОВЫЕ!",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilovyje-plastinki-daft-punk-random-access-memories-2013-novyje-270245.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1950,
+          "title": "Daft Punk - Random Access Memories. Black Vinyl [2LP]",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-black-vinyl-2lp-464152.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 1969,
+          "title": "Daft Punk - Random Access Memories (2 LP)",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-2-lp-682128.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2000,
+          "title": "Daft Punk – Random Access Memories",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-203920.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2000,
+          "title": "Daft Punk – Random Access Memories",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-210431.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2000,
+          "title": "Daft Punk – Random Access Memories",
+          "url": "https://vinyl.com.ua/uk/vinyl/daft-punk-random-access-memories-564639.html"
+        },
+        {
+          "source": "vinyl.com.ua",
+          "price": 2090,
+          "title": "Вінілова платівка Daft Punk Random Access Memories",
+          "url": "https://vinyl.com.ua/uk/vinyl/vinilova-plativka-daft-punk-random-access-memories-341738.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 4230
+        },
+        {
+          "date": "2026-10-31",
+          "price": 2400
+        }
+      ]
     },
     {
       "id": "desireless-voyage-voyage",
@@ -1070,9 +1972,9 @@ window.COLLECTION = {
         "Photo/photo_52_2026-10-25_14-18-10.jpg",
         "Photo/photo_51_2026-10-25_14-18-10.jpg"
       ],
-      "price": 200,
-      "priceBasis": "Discogs (медіана)",
-      "priceUrl": "https://www.discogs.com/search/?q=Desireless+Voyage+Voyage&type=release&format_exact=Vinyl",
+      "price": 250,
+      "priceBasis": "медіана: Discogs",
+      "priceUrl": "https://www.discogs.com/release/5213959",
       "format": "7\" single",
       "label": "CBS",
       "country": "Франція",
@@ -1082,7 +1984,26 @@ window.COLLECTION = {
         "Voyage, voyage (Instrumental)"
       ],
       "currency": "UAH",
-      "discogsId": 5213959
+      "discogsId": 5213959,
+      "priceSources": [
+        {
+          "source": "Discogs",
+          "price": 255,
+          "title": "від $5.62 · 2 у продажу",
+          "url": "https://www.discogs.com/sell/release/5213959"
+        }
+      ],
+      "priceChecked": "2026-10-31",
+      "priceHistory": [
+        {
+          "date": "2026-10-25",
+          "price": 200
+        },
+        {
+          "date": "2026-10-31",
+          "price": 250
+        }
+      ]
     },
     {
       "id": "susidy-sterpliat-z-naihlybshykh-kutkiv",
@@ -1100,7 +2021,7 @@ window.COLLECTION = {
       "cover": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv.jpg",
       "back": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv_back.jpg",
       "price": 1800,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "priceBasis": "медіана: vinyl.com.ua, prom.ua",
       "priceUrl": "https://jpv.com.ua/product/susdi-sterplyat-z-nayglibshih-kutkv-limtovane/",
       "format": "LP, лімітоване",
       "label": "Aby Sho Mzk, HVG",
@@ -1121,8 +2042,22 @@ window.COLLECTION = {
       "currency": "UAH",
       "added": "2026-10-28",
       "boughtNote": "jpv.com.ua · 1 800 ₴ · в наявності · лімітоване",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "vinyl.com.ua",
+          "price": 1795,
+          "title": "Сусіди Стерплять – З найглибших кутків (LP, Limited Edition, Baby Blue Vinyl)",
+          "url": "https://vinyl.com.ua/uk/vinyl/susidi-sterplat-z-najglibshih-kutkiv-lp-limited-edition-baby-blue-vinyl-649624.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 1800,
+          "title": "Сусіди Стерплять З найглибших кутків (LP, Limited Edition, Baby Blue Vinyl)",
+          "url": "https://prom.ua/ua/p3167378722-susidi-sterplyat-najglibshih.html"
+        }
+      ]
     },
     {
       "id": "quest-pistols-greatest-hits",
@@ -1140,8 +2075,8 @@ window.COLLECTION = {
       "description": "Між знаком авторського права й датою пресу тут тринадцять років. Збірку склали у 2010-му, а на вініл вона потрапила аж у 2023-му, і на етикетці стоять обидві дати: копірайт Moon Records 2010, фонограма Moon Vinyl 2023.",
       "cover": "processed/quest-pistols-greatest-hits.jpg",
       "back": "processed/quest-pistols-greatest-hits_back.jpg",
-      "price": 1650,
-      "priceBasis": "jpv.com.ua (Just Punk Vinyl)",
+      "price": 1900,
+      "priceBasis": "медіана: prom.ua ×3",
       "priceUrl": "https://jpv.com.ua/product/quest-pistols-greatest-hits-rozhevyj-zbirnyk/",
       "format": "LP, збірник, рожевий",
       "label": "Moon Records (2)",
@@ -1168,8 +2103,38 @@ window.COLLECTION = {
       "currency": "UAH",
       "added": "2026-10-28",
       "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
-      "priceChecked": "2026-10-28",
-      "priceInStock": false
+      "priceChecked": "2026-10-31",
+      "priceInStock": false,
+      "priceSources": [
+        {
+          "source": "prom.ua",
+          "price": 1470,
+          "title": "Вінілова платівка Quest Pistols Greatest Hits (LP, Compilation, Pink Vinyl)",
+          "url": "https://prom.ua/ua/p3044138154-vinilovaya-plastinka-quest.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 1890,
+          "title": "Платівка QUEST PISTOLS Greatest Hits (2023) Vinyl 2 LP Set (LP Record)",
+          "url": "https://prom.ua/ua/p2042052258-plativka-quest-pistols.html"
+        },
+        {
+          "source": "prom.ua",
+          "price": 2195,
+          "title": "Вінілова платівка Quest Pistols Greatest Hits (LP, Compilation, Pink Vinyl) + Агонь Закладка (LP, Album, Vinyl)",
+          "url": "https://prom.ua/ua/p3044156839-vinilovaya-plastinka-quest.html"
+        }
+      ],
+      "priceHistory": [
+        {
+          "date": "2026-10-28",
+          "price": 1650
+        },
+        {
+          "date": "2026-10-31",
+          "price": 1900
+        }
+      ]
     }
   ],
   "wishlist": [
@@ -1259,12 +2224,163 @@ window.COLLECTION = {
     }
   ],
   "priceCheck": {
-    "requested": "2026-10-30T15:51:40.554Z",
-    "date": "2026-10-30",
+    "requested": "2026-10-31T12:01:32Z",
+    "date": "2026-10-31",
     "before": 56445,
-    "after": 56445,
-    "changed": [],
-    "unchanged": 0,
-    "skipped": 28
+    "after": 56050,
+    "changed": [
+      {
+        "id": "kino-gruppa-krovi",
+        "album": "Группа крови",
+        "old": 2200,
+        "new": 2750
+      },
+      {
+        "id": "kino-noch",
+        "album": "Ночь",
+        "old": 2000,
+        "new": 1800
+      },
+      {
+        "id": "rusya-popelyushka",
+        "album": "Попелюшка. Найкращі хіти",
+        "old": 3250,
+        "new": 2300
+      },
+      {
+        "id": "modern-talking-pogovorim-o-lyubvi",
+        "album": "Поговорим о любви (Let's Talk About Love)",
+        "old": 250,
+        "new": 200
+      },
+      {
+        "id": "nautilus-rodivshiysya",
+        "album": "Родившийся в эту ночь",
+        "old": 450,
+        "new": 1150
+      },
+      {
+        "id": "robin-beck-first-time",
+        "album": "First Time",
+        "old": 150,
+        "new": 50
+      },
+      {
+        "id": "epolets-dogma",
+        "album": "Dogma (10th Anniversary Edition)",
+        "old": 1900,
+        "new": 2100
+      },
+      {
+        "id": "morricone-le-professionnel",
+        "album": "Le Professionnel (OST)",
+        "old": 400,
+        "new": 150
+      },
+      {
+        "id": "kurgan-agregat-pole-kanifoli",
+        "album": "Поле каніфолі",
+        "old": 2500,
+        "new": 4500
+      },
+      {
+        "id": "imagine-dragons-mercury-act-2",
+        "album": "Mercury – Act 2",
+        "old": 2558,
+        "new": 2750
+      },
+      {
+        "id": "kurgan-agregat-zembondzhu-autograph",
+        "album": "Зембонджу (з автографами)",
+        "old": 4000,
+        "new": 4650
+      },
+      {
+        "id": "james-bond-greatest-hits",
+        "album": "James Bond Greatest Hits",
+        "old": 400,
+        "new": 450
+      },
+      {
+        "id": "skryabin-the-best-vol-1",
+        "album": "The Best, Volume 1",
+        "old": 2190,
+        "new": 3000
+      },
+      {
+        "id": "michael-jackson-number-ones",
+        "album": "Number Ones",
+        "old": 2338,
+        "new": 2000
+      },
+      {
+        "id": "prodigy-their-law",
+        "album": "Their Law: The Singles 1990–2005",
+        "old": 2558,
+        "new": 2200
+      },
+      {
+        "id": "bloodhound-gang-hooray-for-boobies",
+        "album": "Hooray for Boobies (25th Anniversary)",
+        "old": 4157,
+        "new": 4250
+      },
+      {
+        "id": "kurgan-agregat-zembondzhu",
+        "album": "Зембонджу",
+        "old": 2500,
+        "new": 4650
+      },
+      {
+        "id": "music-tribute-tarantino",
+        "album": "Music Tribute Tarantino",
+        "old": 1950,
+        "new": 1150
+      },
+      {
+        "id": "requiem-for-a-dream",
+        "album": "Requiem for a Dream (OST)",
+        "old": 2800,
+        "new": 1000
+      },
+      {
+        "id": "michael-jackson-number-ones-sealed",
+        "album": "Number Ones",
+        "old": 2338,
+        "new": 2000
+      },
+      {
+        "id": "linkin-park-hybrid-theory",
+        "album": "Hybrid Theory",
+        "old": 1798,
+        "new": 1650
+      },
+      {
+        "id": "rammstein-mutter",
+        "album": "Mutter",
+        "old": 3728,
+        "new": 2800
+      },
+      {
+        "id": "daft-punk-random-access-memories",
+        "album": "Random Access Memories (10th Anniversary)",
+        "old": 4230,
+        "new": 2400
+      },
+      {
+        "id": "desireless-voyage-voyage",
+        "album": "Voyage Voyage",
+        "old": 200,
+        "new": 250
+      },
+      {
+        "id": "quest-pistols-greatest-hits",
+        "album": "Greatest Hits",
+        "old": 1650,
+        "new": 1900
+      }
+    ],
+    "unchanged": 1,
+    "skipped": 2
   }
 };
