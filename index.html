@@ -214,6 +214,12 @@ body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
 .reprice:hover{background:rgba(232,163,61,.12)}
 .reprice[disabled]{opacity:.7;cursor:progress}
 .stat .pchk{display:block;margin-top:3px;font-size:10px;opacity:.7}
+.psrc{flex-basis:100%;margin-top:6px;font-size:12px;color:var(--muted)}
+.psrc summary{cursor:pointer;color:var(--accent)}
+.psrc ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.psrc li b{color:var(--text,#eee)}
+.psrc li span{display:block;opacity:.75;font-size:11px}
+.psrc a{color:var(--accent)}
 .mbox.single{grid-template-columns:1fr;max-width:560px}
 .mbox.single .mtext{position:relative}
 .noimg{aspect-ratio:1;display:grid;place-items:center;color:var(--muted);font-size:14px;background:repeating-radial-gradient(circle at 50% 50%,#151515 0 2px,#1d1d1d 2px 4px);border-radius:6px}
@@ -383,7 +389,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-10-28d';
+const APP_VERSION = '2026-10-31a';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -725,7 +731,7 @@ function openModal(id){
       ${r.sealed?'<span class="badge" style="position:static;display:inline-block;margin-top:8px">Нерозпакована</span>':''}
       <dl class="facts">${facts.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
       ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
-      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}${r.priceChecked?` · перевірено ${esc(r.priceChecked.split('-').reverse().join('.'))}`:''}${r.priceInStock===false?' · зараз немає в наявності':''}${(r.priceHistory||[]).length>1?` · раніше ${money(r.priceHistory[r.priceHistory.length-2].price)}`:''}</small>`:''}</div>
+      <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}${r.priceChecked?` · перевірено ${esc(r.priceChecked.split('-').reverse().join('.'))}`:''}${r.priceInStock===false?' · зараз немає в наявності':''}${(r.priceHistory||[]).length>1?` · раніше ${money(r.priceHistory[r.priceHistory.length-2].price)}`:''}</small>`:''}${(r.priceSources||[]).length?`<details class="psrc"><summary>Знайдені пропозиції · ${r.priceSources.length}</summary><ul>${r.priceSources.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.source)}</a> — <b>${money(x.price)}</b><span>${esc(x.title)}</span></li>`).join('')}</ul></details>`:''}</div>
       ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
       ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
       ${OWNER&&(r.needs||[]).length?`<p class="hint" style="margin:14px 0 0">Не знайшов в інтернеті: ${r.needs.map(n=>n==='back'?'фото звороту':'треклист').join(' і ')}. Скинь фото в чат — додам.</p>`:''}
