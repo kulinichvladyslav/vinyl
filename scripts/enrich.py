@@ -480,6 +480,14 @@ def apply_patch(data, patch):
 
 
 def main():
+    if os.environ.get("PROBE", "").strip():  # diagnostics: which sites answer GitHub's servers
+        for u in os.environ["PROBE"].split():
+            try:
+                r = requests.get(u, headers=UA, timeout=30)
+                print(r.status_code, len(r.text), u)
+            except Exception as e:
+                print("ERR", e, u)
+        return
     if os.environ.get("PATCH", "").strip():
         with open(os.path.join(ROOT, "collection.json"), encoding="utf-8") as f:
             data = json.load(f)
