@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Вінілова полиця</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0d0c0b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap">
 <style>
@@ -389,7 +393,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-11-12a';
+const APP_VERSION = '2026-11-12b';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
