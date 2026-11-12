@@ -56,6 +56,48 @@ def sentences(text, limit):
     return out or text[:limit].rsplit(" ", 1)[0] + "…"
 
 
+def is_ukrainian(t):
+    """Descriptions on the site must be in Ukrainian only: no ы/э/ъ/ё, at least one і/ї/є/ґ."""
+    return bool(re.search(r"[іїєґІЇЄҐ]", t or "")) and not re.search(r"[ыэъёЫЭЪЁ]", t or "")
+
+
+def split_about(text):
+    """Short description (first sentences, <=220 chars) + the rest, so the site never repeats the same text twice."""
+    parts = [x for x in re.split(r"(?<=[.!?…])\s+", clean(text)) if x]
+    if not parts:
+        return "", ""
+    desc, i = parts[0], 1
+    while i < len(parts) and len(desc) + len(parts[i]) + 1 <= 220:
+        desc, i = desc + " " + parts[i], i + 1
+    rest = " ".join(parts[i:])
+    return desc, (sentences(rest, 900) if rest else "")
+
+
+def needs_of(rec):
+    need = [k for k in ("tracks", "back") if not rec.get(k)]
+    if not (rec.get("description") or rec.get("about")):
+        need.append("about")  # no Ukrainian text found: Claude writes it by hand
+    return need
+
+
+ALBUM_STOP = {"vinyl", "vinil", "lp", "2lp", "3lp", "lp12", "plastinka", "plativka", "winyl", "album", "albom", "black", "g"}
+
+
+def album_from_slug(url, artist):
+    """'.../three-days-grace-one-x-vinyl-lp' + 'Three Days Grace' -> 'One X' (when the album wasn't typed in)."""
+    seg = [x for x in urllib.parse.urlparse(url).path.split("/") if x]
+    if not seg:
+        return ""
+    words = [w for w in re.split(r"[-_]+", re.sub(r"\.html?$", "", seg[-1].lower())) if w]
+    aw = slugify(artist).split("-")
+    if not aw or words[:len(aw)] != aw:
+        return ""
+    rest = words[len(aw):]
+    while rest and (rest[-1] in ALBUM_STOP or rest[-1].isdigit()):
+        rest.pop()
+    return " ".join(w.capitalize() for w in rest)
+
+
 def split_title(name):
     name = re.sub(r"\s*\((?:[^()]|\([^()]*\))*\)\s*$", "", clean(name))  # drop "(2 платівки, ...)"
     for sep in (" – ", " — ", " - "):
@@ -80,7 +122,8 @@ def jpv_product(url, hints=()):
     for w in words[:8]:
         r = requests.get("https://jpv.com.ua/wp-json/wc/store/v1/products", params={"search": w, "slug": slug}, headers=UA, timeout=30)
         if r.status_code == 200 and r.json():
-            return r.json()[0]
+            items = r.json()
+            return next((p for p in items if "/ru/" not in p.get("permalink", "")), items[0])  # Ukrainian page first
     return None
 
 
@@ -180,8 +223,9 @@ def jpv_search(artist, album):
         if "/ru/" in p["permalink"]:
             continue
         pa, pb = split_title(p["name"])
-        score = (2 if norm(pb) == nb else 1 if nb and nb in norm(p["name"]) else 0) + (1 if na and na in norm(pa) else 0)
-        if score >= 2 and (not best or score > best[0]):
+        alb = 2 if norm(pb) == nb else 1 if nb and nb in norm(pb) else 0  # album part only, not the whole name
+        score = alb + (1 if na and na in norm(pa) else 0)
+        if alb and score >= 2 and (not best or score > best[0]):
             best = (score, p["permalink"])
     if not best:
         return None
@@ -332,7 +376,18 @@ def auto_tags(rec, info):
 
 def enrich(rec):
     url = rec["enrich"]["url"]
-    info = fetch_shop(url, rec.get("artist", ""), rec.get("album", ""))
+    album = rec.get("album", "")
+    guessed = ""
+    if rec.get("artist") and (not album or norm(album) == norm(rec["artist"])):
+        guessed = album_from_slug(url, rec["artist"])  # album not typed in (or same as the artist): take it from the link
+        if guessed and norm(guessed) != norm(album):
+            print("  album from the link:", guessed)
+            album = guessed
+        else:
+            guessed = ""
+    info = fetch_shop(url, rec.get("artist", ""), album)
+    if guessed:
+        rec["album"] = info.get("album") or guessed
     for k in ("artist", "album", "label", "country", "format", "editionYear"):
         if info.get(k) and not rec.get(k):
             rec[k] = info[k]
@@ -345,10 +400,11 @@ def enrich(rec):
     if mb.get("genre") and not rec.get("genre"):
         rec["genre"] = mb["genre"]
     about = info.get("about") or ""
-    if about and not rec.get("about"):
-        rec["about"] = sentences(about, 900)
-    if about and not rec.get("description"):
-        rec["description"] = sentences(about, 220)
+    if about and not is_ukrainian(about):
+        print("  shop text is not in Ukrainian, skipped")
+        about = ""
+    if about and not rec.get("description") and not rec.get("about"):
+        rec["description"], rec["about"] = split_about(about)
     if not rec.get("price") and info.get("price"):
         rec["price"] = round(info["price"])
     rec.setdefault("priceBasis", info.get("source"))
@@ -383,7 +439,7 @@ def add_tracks_and_back(rec, mb=None):
             rec["back"] = bpath
         except Exception as e:
             print("  back cover failed:", e)
-    missing = [k for k in ("tracks", "back") if not rec.get(k)]
+    missing = needs_of(rec)
     if missing:
         rec["needs"] = missing  # Claude will ask for photos / fill in by hand
     else:
@@ -630,7 +686,7 @@ def apply_patch(data, patch):
             hist.append({"date": date.today().isoformat(), "price": fields["price"]})
             fields.setdefault("priceChecked", date.today().isoformat())
         rec.update(fields)
-        needs = [k for k in ("tracks", "back") if not rec.get(k)]
+        needs = needs_of(rec)
         if needs:
             rec["needs"] = needs
         else:
@@ -695,7 +751,7 @@ def main():
                 add_tracks_and_back(rec)
             except Exception as ex:
                 print("  failed:", ex)
-                rec["needs"] = [k for k in ("tracks", "back") if not rec.get(k)]
+                rec["needs"] = needs_of(rec)
             changed = True
             continue
         if not e or e.get("status") == "done":
