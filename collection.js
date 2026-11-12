@@ -1609,6 +1609,34 @@ window.COLLECTION = {
       "boughtNote": "jpv.com.ua · 1 650 ₴ · в наявності · рожевий вініл",
       "priceChecked": "2026-11-12",
       "priceInStock": false
+    },
+    {
+      "id": "three-days-grace-three-days-grace",
+      "artist": "Three days grace",
+      "album": "Three days grace",
+      "year": null,
+      "editionYear": null,
+      "genre": "",
+      "sealed": true,
+      "tags": [],
+      "description": "",
+      "cover": null,
+      "back": null,
+      "price": null,
+      "priceBasis": "muziker.ua",
+      "priceUrl": "https://www.muziker.ua/three-days-grace-one-x-vinyl-lp?gad_source=1&gad_campaignid=24255274546&gbraid=0AAAABAdrI28sJqYrWJL2cs_J3TQRds_8N&gclid=Cj0KCQjw3YvXBhCDARIsAKB-ox_ZGXV3mh6wGsNg8Jg1_1K6MoMtN980mmhkMHJ-raTdB1w9N-Wb1CMaAnxKEALw_wcB",
+      "format": "",
+      "label": "",
+      "country": "",
+      "about": "",
+      "tracks": [],
+      "currency": "UAH",
+      "added": "2026-11-12",
+      "boughtNote": "",
+      "enrich": {
+        "url": "https://www.muziker.ua/three-days-grace-one-x-vinyl-lp?gad_source=1&gad_campaignid=24255274546&gbraid=0AAAABAdrI28sJqYrWJL2cs_J3TQRds_8N&gclid=Cj0KCQjw3YvXBhCDARIsAKB-ox_ZGXV3mh6wGsNg8Jg1_1K6MoMtN980mmhkMHJ-raTdB1w9N-Wb1CMaAnxKEALw_wcB",
+        "status": "pending"
+      }
     }
   ],
   "wishlist": [
@@ -1689,12 +1717,6 @@ window.COLLECTION = {
       "link": "https://rozetka.com.ua/ua/486520724/p486520724/",
       "note": "2010; «Not Afraid», «Love the Way You Lie». Rozetka (продавець B Records) · 2 920 ₴ · в наявності. На jpv.com.ua (2 816 ₴) зараз немає; vinyla.com — передзамовлення ≈ 2 350 ₴",
       "added": "2026-10-26"
-    },
-    {
-      "title": "Three days grace",
-      "link": "https://www.muziker.ua/three-days-grace-one-x-vinyl-lp?gad_source=1&gad_campaignid=24255274546&gbraid=0AAAABAdrI28sJqYrWJL2cs_J3TQRds_8N&gclid=Cj0KCQjw3YvXBhCDARIsAKB-ox_ZGXV3mh6wGsNg8Jg1_1K6MoMtN980mmhkMHJ-raTdB1w9N-Wb1CMaAnxKEALw_wcB",
-      "note": "",
-      "added": "2026-10-29"
     }
   ],
   "priceCheck": {
