@@ -260,10 +260,10 @@ body.ro:not(.owner) .wgrid{grid-template-columns:1fr!important}
       <select class="sel" id="fArtist" aria-label="Виконавець"></select>
       <select class="sel" id="fYear" aria-label="Рік"></select>
       <select class="sel" id="fSort" aria-label="Сортування">
+        <option value="added" selected>Нещодавно додані</option>
         <option value="artist">За виконавцем А–Я</option>
         <option value="year-asc">Спочатку старіші</option>
         <option value="year-desc">Спочатку новіші</option>
-        <option value="added">Нещодавно додані</option>
         <option value="price-asc">Ціна: дешевші спочатку</option>
         <option value="price-desc">Ціна: дорожчі спочатку</option>
       </select>
@@ -389,7 +389,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-10-31a';
+const APP_VERSION = '2026-11-12a';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -561,7 +561,7 @@ document.addEventListener('click', e => {
 /* ---------- state ---------- */
 let base = { records: [], wishlist: [] };
 let local = { records: [], wishlist: null, overrides: {}, removed: [] };
-const F = { q:'', artist:'', year:'', sort:'artist', status:'all', genre:'', tag:'', price:'' };
+const F = { q:'', artist:'', year:'', sort:'added', status:'all', genre:'', tag:'', price:'' };
 const PR = [['0-500','до 500 ₴',0,500],['500-1500','500–1 500 ₴',500,1500],['1500-3000','1 500–3 000 ₴',1500,3000],['3000+','від 3 000 ₴',3000,Infinity]];
 const host = u => { try { return new URL(u).hostname.replace(/^www\./,''); } catch { return ''; } };
 const priceTxt = r => r.price!=null ? '≈ '+money(r.price) : null;
