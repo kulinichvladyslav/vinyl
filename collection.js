@@ -1535,7 +1535,7 @@ window.COLLECTION = {
         "Українське",
         "Кольоровий вініл"
       ],
-      "description": "«З найглибших кутків» — український тираж 2024 року на блакитному вінілі кольору baby blue. Незручна правда про трек-лист: позицій десять, а різних пісень дев’ять.",
+      "description": "Альбом «Сусідів Стерплять» на блакитному вінілі кольору baby blue. Український тираж 2024 року.",
       "cover": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv.jpg",
       "back": "processed/susidy-sterpliat-z-naihlybshykh-kutkiv_back.jpg",
       "price": 1800,
@@ -1544,7 +1544,7 @@ window.COLLECTION = {
       "format": "LP, лімітоване",
       "label": "Aby Sho Mzk, HVG",
       "country": "Україна",
-      "about": "«З найглибших кутків» — український тираж 2024 року на блакитному вінілі кольору baby blue. Незручна правда про трек-лист: позицій десять, а різних пісень дев’ять. «Сон це маленька смерть» стоїть п’ятою на стороні A і повертається останньою на стороні B в уповільненій версії з позначкою Slowed. Альбом короткий — 30 хвилин на дві сторони. За нотатками Discogs, всередині одна з шести випадкових карток із фотографією гурту. На вкладеному флаєрі напис «Collect them all», а в соцмережах гурт оголосив, що перший, хто збере всі шість карток, отримає будь-яку платівку Aby Sho Mzk, видану після 11 листопада 2024 року, і квитки на будь-який концерт HVG у 2025-му. Тобто картка в конверті — частина акції, а не просто вкладка. Реліз вийшов одночасно на HVG під номером HVG006 і на Aby Sho Mzk під ASM092. У раннаутах вибито SUSIDY STERP – A1 і SUSIDY STERP – B1 — інших міток завод не залишив.",
+      "about": "У треклисті десять позицій, але різних пісень дев’ять: «Сон це маленька смерть» стоїть п’ятою на стороні A і повертається останньою на стороні B в уповільненій версії (Slowed, Reverb). Альбом короткий — близько 30 хвилин на дві сторони. Усередині одна з шести випадкових карток із фотографією гурту: на флаєрі напис «Collect them all», а гурт оголосив, що перший, хто збере всі шість карток, отримає будь-яку платівку Aby Sho Mzk, видану після 11 листопада 2024 року, і квитки на будь-який концерт HVG у 2025-му. Реліз вийшов одночасно на HVG (HVG006) і Aby Sho Mzk (ASM092).",
       "tracks": [
         "Залежність",
         "Дівчина з Порнхабу",
@@ -1576,7 +1576,7 @@ window.COLLECTION = {
         "Кольоровий вініл",
         "Збірки"
       ],
-      "description": "Між знаком авторського права й датою пресу тут тринадцять років. Збірку склали у 2010-му, а на вініл вона потрапила аж у 2023-му, і на етикетці стоять обидві дати: копірайт Moon Records 2010, фонограма Moon Vinyl 2023.",
+      "description": "Збірка найкращих пісень Quest Pistols на рожевому вінілі. Укладена у 2010 році, на вініл потрапила у 2023-му.",
       "cover": "processed/quest-pistols-greatest-hits.jpg",
       "back": "processed/quest-pistols-greatest-hits_back.jpg",
       "price": 1650,
@@ -1585,7 +1585,7 @@ window.COLLECTION = {
       "format": "LP, збірник, рожевий",
       "label": "Moon Records (2)",
       "country": "Україна",
-      "about": "Між знаком авторського права й датою пресу тут тринадцять років. Збірку склали у 2010-му, а на вініл вона потрапила аж у 2023-му, і на етикетці стоять обидві дати: копірайт Moon Records 2010, фонограма Moon Vinyl 2023. Укладач названий поіменно — Андрій Пасічник, оформлення зробив Дмитро Личагін. Виготовила платівку Moon Vinyl s.r.o. за виключною ліцензією Moon Records, каталожний номер MV 0057-1. Шістнадцять пісень, рівно по вісім на сторону. Усі шістнадцять назв російськомовні — саме так гурт і записувався в ті роки, і збірка це не приховує. Сторона A відкривається «Я Устал», сторона B закривається «Девочкой Моей», між ними — той набір, який у гурту справді крутили. Тому що його ніде немає: ні на самому релізі, ні у зовнішніх базах. Ми не ставимо в опис часи, яких не бачили, тому блоку з хвилинами по сторонах тут не буде.",
+      "about": "Між датою збірки і пресом — тринадцять років, і на етикетці стоять обидві: копірайт Moon Records 2010 і фонограма Moon Vinyl 2023. Укладач — Андрій Пасічник, оформлення — Дмитро Личагін. Платівку виготовила Moon Vinyl s.r.o. за виключною ліцензією Moon Records, каталожний номер MV 0057-1. Шістнадцять пісень, по вісім на сторону: від «Я устал» до «Девочка моя». Усі пісні російськомовні — саме так гурт записувався в ті роки.",
       "tracks": [
         "Я устал",
         "Белая стрекоза любви",
@@ -1612,40 +1612,62 @@ window.COLLECTION = {
     },
     {
       "id": "three-days-grace-three-days-grace",
-      "artist": "Three days grace",
-      "album": "Three days grace",
-      "year": 2003,
-      "editionYear": null,
-      "genre": "Ню-метал",
+      "artist": "Three Days Grace",
+      "album": "One-X",
+      "year": 2006,
+      "editionYear": 2016,
+      "genre": "Альтернатива",
       "sealed": true,
       "tags": [],
-      "description": "Карточка этого тиража в Discogs почти пустая: ни завода, ни инженера, ни единого примечания — только каталожный номер RCA 19958411411 и штрихкод.",
+      "description": "Другий альбом Three Days Grace з хітами «Animal I Have Become», «Pain» і «Never Too Late». Перевидання Jive 2016 року.",
       "cover": "processed/three-days-grace-three-days-grace.jpg",
       "back": "processed/three-days-grace-three-days-grace_back.jpg",
-      "price": 1958,
-      "priceBasis": "muziker.ua",
-      "priceUrl": "https://www.muziker.ua/three-days-grace-one-x-vinyl-lp?gad_source=1&gad_campaignid=24255274546&gbraid=0AAAABAdrI28sJqYrWJL2cs_J3TQRds_8N&gclid=Cj0KCQjw3YvXBhCDARIsAKB-ox_ZGXV3mh6wGsNg8Jg1_1K6MoMtN980mmhkMHJ-raTdB1w9N-Wb1CMaAnxKEALw_wcB",
+      "price": 1149,
+      "priceBasis": "muziker.ua, перевидання Jive 2016, в наявності — 12.11.2026",
+      "priceUrl": "https://www.muziker.ua/three-days-grace-one-x-150-g-lp",
       "format": "LP",
-      "label": "RCA Records",
-      "country": "",
-      "about": "Карточка этого тиража в Discogs почти пустая: ни завода, ни инженера, ни единого примечания — только каталожный номер RCA 19958411411 и штрихкод. Для пластинки, вышедшей 20 марта 2026 года, это редкость, и об этом честнее сказать сразу: подтверждённых данных о мастеринге и месте прессования в открытых базах нет. Одна пластинка, RCA Records, дата релиза 20 марта 2026 года, страны выпуска — США, Канада и Европа. Тринадцать треков в том же порядке, что и на альбоме 2012 года: от «Sign Of The Times» до «Unbreakable Heart». Discogs ставит релизу стиль Alternative Rock, у нас карточка стоит в пост-гранже. Альбом держит плотный средний темп: ни одна песня не короче 2:42 и не длиннее 4:03, а «Give Me A Reason» — единственный трек, переходящий четырёхминутную границу. Сторона A — 22:02 за семь песен, сторона B — 19:38 за шесть. Вместе 41:40.",
+      "label": "Jive",
+      "country": "США",
+      "about": "One-X (2006) Адам Ґонтьє писав після лікування від залежності, тому більшість пісень — про боротьбу із собою, біль і одужання. Це перший альбом гурту з гітаристом Баррі Стоком, продюсер — Говард Бенсон. «Animal I Have Become», «Pain» і «Never Too Late» очолювали рок-чарти, а на наліпці перевидання альбом названо тричі платиновим. Це перевидання Jive/Legacy 2016 року, надруковане на чеському заводі GZ Media на 140-грамовому вінілі: дванадцять пісень, по шість на сторону.",
       "tracks": [
-        "Burn",
-        "Just Like You",
-        "I Hate Everything About You",
-        "Home",
-        "Scared",
-        "Let You Down",
-        "Now or Never",
-        "Born Like This",
-        "Drown",
-        "Wake Up",
-        "Take Me Under",
-        "Overrated"
+        "It's All Over",
+        "Pain",
+        "Animal I Have Become",
+        "Never Too Late",
+        "On My Own",
+        "Riot",
+        "Get Out Alive",
+        "Let It Die",
+        "Over and Over",
+        "Time of Dying",
+        "Gone Forever",
+        "One-X"
       ],
       "currency": "UAH",
       "added": "2026-11-12",
-      "boughtNote": ""
+      "boughtNote": "",
+      "priceChecked": "2026-11-12",
+      "priceInStock": true,
+      "priceSources": [
+        {
+          "source": "muziker.ua",
+          "price": 1149,
+          "title": "Three Days Grace – One-X (LP, Jive 2016), в наявності",
+          "url": "https://www.muziker.ua/three-days-grace-one-x-150-g-lp"
+        },
+        {
+          "source": "lampala.com.ua",
+          "price": 1785,
+          "title": "Three Days Grace – One-X (Jive 2016), під замовлення",
+          "url": "https://lampala.com.ua/three-days-grace-one-x-lp-album-vinyl-258471"
+        },
+        {
+          "source": "jpv.com.ua",
+          "price": 1974,
+          "title": "Three Days Grace – One-X (перевидання 2016), немає в наявності",
+          "url": "https://jpv.com.ua/product/three-days-grace-one-x-albom-perevidannya/"
+        }
+      ]
     }
   ],
   "wishlist": [

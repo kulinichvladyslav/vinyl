@@ -393,7 +393,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-11-12b';
+const APP_VERSION = '2026-11-12c';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -722,6 +722,8 @@ function openModal(id){
   const r = records.find(x=>x.id===id); if (!r) return;
   const facts = [['Виконавець',r.artist],['Альбом',r.album],['Рік виходу',r.year],['Видання',r.editionYear&&r.editionYear!==r.year?r.editionYear:null],['Жанр',r.genre],['Формат',r.format],['Лейбл',r.label&&r.label!=='—'?r.label:null],['Країна видання',r.country&&r.country!=='—'?r.country:null],['Статус',sealedTxt(r)]].filter(f=>f[1]);
   const tracks = r.tracks || [];
+  const desc = (r.description||'').trim(), about0 = (r.about||'').trim();
+  const about = desc && about0.startsWith(desc) ? about0.slice(desc.length).trim() : about0; // не повторювати короткий опис у довгому
   $('#mbox').classList.remove('single');
   $('#mbox').innerHTML = `
     <div class="mimg">
@@ -736,9 +738,9 @@ function openModal(id){
       <dl class="facts">${facts.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
       ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
       <div class="pricebox"><span style="color:var(--muted)">Орієнтовна вартість</span><b>${priceLink(r,'не вказано')}</b>${r.priceBasis||r.priceUrl?`<small>${r.priceBasis?`Джерело оцінки: ${esc(r.priceBasis)}`:''}${r.priceUrl?`${r.priceBasis?' · ':''}<a href="${esc(r.priceUrl)}" target="_blank" rel="noopener">переглянути на ${esc(host(r.priceUrl))}</a>`:''}${r.priceChecked?` · перевірено ${esc(r.priceChecked.split('-').reverse().join('.'))}`:''}${r.priceInStock===false?' · зараз немає в наявності':''}${(r.priceHistory||[]).length>1?` · раніше ${money(r.priceHistory[r.priceHistory.length-2].price)}`:''}</small>`:''}${(r.priceSources||[]).length?`<details class="psrc"><summary>Знайдені пропозиції · ${r.priceSources.length}</summary><ul>${r.priceSources.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.source)}</a> — <b>${money(x.price)}</b><span>${esc(x.title)}</span></li>`).join('')}</ul></details>`:''}</div>
-      ${r.about?`<p class="about">${esc(r.about)}</p>`:''}
+      ${about?`<p class="about">${esc(about)}</p>`:''}
       ${tracks.length?`<details class="tl"><summary>Треклист · ${tracks.length}</summary><ol>${tracks.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>`:''}
-      ${OWNER&&(r.needs||[]).length?`<p class="hint" style="margin:14px 0 0">Не знайшов в інтернеті: ${r.needs.map(n=>n==='back'?'фото звороту':'треклист').join(' і ')}. Скинь фото в чат — додам.</p>`:''}
+      ${OWNER&&(r.needs||[]).length?`<p class="hint" style="margin:14px 0 0">Не знайшов в інтернеті: ${r.needs.map(n=>n==='back'?'фото звороту':n==='about'?'опис українською':'треклист').join(' і ')}. Скинь фото або напиши в чат — додам.</p>`:''}
       ${(r.tags||[]).length?`<div class="tags">${r.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>`:''}
       <div class="mactions">
         <button class="btn sm" data-toggle-sealed="${esc(r.id)}">${r.sealed?'Позначити як розпаковану':'Позначити як нерозпаковану'}</button>
