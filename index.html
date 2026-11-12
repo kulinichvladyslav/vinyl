@@ -99,8 +99,9 @@ select.sel{background:var(--bg2);border:1px solid var(--line);border-radius:12px
 #filters{display:grid;grid-template-rows:1fr;transition:grid-template-rows .3s}
 #filters>div{overflow:hidden}
 #filters.closed{grid-template-rows:0fr}
-.meta .pr{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--dim)}
-.meta .pr b{font:600 15px var(--head);color:var(--accent)}
+.meta .pr{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 8px;font-size:13px;color:var(--dim)}
+.meta .pr span{white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.meta .pr b{font:600 15px var(--head);color:var(--accent);white-space:nowrap;margin-left:auto} /* ціна завжди в один рядок; якщо не влазить поруч з підписом — переноситься цілком */
 a.plink{color:inherit;text-decoration:underline;text-decoration-color:rgba(232,163,61,.45);text-underline-offset:3px}
 a.plink:hover{text-decoration-color:currentColor}
 a.plink .ext{font-size:.7em;opacity:.7;margin-left:3px}
@@ -393,7 +394,7 @@ const store = (() => {
 })();
 
 /* ---------- stale-page guard: phones may keep an old copy of this page ---------- */
-const APP_VERSION = '2026-11-12c';
+const APP_VERSION = '2026-11-12d';
 async function latestVersion(){ try { const r = await fetch('version.txt?t=' + Date.now(), { cache:'no-store' }); return r.ok ? (await r.text()).trim() : ''; } catch { return ''; } }
 function reloadTo(v){ const u = new URL(location.href); u.searchParams.set('v', v); location.replace(u.toString()); }
 if (location.protocol !== 'file:') latestVersion().then(v => {
@@ -568,9 +569,9 @@ let local = { records: [], wishlist: null, overrides: {}, removed: [] };
 const F = { q:'', artist:'', year:'', sort:'added', status:'all', genre:'', tag:'', price:'' };
 const PR = [['0-500','до 500 ₴',0,500],['500-1500','500–1 500 ₴',500,1500],['1500-3000','1 500–3 000 ₴',1500,3000],['3000+','від 3 000 ₴',3000,Infinity]];
 const host = u => { try { return new URL(u).hostname.replace(/^www\./,''); } catch { return ''; } };
-const priceTxt = r => r.price!=null ? '≈ '+money(r.price) : null;
+const priceTxt = r => r.price!=null ? '≈\u00a0'+money(r.price) : null;
 const priceLink = (r, empty) => { const t = priceTxt(r); if (!t) return empty; return r.priceUrl ? `<a class="plink" href="${esc(r.priceUrl)}" target="_blank" rel="noopener" title="Відкрити на ${esc(host(r.priceUrl))}">${t}<span class="ext">↗</span></a>` : t; };
-const money = n => n==null||n==='' ? '—' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
+const money = n => n==null||n==='' ? '—' : new Intl.NumberFormat('uk-UA').format(n) + '\u00a0₴';
 let records = [], wishlist = [];
 
 function merge(){
@@ -641,7 +642,7 @@ function renderStats(){
   $('#stats').innerHTML = [
     [records.length,'платівок'],[sealed,'нерозпакованих'],[genres,'жанрів'],
     [yrs.length ? `${Math.min(...yrs)}–${Math.max(...yrs)}` : '—','роки'],
-    ['≈ ' + money(records.reduce((s,r)=>s+(+r.price||0),0)),'орієнтовна вартість']
+    ['≈\u00a0' + money(records.reduce((s,r)=>s+(+r.price||0),0)),'орієнтовна вартість']
   ].map(([b,s],i,a)=>`<div class="stat${i===a.length-1?' val':''}"><b>${b}</b><small>${s}</small>${i===a.length-1&&OWNER?
       `<button class="reprice${repricing?' spin':''}" id="repriceBtn" ${repricing?'disabled':''} title="Оновити ціни всіх платівок">↻ ${repricing?'оновлюю…':'оновити ціни'}</button>${base.priceCheck?`<small class="pchk">перевірено ${esc(base.priceCheck.date.split('-').reverse().join('.'))}</small>`:''}`:''}</div>`).join('');
   $('#cntCat').textContent = records.length;
