@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-15",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1569,7 +1569,7 @@
       "year": 2023,
       "editionYear": 2023,
       "genre": "",
-      "sealed": true,
+      "sealed": false,
       "tags": [
         "Українське",
         "Кольоровий вініл",

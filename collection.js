@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-11-12",
+  "updated": "2026-11-15",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1570,7 +1570,7 @@ window.COLLECTION = {
       "year": 2023,
       "editionYear": 2023,
       "genre": "",
-      "sealed": true,
+      "sealed": false,
       "tags": [
         "Українське",
         "Кольоровий вініл",
