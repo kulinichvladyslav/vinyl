@@ -1667,6 +1667,53 @@
           "url": "https://jpv.com.ua/product/three-days-grace-one-x-albom-perevidannya/"
         }
       ]
+    },
+    {
+      "id": "agon-zakladka",
+      "artist": "Агонь",
+      "album": "Закладка",
+      "year": 2019,
+      "editionYear": 2019,
+      "genre": "Поп",
+      "sealed": true,
+      "tags": [
+        "Українське",
+        "Сучасне"
+      ],
+      "description": "Альбом київського гурту «Агонь», який у 2016 році заснували колишні учасники Quest Pistols Show. Обкладинка оформлена як пакет-«закладка» з флешкою, QR-кодом і штрихкодом.",
+      "cover": "processed/agon-zakladka.jpg",
+      "back": "processed/agon-zakladka_back.jpg",
+      "price": 1470,
+      "priceBasis": "lampala.com.ua, в наявності — 15.11.2026",
+      "priceUrl": "https://lampala.com.ua/agon-zakladka-vinyl-240179",
+      "priceSources": [
+        {
+          "price": 1470,
+          "source": "lampala.com.ua",
+          "title": "Агонь – Закладка, Moon Records 2019, SS, в наявності",
+          "url": "https://lampala.com.ua/agon-zakladka-vinyl-240179"
+        }
+      ],
+      "format": "LP",
+      "label": "Moon Records",
+      "country": "Україна",
+      "about": "Антон Савлепов, Нікіта Горюк і Костянтин Боровський співали разом ще з 2007 року в Quest Pistols. «Закладка» — дев'ять треків на 27 хвилин; серед гостей The Gitas, Supersonya, BRVSKI × Morphom і Tonya, а завершує платівку ремікс від Dub Beans. Виготовила Moon Vinyl s.r.o. за ліцензією Moon Records у 2019 році, каталожний номер MV 0017-1, 33 оберти. Пісні російськомовні.",
+      "tracks": [
+        "Всем F**ck",
+        "Я хейтер (feat. The Gitas)",
+        "Найди меня",
+        "Дочка дилера",
+        "Другая (feat. Supersonya)",
+        "Бро (BRVSKI x Morphom feat. Tonya)",
+        "Не кружит",
+        "Океан",
+        "Всем Juke (Dub Beans remix)"
+      ],
+      "currency": "UAH",
+      "added": "2026-11-15",
+      "boughtNote": "Подарунок (разом з Quest Pistols) · lampala 1 470 ₴ · в наявності",
+      "priceChecked": "2026-11-15",
+      "priceInStock": true
     }
   ],
   "wishlist": [
