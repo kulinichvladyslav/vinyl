@@ -1,6 +1,6 @@
 // Автоматична копія collection.json (щоб сайт працював, коли відкрито як файл)
 window.COLLECTION = {
-  "updated": "2026-11-15",
+  "updated": "2026-11-19",
   "records": [
     {
       "id": "kino-gruppa-krovi",
@@ -1795,6 +1795,12 @@ window.COLLECTION = {
       "link": "https://rozetka.com.ua/ua/486520724/p486520724/",
       "note": "2010; «Not Afraid», «Love the Way You Lie». Rozetka (продавець B Records) · 2 920 ₴ · в наявності. На jpv.com.ua (2 816 ₴) зараз немає; vinyla.com — передзамовлення ≈ 2 350 ₴",
       "added": "2026-10-26"
+    },
+    {
+      "title": "Home alone",
+      "link": "https://playvinyl.com.ua/products/various-artists-home-alone-christmas-lp?utm_content=%D0%9D%D0%BE%D0%B2%D0%BE%D0%B5+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5+%D1%81+%D1%86%D0%B5%D0%BB%D1%8C%D1%8E+%22%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B8%22&utm_source=facebook&variant=51003732853024&media_type=image&utm_medium=paid_social&utm_campaign=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D1%96+/+%D0%A1%D0%B0%D0%B9%D1%82+/+%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3&utm_term=ALL+PRODUCTS+%E2%80%94+TOP+VINYL&utm_id=120255683452230273&pv_adset_id=120255683700270273&pv_ad_id=120255683702950273&pv_platform=ig&pv_placement=Instagram_Stories&fbclid=PAYW9leAVrftlleHRuA2FlbQEwAHBkb2YCYWRpZAGrO-hP5VGhc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnGkFWM_7O6VEVPnj3erLKf_ZiK60qERmggok2MMxDClv5de3hiRd3O0RdHDg_aem_AWWQyCP53_WIUoS8AmqzIw&campaign_id=120255683452230273&ad_id=120255683702950273",
+      "note": "",
+      "added": "2026-11-19"
     }
   ],
   "priceCheck": {
